@@ -1,0 +1,85 @@
+.template {
+  display: none !important;
+}
+
+
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #193441;
+  background-color: #D1DBBD;
+}
+.pageHeader{
+  color: #FCFFF5;
+  background-color: #3E606F;
+  width: 80%;
+  max-width: 960px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.pageTitle{
+  text-align: center;
+}
+.topNavBar {
+  width: 80%;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.navBarLink{
+  color: inherit;
+  text-decoration: none;
+}
+.topNavBarItem{
+
+}
+
+
+.projectSummariesHolder{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  max-width: 960px;
+  height: 100%;
+}
+.projectSummary{
+  display: flex;
+  flex-direction: column;
+  background-color: #FCFFF5;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.articleHeader{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.projectTitleLink{
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.articleTitle{
+  width: 100%;
+  text-align: center;
+  background-color: #91AA9D;
+}
+.publicationDate{
+  text-align: center;
+}
+.articleContent{
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
