@@ -18,21 +18,24 @@ ProjectSummary.prototype.returnProjectSummary = function() {
 };
 
 
+projectSummaries = {
+  projects: []
+};
+
 //build the page content
-function drawProjectSummaries(){
-  var projects = [];
-  var $projectSummariesHolder = $('#projectSummariesHolder');
+projectSummaries.drawProjectSummaries = function(){
+  var $projects = $('#projects');
 
   projectData.sort(function(a,b){
     return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
   });
   projectData.forEach(function(inputProject){
-    projects.push(new ProjectSummary(inputProject));
+    projectSummaries.projects.push(new ProjectSummary(inputProject));
   });
 
-  projects.forEach(function(thisProjectObject){
-    $projectSummariesHolder.append(thisProjectObject.returnProjectSummary());
+  projectSummaries.projects.forEach(function(thisProjectObject){
+    $projects.append(thisProjectObject.returnProjectSummary());
   });
 
-}
-drawProjectSummaries();
+};
+projectSummaries.drawProjectSummaries();

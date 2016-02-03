@@ -5,38 +5,46 @@
     <title>Frazier Mork</title>
     <link rel="stylesheet" href="css/normalize.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/icons.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
 
     <header class="pageHeader">
       <h1 class="pageTitle">Frazier Mork's Portfolio</h1>
       <nav class="topNavBar">
-          <a href="" class="navBarLink"><h3 class="topNavBarItem">About Frazier</h3></a>
-          <a href="https://github.com/fraziermork" class="navBarLink"><h3 class="topNavBarItem">Frazier's Github</h3></a>
+          <a href="" class="navBarLink" data-nav="projects"><h3>Projects</h3></a>
+          <a href="" class="navBarLink" data-nav="about"><h3>About Frazier</h3></a>
+          <a href="https://github.com/fraziermork" class="navBarLink"><h3>Frazier's Github</h3></a>
       </nav>
 
     </header>
 
-    <main class="projectSummariesHolder" id="projectSummariesHolder">
+    <main>
 
+      <section id="projects">
         <article class="template projectSummary">
           <header class="articleHeader">
             <a class="projectTitleLink" href="index.html"><h1 class="articleTitle">Article Title</h1></a>
             <time class="publicationDate"></time>
-            <meta itemProp="datePublished" content="content">
             <!-- <time pubdate datetime="" class="publicationDate"></time> -->
           </header>
-          <br>
+
           <section class="articleContent"></section>
         </article>
+      </section>
+
+      <section id="about">
+        <h1>ABOUT FRAZIER!</h1>
+      </section>
 
     </main>
 
     <footer>
     </footer>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/projects.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/navbar.js"></script>
   </body>
 </html>
