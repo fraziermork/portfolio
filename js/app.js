@@ -4,14 +4,17 @@ function ProjectSummary(inputProject){
   this.publicationDate = inputProject.publicationDate;
   this.articleTitle = inputProject.articleTitle;
   this.summaryContent = inputProject.summaryContent;
+  this.iconClass = inputProject.iconClass;
+  this.category = inputProject.category;
+  this.projectImage = inputProject.projectImage;
 }
 
 ProjectSummary.prototype.returnProjectSummary = function() {
   var $newProject = $('.template').clone();
-  $newProject.find('.projectTitleLink').attr('href', this.projectTitleLink);
-  $newProject.find('.articleTitle').text(this.articleTitle);
-  $newProject.find('.articleContent').html(this.summaryContent);
-  $newProject.find('.publicationDate').attr('datetime', this.publicationDate).html('<em>Project last updated about ' + parseInt( (new Date() - new Date(this.publicationDate))/60/60/24/1000 ) + ' days ago.</em>');
+  $newProject.find('.project-title-link').attr('href', this.projectTitleLink);
+  $newProject.find('.article-title').text(' ' + this.articleTitle).addClass(this.iconClass);
+  $newProject.find('.article-content').html(this.summaryContent);
+  $newProject.find('.publication-date').attr('datetime', this.publicationDate).html('<em>Project last updated about ' + parseInt( (new Date() - new Date(this.publicationDate))/60/60/24/1000 ) + ' days ago.</em>');
 
   $newProject.removeClass('template');
   return $newProject;
