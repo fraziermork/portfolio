@@ -1,0 +1,29 @@
+.page-header{
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*border: 1px black solid;*/
+
+}
+
+.page-content{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  /*border: 1px black solid;*/
+}
+
+.flex-align-center{
+  align-items: center;
+  justify-content: center;
+}
+
+.zero-margin{
+  margin: 0px;
+}
+
+.full-line-div{
+  width: 100%;
+  height: 2px;
+}
