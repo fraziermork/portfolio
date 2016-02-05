@@ -1,0 +1,22 @@
+img{
+  max-width: 100%;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #193441;
+  background-color: #D1DBBD;
+}
+
+main{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  max-width: 960px;
+  height: 100%;
+}
