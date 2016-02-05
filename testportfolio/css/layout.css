@@ -27,3 +27,6 @@
   width: 100%;
   height: 2px;
 }
+.page-content{
+  display: none;
+}
