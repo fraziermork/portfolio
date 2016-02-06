@@ -24,9 +24,6 @@
   margin: 0;
   padding: 10% 10%;
 }
-.hamburger-navbar:hover .navbar-list{
-  display: block;
-}
 .navbar-link{
   text-decoration: none;
   color: inherit;

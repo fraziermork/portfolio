@@ -1,5 +1,8 @@
 .spiral-sizing-box{
+  position: static;
   width: 90%;
+  margin-top: 20%;
+  /*align-self: flex-start;*/
   /*z-index: -1;*/
 }
 

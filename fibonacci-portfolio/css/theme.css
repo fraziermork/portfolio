@@ -1,5 +1,5 @@
 body {
-  background-color: #324152;
+  background-color: #283542;
   color: #333;
 }
 
@@ -16,12 +16,11 @@ body {
   border: 1px white solid;
 }
 
-
 #spiral-chunk-0{
   background-color: #C1836A;
 }
 #spiral-chunk-1{
-  background-color: #FFECA7;
+  background-color: #E0D093;
 }
 #spiral-chunk-2{
   background-color: #47535E;
@@ -33,14 +32,79 @@ body {
   background-color: #C1836A;
 }
 #spiral-chunk-5{
+  background-color: #E0D093;
+}
+#spiral-chunk-5:hover{
   background-color: #FFECA7;
 }
 #spiral-chunk-6{
   background-color: #47535E;
 }
+#spiral-chunk-6:hover{
+  background-color: #6E8091;
+}
 #spiral-chunk-7{
   background-color: #796466;
+}
+#spiral-chunk-7:hover{
+  background-color: #A17E81;
 }
 #spiral-chunk-8{
   background-color: #C1836A;
 }
+#spiral-chunk-8:hover{
+  background-color: #F0A384;
+}
+
+
+
+
+/*body {
+  background-color: black;
+  color: #333;
+}
+
+.spiral-chunk{
+  outline: 1px white solid;
+  border: 2px #FFECA7 solid;
+}
+
+#spiral-chunk-0{
+  background-color: black;
+}
+#spiral-chunk-1{
+  background-color: black;
+}
+#spiral-chunk-2{
+  background-color: black;
+}
+#spiral-chunk-3{
+  background-color: black;
+}
+#spiral-chunk-4{
+  background-color: black;
+}
+#spiral-chunk-5{
+  background-color: black;
+}
+#spiral-chunk-5:hover{
+  background-color: #FFECA7;
+}
+#spiral-chunk-6{
+  background-color: black;
+}
+#spiral-chunk-6:hover{
+  background-color: #6E8091;
+}
+#spiral-chunk-7{
+  background-color: black;
+}
+#spiral-chunk-7:hover{
+  background-color: #A17E81;
+}
+#spiral-chunk-8{
+  background-color: black;
+}
+#spiral-chunk-8:hover{
+  background-color: #F0A384;
+}*/

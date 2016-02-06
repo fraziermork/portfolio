@@ -23,7 +23,7 @@ SpiralChunk.prototype.initializeDivTypeAndIds = function(){
   this.percentSize = (0.9 * 100 * this.sidelength / fibonacci.totalWidth);
   // this.percentSize = '50%';
   // console.log('percent width for ' + this['spiral-chunk-wrapper-id'] + ' is ' + this.percentSize);
-}
+};
 
 var fibonacci = {
   scale: 10,
@@ -34,6 +34,7 @@ var fibonacci = {
   totalWidth: 0,
   aspectRatio: 1,
   direction: 'counterClockWise',
+  colors:[],
   divtypesCCW:[['bottom', 'right', 'top', 'left'],['border-bottom-left-radius', 'border-bottom-right-radius', 'border-top-right-radius', 'border-top-left-radius']],
   divtypesCW:[['bottom', 'left', 'top', 'right'],['border-top-right-radius', 'border-bottom-right-radius', 'border-bottom-left-radius', 'border-top-left-radius']],//might need to flip placement of 1st and 3rd element
 
@@ -167,24 +168,25 @@ var fibonacci = {
       // console.log('inputChunk.absVerticalPosition is ' + inputChunk.absVerticalPosition);
       inputChunk.absHorizontalPosition = (0.9 *100 * inputChunk.horizontalPosition / fibonacci.totalWidth);
       // console.log('inputChunk.absHorizontalPosition is ' + inputChunk.absHorizontalPosition);
-      var unit = 'vw'
+      var unit = 'vw';
       $('#' + inputChunk['spiral-chunk-wrapper-id']).width( inputChunk.percentSize + unit ).css('top', inputChunk.absVerticalPosition + unit).css('left', inputChunk.absHorizontalPosition + unit);
       if (idx !== 0){
         $('#' + inputChunk['spiral-chunk-id']).css(inputChunk.borderRadiusPlacement, '100%');
       }
       // $('#' + inputChunk['spiral-chunk-wrapper-id']).width(inputChunk.boxSize).css('top', function(){ return inputChunk.verticalPosition * fibonacci.scale}).css('left', function(){ return inputChunk.horizontalPosition * fibonacci.scale});
-    })
+    });
   },
 
   drawElements: function(){
     // var $spiralHolder = $('#spiral-holder');
-    $('#spiral-holder').append('<h3 class="main-title-small" id="main-title-small">Frazier Mork</h3>');
-    $('#spiral-chunk-5').append('<nav class="hamburger-navbar"><a href="" class="navbar-link"><h3 class="icon-menu"></h3></a></nav>');
-    var navTemplate = Handlebars.compile( $('#navbar-template').html() );
-    console.log(navTemplate);
-    $('.hamburger-navbar').append(navTemplate);
-
-    $('#spiral-chunk-8').append()
+    // $('#spiral-holder').append('<h3 class="main-title-small" id="main-title-small">Frazier Mork</h3>');
+    // $('#spiral-chunk-5').append('<nav class="hamburger-navbar"><a href="" class="navbar-link"><h3 class="icon-menu"></h3></a></nav>');
+    // var navTemplate = Handlebars.compile( $('#navbar-template').html() );
+    // console.log(navTemplate);
+    // $('.hamburger-navbar').append(navTemplate({intendedViewsize: 'mobile-navbar'}));
+    // var $spiralChunk8 = $('#spiral-chunk-8');
+    // $spiralChunk8.append('<section class="page-content" id="project-article-section"></section>');
+    // $spiralChunk8.append('<section class="page-content" id="about-frazier-section"> About placeholder </section>');
   },
 
 
@@ -207,7 +209,7 @@ var fibonacci = {
   //   var windowHeight = windowWidth;
   //
   // }
-}
+};
 
 
 
@@ -218,7 +220,7 @@ $(function(){
   // fibonacci.drawSpiralChunks();
   // $(window).on('resize', fibonacci.onWindowResize);
   fibonacci.initialize();
-})
+});
 
 //TODO implement appropriate border radii
 //TODO fix setSpiralChunkPosition and make it less awful
@@ -226,3 +228,4 @@ $(function(){
 //TODO try putting hover classes on the divs to see what they do
 //TODO add window resize event listener
 //TODO add debounce function on window resize
+//TODO add a way to change the theme colors as a game, maybe with the gold palette
