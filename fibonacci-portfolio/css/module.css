@@ -1,0 +1,70 @@
+.main-navbar{
+  position: relative;
+}
+.navbar-list{
+  display: none;
+  padding: 0;
+  list-style-type: none;
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  top: 105%;
+  right: 0;
+  text-align: center;
+  width: 162%;
+  border-radius: 10px;
+}
+.icon-menu{
+  position: absolute;
+  margin: 0px;
+  padding: 10px 10px;
+  padding-bottom: 60px;
+}
+.navbar-text{
+  margin: 0;
+  padding: 10% 10%;
+}
+.hamburger-navbar:hover .navbar-list{
+  display: block;
+}
+.navbar-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+
+.spiral-chunk-wrapper{
+  position: absolute;
+  /*z-index: inherit;*/
+  /*display: block;*/
+  /*height: 0;*/
+}
+.spiral-chunk-wrapper:before{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+  margin: 0;
+}
+.spiral-chunk{
+  /*z-index: inherit;*/
+  border-collapse: collapse;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.top{
+  border-width: 2px 2px 0px 0px;
+}
+.bottom{
+  border-width: 0px 0px 2px 2px;
+}
+.left{
+  border-width: 2px 0px 0px 2px;
+}
+.right{
+  border-width: 0px 2px 2px 0px;
+}

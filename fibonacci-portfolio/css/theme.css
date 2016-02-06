@@ -1,0 +1,46 @@
+body {
+  background-color: #324152;
+  color: #333;
+}
+
+.main-title-small{
+  background-color: white;
+  border: 2px #796466 solid;
+}
+.navbar-list{
+  background-color: white;
+  border: 2px #FFECA7 solid;
+}
+.spiral-chunk{
+  outline: 1px white solid;
+  border: 1px white solid;
+}
+
+
+#spiral-chunk-0{
+  background-color: #C1836A;
+}
+#spiral-chunk-1{
+  background-color: #FFECA7;
+}
+#spiral-chunk-2{
+  background-color: #47535E;
+}
+#spiral-chunk-3{
+  background-color: #796466;
+}
+#spiral-chunk-4{
+  background-color: #C1836A;
+}
+#spiral-chunk-5{
+  background-color: #FFECA7;
+}
+#spiral-chunk-6{
+  background-color: #47535E;
+}
+#spiral-chunk-7{
+  background-color: #796466;
+}
+#spiral-chunk-8{
+  background-color: #C1836A;
+}
