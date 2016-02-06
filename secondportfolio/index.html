@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Frazier Mork's Portfolio</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/base.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/module.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/state.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="vendor/iconstyle.css" type="text/css" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+
+    <script type="text/x-handlebars-template" id="project-article-template">
+      <article class="project-article flex-align-center" data-category="{{articleCategory}}">
+        <meta itemprop="datePublished" content="{{publicationDate}}">
+        <header class="article-header">
+          <a href="{{articleTitleLink}}" class="article-title-link zero-margin"><h3 class="article-title {{articleIconClass}}"> {{articleTitle}}</h3></a>
+          {{articlePublishStatus}}
+        </header>
+        <div class="full-line-div"></div>
+        <section class="article-body flex-align-center">{{{articleContent}}}</section>
+      </article>
+    </script>
+  </head>
+
+  <body>
+
+    <header class="page-header">
+      <h2 class="page-title zero-margin small-page-title">Portfolio:</h2>
+      <h3 class="page-secondary-title zero-margin small-page-title">Frazier Mork</h3>
+      <h1 class="page-title zero-margin large-page-title">Portfolio:</h1>
+      <h2 class="page-secondary-title zero-margin large-page-title">Frazier Mork</h2>
+      <nav class="top-navbar">
+        <h3 class="icon-menu"></h3>
+        <ul class="navbar-list">
+          <a href="" class="navbar-link internal-nav" data-nav="project-article-section"><li class="navbar-listitem"><h4 class="navbar-item-text icon-home3"> Projects</h4></li></a>
+          <li><div class="full-line-div dropdown-list-spacer"></div></li>
+          <a href="" class="navbar-link internal-nav" data-nav="about-frazier-section"><li class="navbar-listitem"><h4 class="navbar-item-text icon-user-tie"> About</h4></li></a>
+          <li><div class="full-line-div dropdown-list-spacer"></div></li>
+          <a href="https://github.com/fraziermork" class="navbar-link"><li class="navbar-listitem"><h4 class="navbar-item-text icon-github"> Github</h4></li></a>
+          <li><div class="full-line-div dropdown-list-spacer"></div></li>
+        </ul>
+      </nav>
+      <div class="full-line-div"></div>
+      <div class="full-line-div"></div>
+    </header>
+
+    <section class="page-content" id="project-article-section"></section>
+    <section class="page-content" id="about-frazier-section">
+      <h1>About Frazier Placeholder!!</h1>
+    </section>
+
+    <footer></footer>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/project-data.js"></script>
+    <script type="text/javascript" src="js/project-articles.js"></script>
+    <script type="text/javascript" src="js/navbar.js"></script>
+  </body>
+</html>

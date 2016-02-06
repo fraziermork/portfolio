@@ -1,0 +1,48 @@
+.top-navbar:hover .navbar-list{
+  display:flex;
+}
+
+@media only screen and (min-width: 350px) {
+  .page-header{
+    align-items: center;
+  }
+
+  .page-secondary-title{
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .page-secondary-title{
+    padding-right: 0px;
+  }
+  .icon-menu {
+    display: none;
+  }
+  .top-navbar{
+    width: 100%;
+  }
+  .navbar-list{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+    position: static;
+  }
+  .icon-*{
+    display: static;
+  }
+  .dropdown-list-spacer{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .small-page-title{
+    display: none;
+  }
+  .large-page-title{
+    display: block;
+  }
+
+}
