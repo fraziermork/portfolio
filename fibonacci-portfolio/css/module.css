@@ -1,3 +1,4 @@
+
 .main-navbar{
   position: relative;
   display: flex;
@@ -159,7 +160,20 @@
   /*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
   /*https://code.google.com/p/chromium/issues/detail?id=106028*/
 }
+#spiral-chunk-8 .page-content{
+  border-top-right-radius: 5vw;
+}
 
+#spiral-chunk-9{
+  border-width: 1px 4px 4px 1px;
+  border-color: #FFECA7;
+}
+#spiral-chunk-9:hover{
+  background-color: #BF6168;
+}
+#spiral-chunk-9 .page-content{
+  border-top-left-radius: 5vw;
+}
 
 .page-content{
   height: auto;

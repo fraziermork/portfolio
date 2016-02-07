@@ -45,11 +45,14 @@ projectSummaries.getTotalHeight = function(){
   var totalHeight = 0;
   $('#projects-section').show();
   projectSummaries.jqProjectObjects.forEach(function($thisProjectObject){
-    console.log($thisProjectObject);
-    console.log($thisProjectObject.height());
+    // console.log($thisProjectObject);
+    // console.log($thisProjectObject.height());
     totalHeight += $thisProjectObject.height();
   });
+  // $('footer').css('top', function(){
+  //   return $(document).height();
+  // });
   $('#projects-section').hide();
-  console.log('totalHeight is ' + totalHeight);
+  // console.log('totalHeight is ' + totalHeight);
   return totalHeight;
 };

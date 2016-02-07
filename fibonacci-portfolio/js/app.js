@@ -23,7 +23,7 @@ SpiralChunk.prototype.initializeDivTypeAndIds = function(){
 };
 
 var fibonacci = {
-  scale: 10,
+  redrawScreenWidth: 800,
   length: 9,
   numberArray: [1],
   spiralChunkList: [],
@@ -173,15 +173,55 @@ var fibonacci = {
   },
 
   onWindowResize: function(){
-    console.log('resize');
-    $spiralSizingBox = $('spiral-sizing-box');
-    var windowWidth = $spiralSizingBox.width();
-    var windowHeight = windowWidth;
+    $spiralSizingBox = $('.spiral-sizing-box');
+    if (window.innerWidth > fibonacci.redrawScreenWidth - 1 && fibonacci.length !== 10){
+      fibonacci.length = 10;
+      fibonacci.redrawBigSpiral();
+    };
+    if (window.innerWidth < fibonacci.redrawScreenWidth && fibonacci.length !== 9){
+      fibonacci.length = 9;
+      fibonacci.redrawSmallSpiral();
+    };
+    windowWidth = $spiralSizingBox.width();
+    windowHeight = windowWidth;
     var displayType = $('#projects-section').css('display');
     $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
-
   },
 
+  redrawSmallSpiral: function(){
+    console.log('redrawSmallSpiral called');
+    var $pageContent = $('.page-content');
+    // if ($pageContent){
+    //   var $pageContent = $('.page-content');
+    //   $pageContent.detach();
+    // }
+    fibonacci.numberArray = [1];
+    fibonacci.spiralChunkList = [];
+    $('#spiral-holder').empty();
+    fibonacci.populateNumberArray();
+    fibonacci.determineSize();
+    fibonacci.populateSpiralChunkList();
+    fibonacci.drawSpiralChunks();
+    fibonacci.drawElements();
+    // $('spiral-chunk-8').append($pageContent);
+  },
+
+  redrawBigSpiral: function(){
+    console.log('redrawBigSpiral called');
+    var $pageContent = $('.page-content');
+    // if ($pageContent){
+    //   $pageContent.detach();
+    // }
+    fibonacci.numberArray = [1];
+    fibonacci.spiralChunkList = [];
+    $('#spiral-holder').empty();
+    fibonacci.populateNumberArray();
+    fibonacci.determineSize();
+    fibonacci.populateSpiralChunkList();
+    fibonacci.drawSpiralChunks();
+    fibonacci.drawElements();
+    // $('spiral-chunk-9').append($pageContent);
+  },
 
   initialize: function(){
     fibonacci.populateNumberArray();
@@ -189,6 +229,7 @@ var fibonacci = {
     fibonacci.populateSpiralChunkList();
     fibonacci.drawSpiralChunks();
     fibonacci.drawElements();
+    fibonacci.onWindowResize();
   },
 
   backButtonClick: function(e){
@@ -203,12 +244,15 @@ var fibonacci = {
     $internalLink.parent().empty();
     var navbar = Handlebars.compile($('#navbar-template').html());
     $('#spiral-chunk-6').append(navbar);
-    $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
     $('#navbar-list').slideToggle();
     $('#navheader-github').addClass('nav-highlightable');
+
+
+    $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
+
+
     $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
     // $('#spiral-chunk-8').css('background-color', '#F0A384');
-    $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384').css('border-top-right-radius', '5vw');
     projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
@@ -219,25 +263,46 @@ var fibonacci = {
 
   navClick: function(event, $this){
     event.preventDefault();
-    $('#spiral-chunk-7').empty();
-    $('.page-content').fadeOut('fast');
+    var $spiralChunk7 = $('#spiral-chunk-7');
+    var $spiralChunk8 = $('#spiral-chunk-8');
+    var $spiralChunk9 = $('#spiral-chunk-9');
+    $spiralChunk7.empty();
     var $internalLink = $('.internal-link');
     var currentSection = $this.data('nav');
-    console.log('currentSection is ' + currentSection);
     $internalLink.css('color', '#D96459');
     $internalLink.filter('[data-nav="' + currentSection + '"]').css( 'color', 'darkgrey');
     var sectionTitle = Handlebars.compile( $('#section-title-template').html());
-    $('#spiral-chunk-7').append(sectionTitle({title: $this.text()}));
+    $spiralChunk7.append(sectionTitle({title: $this.text()}));
     var idString = '#' + currentSection + '-section';
+    console.log('currentSection is ' + currentSection);
+
+    if (fibonacci.length === 10){
+      fibonacci.handleBigSpiralNavClick(idString);
+      $spiralChunk9.removeClass('div-highlightable').addClass('round-border');
+    } else if (fibonacci.length === 9){
+      fibonacci.handleSmallSpiralNavClick(idString);
+      $spiralChunk8.removeClass('div-highlightable').addClass('round-border');
+    } else {
+      console.log('critical error');
+    }
+
+  },
+
+  handleSmallSpiralNavClick: function(idString){
+    console.log('handleSmallSpiralNavClick called');
     console.log('idString is ' + idString);
-    console.log($(idString).text());
+    $('.page-content').fadeOut('fast');
     fibonacci.onWindowResize();
     $(idString).slideToggle('fast');
   },
 
-  getArticleHeight: function(){
-
-  }
+  handleBigSpiralNavClick: function(idString){
+    console.log('handleBigSpiralNavClick called');
+    console.log('idString is ' + idString);
+    $('.page-content').fadeOut('fast');
+    fibonacci.onWindowResize();
+    $(idString).slideToggle('fast');
+  },
 
 
 };
@@ -255,13 +320,9 @@ $(function(){
 
 //TODO implement appropriate border radii
 //TODO fix setSpiralChunkPosition and make it less awful, things that do left position just need to grab total widths of all with class left with index greater than their own, look into array filtering
-//TODO get the content centered in the body so there is a gutter on both sides
-//TODO try putting hover classes on the divs to see what they do
-//TODO add window resize event listener
 //TODO add debounce function on window resize
 //TODO add a way to change the theme colors as a game, maybe with the gold palette
 //TODO maybe add something hidden in the middle so that people can add extra spiral segments
-//TODO see if I can get rid of the square lines and if that looks good, maybe add them back on hover or something
 //TODO get the navbar working for mobile-navbar
 //TODO build the page for larger view sizes
 //TODO get dynamic content generation working
@@ -271,4 +332,8 @@ $(function(){
 //TODO make it so that clicking the thing that says projects opens a menu that lets you select articles by name or filter them or something
 //TODO break up the outline highlighting feature into another class so it can be removed from elements if needed
 //TODO in features throw in some links to shit talking about the golden spiral
+//TODO make pojectsummaries.getTotalHeight able to take a filter so that I can dynamically rewrite which ones will show up
+//TODO figure out how to preserve state across redraws--probably use detach()
+//TODO fix about and features moving at 500 from media query
+//TODO use a class to set the border radius and background color on the section where
 //use unwrap

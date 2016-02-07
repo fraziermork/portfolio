@@ -109,7 +109,8 @@ body {
   background-color: black;
 }
 #spiral-chunk-5:hover{
-  background-color: #BAAD7A;
+  /*background-color: #BAAD7A;*/
+    background-color: #8D9B66;
 }
 #spiral-chunk-5:hover .navheader{
   color: black;
@@ -140,6 +141,15 @@ body {
 }
 #spiral-chunk-8:hover .navheader{
   color: black;
+}
+
+#spiral-chunk-8.round-border  {
+  border-top-right-radius: 5vw;
+  background-color: #F0A384;
+}
+#spiral-chunk-9.round-border {
+  border-top-left-radius: 5vw;
+  background-color:#BF6168;
 }
 
 .highlight-brown:hover {
