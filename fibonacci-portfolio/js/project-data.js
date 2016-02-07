@@ -1,4 +1,4 @@
-projectData = [
+projectsData = [
   {
     articleTitle: 'Snake',
     articleIconClass:'icon-pacman',
@@ -6,7 +6,8 @@ projectData = [
     articleImage: 'img/project-images/snake.png',
     publicationDate: '2016-01-20',
     articleTitleLink: 'https://github.com/fraziermork/snake',
-    articleContent: "I built the game snake in canvas--check it out!"
+    articleContent: "I built the game snake in canvas--check it out!",
+    idString: 'snakeArticle'
   },
 
   {
@@ -16,7 +17,8 @@ projectData = [
     articleImage: 'img/project-images/calculator.png',
     publicationDate: '2016-01-30',
     articleTitleLink: 'https://github.com/fraziermork/calculator',
-    articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still several bugs."
+    articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still several bugs.",
+    idString: 'calculatorArticle'
   },
   {
     articleTitle: 'Clocks',
@@ -25,7 +27,8 @@ projectData = [
     articleImage: 'img/project-images/clock.png',
     publicationDate: '2016-01-21',
     articleTitleLink: 'https://github.com/fraziermork/clocks',
-    articleContent: "I built two clocks--one is made in canvas and one is made of divs."
+    articleContent: "I built two clocks--one is made in canvas and one is made of divs.",
+    idString: 'clocksArticle'
   },
   {
     articleTitle: 'Check my rent',
@@ -34,6 +37,7 @@ projectData = [
     articleImage: 'img/project-images/check-my-rent.png',
     publicationDate: '2016-01-29',
     articleTitleLink: 'https://github.com/gregmagdsick/checkMyRent',
-    articleContent: "This was the final project I built as part of Codefellows 201 in a four person team. It uses the Zillow API, the Google maps API, and local storage. "
+    articleContent: "This was the final project I built as part of Codefellows 201 in a four person team. It uses the Zillow API, the Google maps API, and local storage.",
+    idString: 'checkMyRentArticle'
   }
 ];

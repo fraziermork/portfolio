@@ -177,6 +177,9 @@ var fibonacci = {
     $spiralSizingBox = $('spiral-sizing-box');
     var windowWidth = $spiralSizingBox.width();
     var windowHeight = windowWidth;
+    var displayType = $('#projects-section').css('display');
+    $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
+
   },
 
 
@@ -194,9 +197,12 @@ var fibonacci = {
     $internalLink.parent().empty();
     var navbar = Handlebars.compile($('#navbar-template').html());
     $('#spiral-chunk-6').append(navbar);
-    $('#navbar-list').slideToggle('slow');
-    $('#navheader-github').addClass('highlightable');
-
+    $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
+    $('#navbar-list').slideToggle();
+    $('#navheader-github').addClass('nav-highlightable');
+    $('#spiral-chunk-8').css('background-color', '#F0A384');
+    // $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384');
+    projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
     $('#spiral-holder').on('click', '.internal-link', function(event){
@@ -207,12 +213,23 @@ var fibonacci = {
   navClick: function(event, $this){
     event.preventDefault();
     $('#spiral-chunk-7').empty();
+    $('.page-content').fadeOut('fast');
     var $internalLink = $('.internal-link');
     var currentSection = $this.data('nav');
+    console.log('currentSection is ' + currentSection);
     $internalLink.css('color', '#D96459');
     $internalLink.filter('[data-nav="' + currentSection + '"]').css( 'color', 'darkgrey');
     var sectionTitle = Handlebars.compile( $('#section-title-template').html());
     $('#spiral-chunk-7').append(sectionTitle({title: $this.text()}));
+    var idString = '#' + currentSection + '-section';
+    console.log('idString is ' + idString);
+    console.log($(idString).text());
+    fibonacci.onWindowResize();
+    $(idString).slideToggle('fast');
+  },
+
+  getArticleHeight: function(){
+
   }
 
 
@@ -244,5 +261,6 @@ $(function(){
 //TODO see about getting dynamic color generation working
 //TODO fix sizing of textboxes in features and about
 //TODO give text in boxes rollover highlighting
-
+//TODO make it so that clicking the thing that says projects opens a menu that lets you select articles by name or filter them or something
+//TODO break up the outline highlighting feature into another class so it can be removed from elements if needed
 //use unwrap

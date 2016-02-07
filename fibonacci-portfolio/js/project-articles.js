@@ -7,6 +7,7 @@ function ProjectSummary(inputProject){
   this.articleIconClass = inputProject.articleIconClass;
   this.articleCategory = inputProject.articleCategory;
   this.articleImage = inputProject.articleImage;
+  this.idString = inputProject.idString;
 }
 
 //Use handlebars to generate page content
@@ -19,21 +20,36 @@ ProjectSummary.prototype.returnProjectSummary = function() {
 
 //build the page content and store the completed article objects
 projectSummaries = {
-  projects: []
+  projects: [],
+  jqProjectObjects:[],
 };
-projectSummaries.drawProjectSummaries = function(){
-  var $projectArticleSection = $('#project-article-section');
-  projectData.sort(function(a,b){
+projectSummaries.constructProjectSummaries = function(){
+  var $projectsSection = $('#projects-section');
+
+  projectsData.sort(function(a,b){
     return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
   });
-  projectData.forEach(function(inputProject){
-    projectSummaries.projects.push(new ProjectSummary(inputProject));
+  projectsData.forEach(function(inputProject){
+    var newProjectSummaryObject = new ProjectSummary(inputProject);
+    projectSummaries.projects.push(newProjectSummaryObject);
   });
   projectSummaries.projects.forEach(function(thisProjectObject){
-    $projectArticleSection.append(thisProjectObject.returnProjectSummary());
+    $projectsSection.append(thisProjectObject.returnProjectSummary());
   });
+  projectSummaries.projects.forEach(function(thisProjectObject){
+    projectSummaries.jqProjectObjects.push( $('#' + thisProjectObject.idString) );
+  });
+  // $projectsSection.toggleSlide();
 };
-
-$(function(){
-  projectSummaries.drawProjectSummaries();
-});
+projectSummaries.getTotalHeight = function(){
+  var totalHeight = 0;
+  $('#projects-section').show();
+  projectSummaries.jqProjectObjects.forEach(function($thisProjectObject){
+    console.log($thisProjectObject);
+    console.log($thisProjectObject.height());
+    totalHeight += $thisProjectObject.height();
+  });
+  $('#projects-section').hide();
+  console.log('totalHeight is ' + totalHeight);
+  return totalHeight;
+};

@@ -13,7 +13,6 @@
   left: 0;
   text-align: center;
   width: 100%;
-  border-radius: 10px;
 }
 .icon-menu{
   position: absolute;
@@ -43,7 +42,7 @@
   text-decoration: none;
   color: inherit;
 }
-.highlightable:hover{
+.nav-highlightable:hover{
   color: #FFECA7 !important;
 }
 
@@ -85,10 +84,8 @@
   margin-left: 17px;
   padding-top: 70%;
 }
-#spiral-chunk-8{
-  /*flex-direction: column;*/
-}
 #navheader-projects{
+  align-self: flex-start;
   color: #D96459;
   font-size: 1.5em;
   margin-left: 15px;
@@ -148,10 +145,33 @@
   border-width: 0px 0px 4px 0px;
 }
 #spiral-chunk-8{
-border-width: 1px 1px 4px 4px;
-border-color: #FFECA7;
-/*border-color: #333 #333 #FFECA7 #FFECA7;*/
-/*border-top-color: white;*/
-/*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
-/*https://code.google.com/p/chromium/issues/detail?id=106028*/
+  align-items: center;
+  /*justify-content: center;*/
+  flex-direction: column;
+  flex-wrap: nowrap;
+  display: flex;
+  border-width: 1px 1px 4px 4px;
+  border-color: #FFECA7;
+  /*border-color: #333 #333 #FFECA7 #FFECA7;*/
+  /*border-top-color: white;*/
+  /*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
+  /*https://code.google.com/p/chromium/issues/detail?id=106028*/
+}
+
+
+.page-content{
+  height: auto;
+  margin-top: 5%;
+  display: none;
+  flex-direction: column;
+  width: 90%;
+  background-color: rgba(255,255,255, .8);
+  border: 2px #FFECA7 solid;
+  position: static;
+  border-top-right-radius: 5vw;
+  z-index: 2;
+}
+
+.project-article{
+  height: auto;
 }

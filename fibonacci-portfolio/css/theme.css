@@ -64,12 +64,12 @@ footer{
 
 
 
-header{
+.page-header{
   background-color: black;
   color: white;
   outline: 1px #333 solid;
 }
-header:hover{
+.page-header:hover{
   outline: 2px white solid;
 }
 footer{
@@ -85,11 +85,10 @@ body {
   border: 1px #FFECA7 solid;
   /*border-style: solid;*/
 }
-.spiral-chunk:hover{
+.div-highlightable:hover{
   outline: 2px white solid;
   z-index: 1;
 }
-
 
 #spiral-chunk-0{
   background-color: black;
@@ -111,7 +110,6 @@ body {
 }
 #spiral-chunk-5:hover{
   background-color: #BAAD7A;
-  border color: #333
 }
 #spiral-chunk-5:hover .navheader{
   color: black;
@@ -121,7 +119,6 @@ body {
 }
 #spiral-chunk-6:hover{
   background-color: #6E8091;
-  border color: #333
 }
 #spiral-chunk-6:hover .navheader{
   color: black;
@@ -131,7 +128,6 @@ body {
 }
 #spiral-chunk-7:hover{
   background-color: #A17E81;
-  border color: #333
 }
 #spiral-chunk-7:hover .navheader{
   color: black;
@@ -141,7 +137,6 @@ body {
 }
 #spiral-chunk-8:hover{
   background-color: #F0A384;
-  border color: #333
 }
 #spiral-chunk-8:hover .navheader{
   color: black;
