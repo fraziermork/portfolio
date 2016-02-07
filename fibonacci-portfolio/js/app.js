@@ -189,27 +189,30 @@ var fibonacci = {
   },
 
   firstNavClick: function(event, $this){
-    event.preventDefault();
-    $('.internal-link').parent().unwrap();
-    $('.internal-link').parent().empty();
+    var $internalLink = $('.internal-link');
+    $internalLink.parent().unwrap();
+    $internalLink.parent().empty();
     var navbar = Handlebars.compile($('#navbar-template').html());
     $('#spiral-chunk-6').append(navbar);
     $('#navbar-list').slideToggle('slow');
+    $('#navheader-github').addClass('highlightable');
 
+    fibonacci.navClick(event, $this);
 
-
-
-
-
-    $('#spiral-holder').one('click', '.internal-link', function(event){
+    $('#spiral-holder').on('click', '.internal-link', function(event){
       fibonacci.navClick(event, $(this));
     });
   },
 
   navClick: function(event, $this){
     event.preventDefault();
-    console.log('navbar clicked');
-    console.log($this.id);
+    $('#spiral-chunk-7').empty();
+    var $internalLink = $('.internal-link');
+    var currentSection = $this.data('nav');
+    $internalLink.css('color', '#D96459');
+    $internalLink.filter('[data-nav="' + currentSection + '"]').css( 'color', 'darkgrey');
+    var sectionTitle = Handlebars.compile( $('#section-title-template').html());
+    $('#spiral-chunk-7').append(sectionTitle({title: $this.text()}));
   }
 
 
@@ -239,4 +242,7 @@ $(function(){
 //TODO build the page for larger view sizes
 //TODO get dynamic content generation working
 //TODO see about getting dynamic color generation working
+//TODO fix sizing of textboxes in features and about
+//TODO give text in boxes rollover highlighting
+
 //use unwrap

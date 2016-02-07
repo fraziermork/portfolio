@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8"> -->
     <link rel="stylesheet" href="css/base.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="css/layout.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="css/state.css" type="text/css" charset="utf-8">
@@ -26,10 +25,14 @@
 
     <script type="text/x-handlebars-template" id="navbar-template">
       <ul class="navbar-list" id="navbar-list">
-        <a href="" class="navlink"><li><h3 class="internal-link navheader" data-nav="about">A B O U T</h3></li></a>
-        <a href="" class="navlink"><li><h3 class="internal-link navheader" data-nav="projects">P R O J E C T S</h3></li></a>
-        <a href="" class="navlink"><li><h3 class="internal-link navheader" data-nav="features">F E A T U R E S</h3></li></a>
+        <a href="" class="navlink"><li><h3 class="internal-link navheader highlightable" data-nav="about">A B O U T</h3></li></a>
+        <a href="" class="navlink"><li><h3 class="internal-link navheader highlightable" data-nav="projects">P R O J E C T S</h3></li></a>
+        <a href="" class="navlink"><li><h3 class="internal-link navheader highlightable" data-nav="features">F E A T U R E S</h3></li></a>
       </ul>
+    </script>
+
+    <script type="text/x-handlebars-template" id="section-title-template">
+      <h3 class="section-title">{{title}}</h3>
     </script>
   </head>
 
