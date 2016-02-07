@@ -204,7 +204,9 @@
   color: black;
 }
 .article-body{
-  text-align: center;
+  margin-left: 5%;
+  width: 90%;
+  /*text-align: center;*/
 }
 .full-line-div{
   width: 100%;
@@ -212,4 +214,15 @@
   height: 2px;
   color: #333;
   margin: 0;
+}
+
+.backButton{
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  margin: 0;
+  margin-left: 5%;
+  z-index: 2;
+  text-decoration: none;
+  color: #333;
 }

@@ -191,6 +191,12 @@ var fibonacci = {
     fibonacci.drawElements();
   },
 
+  backButtonClick: function(e){
+    // e.preventDefault();
+    // $('#spiral-holder').empty();
+    // fibonacci.initialize();
+  },
+
   firstNavClick: function(event, $this){
     var $internalLink = $('.internal-link');
     $internalLink.parent().unwrap();
@@ -200,8 +206,9 @@ var fibonacci = {
     $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
     $('#navbar-list').slideToggle();
     $('#navheader-github').addClass('nav-highlightable');
+    $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
     // $('#spiral-chunk-8').css('background-color', '#F0A384');
-    $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384');
+    $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384').css('border-top-right-radius', '5vw');
     projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
@@ -247,7 +254,7 @@ $(function(){
 });
 
 //TODO implement appropriate border radii
-//TODO fix setSpiralChunkPosition and make it less awful
+//TODO fix setSpiralChunkPosition and make it less awful, things that do left position just need to grab total widths of all with class left with index greater than their own, look into array filtering
 //TODO get the content centered in the body so there is a gutter on both sides
 //TODO try putting hover classes on the divs to see what they do
 //TODO add window resize event listener
@@ -263,6 +270,5 @@ $(function(){
 //TODO give text in boxes rollover highlighting
 //TODO make it so that clicking the thing that says projects opens a menu that lets you select articles by name or filter them or something
 //TODO break up the outline highlighting feature into another class so it can be removed from elements if needed
-//TODO figure out bug where the projects link doesn't work unless you click on the text itself
-
+//TODO in features throw in some links to shit talking about the golden spiral
 //use unwrap
