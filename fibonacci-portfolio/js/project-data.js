@@ -1,6 +1,6 @@
 projectsData = [
   {
-    articleTitle: 'Snake',
+    articleTitle: 'SNAKE',
     articleIconClass:'icon-pacman',
     articleCategory: 'game',
     articleImage: 'img/project-images/snake.png',
@@ -11,17 +11,17 @@ projectsData = [
   },
 
   {
-    articleTitle: 'Calculator',
+    articleTitle: 'CALCULATOR',
     articleIconClass: 'icon-calculator',
     articleCategory: 'demonstration',
     articleImage: 'img/project-images/calculator.png',
     publicationDate: '2016-01-30',
     articleTitleLink: 'https://github.com/fraziermork/calculator',
-    articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still several bugs.",
+    articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still enough bugs to keep it interesting.",
     idString: 'calculatorArticle'
   },
   {
-    articleTitle: 'Clocks',
+    articleTitle: 'CLOCKS',
     articleIconClass: 'icon-clock',
     articleCategory: 'demonstration',
     articleImage: 'img/project-images/clock.png',
@@ -31,7 +31,7 @@ projectsData = [
     idString: 'clocksArticle'
   },
   {
-    articleTitle: 'Check my rent',
+    articleTitle: 'RENT RIPOFF',
     articleIconClass: 'icon-office',
     articleCategory: 'utility',
     articleImage: 'img/project-images/check-my-rent.png',

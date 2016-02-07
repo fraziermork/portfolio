@@ -169,7 +169,7 @@ var fibonacci = {
     $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
     $('#spiral-chunk-6').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
     $('#spiral-chunk-7').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
-    $('#spiral-chunk-8').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
+    $('#spiral-chunk-8').addClass('highlight-brown').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
   },
 
   onWindowResize: function(){
@@ -200,8 +200,8 @@ var fibonacci = {
     $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
     $('#navbar-list').slideToggle();
     $('#navheader-github').addClass('nav-highlightable');
-    $('#spiral-chunk-8').css('background-color', '#F0A384');
-    // $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384');
+    // $('#spiral-chunk-8').css('background-color', '#F0A384');
+    $('#spiral-chunk-8').removeClass('div-highlightable').css('background-color', '#F0A384');
     projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
@@ -263,4 +263,6 @@ $(function(){
 //TODO give text in boxes rollover highlighting
 //TODO make it so that clicking the thing that says projects opens a menu that lets you select articles by name or filter them or something
 //TODO break up the outline highlighting feature into another class so it can be removed from elements if needed
+//TODO figure out bug where the projects link doesn't work unless you click on the text itself
+
 //use unwrap

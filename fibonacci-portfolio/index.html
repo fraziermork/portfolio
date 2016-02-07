@@ -39,10 +39,11 @@
       <article class="project-article flex-align-center" data-category="{{articleCategory}}" id={{idString}}>
         <meta itemprop="datePublished" content="{{publicationDate}}">
         <header class="article-header">
-          <a href="{{articleTitleLink}}" class="article-title-link zero-margin"><h3 class="article-title {{articleIconClass}}"> {{articleTitle}}</h3></a>
-          {{articlePublishStatus}}
+          <a href="{{articleTitleLink}}" class="article-title-link zero-margin"><h3 class="article-title"> {{articleTitle}}:</h3></a>
+          <div class="full-line-div"></div>
+          <p class="publish-status">{{articlePublishStatus}}</p>
+          <div class="full-line-div"></div>
         </header>
-        <div class="full-line-div"></div>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>
       </article>
     </script>
