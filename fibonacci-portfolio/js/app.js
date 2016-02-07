@@ -19,10 +19,7 @@ SpiralChunk.prototype.initializeDivTypeAndIds = function(){
   } else {
     console.log('critical error--direction not recognized');
   }
-  // this.boxSize = fibonacci.scale * this.sidelength;
   this.percentSize = (0.9 * 100 * this.sidelength / fibonacci.totalWidth);
-  // this.percentSize = '50%';
-  // console.log('percent width for ' + this['spiral-chunk-wrapper-id'] + ' is ' + this.percentSize);
 };
 
 var fibonacci = {
@@ -64,8 +61,6 @@ var fibonacci = {
       fibonacci.totalWidth = fibonacci.numberArray[0];
     }
     fibonacci.aspectRatio = Math.ceil(fibonacci.totalHeight/fibonacci.totalWidth);
-    // console.log('fibonacci.totalHeight is ' + fibonacci.totalHeight);
-    // console.log('fibonacci.totalWidth is ' + fibonacci.totalWidth);
   },
 
   populateSpiralChunkList: function(){
@@ -151,7 +146,6 @@ var fibonacci = {
     } else {
       console.log('inputChunk.divType is ' + inputChunk.divType + ' and is inconsistent.');
     }
-    // console.log(inputChunk);
   },
 
   drawSpiralChunks: function(){
@@ -159,36 +153,31 @@ var fibonacci = {
     var template = Handlebars.compile( $('#spiral-chunk-template').html() );
     fibonacci.spiralChunkList.forEach(fibonacci.setSpiralChunkPosition);
     fibonacci.spiralChunkList.forEach(function(inputChunk, idx){
-      // console.log(idx);
-      // console.log(inputChunk);
       var newChunk = template(inputChunk);
-      // console.log(newChunk);
       $spiralHolder.append(newChunk);
       inputChunk.absVerticalPosition = (0.9 * 100 * inputChunk.verticalPosition / fibonacci.totalWidth);
-      // console.log('inputChunk.absVerticalPosition is ' + inputChunk.absVerticalPosition);
       inputChunk.absHorizontalPosition = (0.9 *100 * inputChunk.horizontalPosition / fibonacci.totalWidth);
-      // console.log('inputChunk.absHorizontalPosition is ' + inputChunk.absHorizontalPosition);
       var unit = 'vw';
       $('#' + inputChunk['spiral-chunk-wrapper-id']).width( inputChunk.percentSize + unit ).css('top', inputChunk.absVerticalPosition + unit).css('left', inputChunk.absHorizontalPosition + unit);
       if (idx !== 0){
         $('#' + inputChunk['spiral-chunk-id']).css(inputChunk.borderRadiusPlacement, '100%');
       }
-      // $('#' + inputChunk['spiral-chunk-wrapper-id']).width(inputChunk.boxSize).css('top', function(){ return inputChunk.verticalPosition * fibonacci.scale}).css('left', function(){ return inputChunk.horizontalPosition * fibonacci.scale});
     });
   },
 
   drawElements: function(){
-    // var $spiralHolder = $('#spiral-holder');
-    // $('#spiral-holder').append('<h3 class="main-title-small" id="main-title-small">Frazier Mork</h3>');
-    // $('#spiral-chunk-5').append('<nav class="hamburger-navbar"><a href="" class="navbar-link"><h3 class="icon-menu"></h3></a></nav>');
-    // var navTemplate = Handlebars.compile( $('#navbar-template').html() );
-    // console.log(navTemplate);
-    // $('.hamburger-navbar').append(navTemplate({intendedViewsize: 'mobile-navbar'}));
-    // var $spiralChunk8 = $('#spiral-chunk-8');
-    // $spiralChunk8.append('<section class="page-content" id="project-article-section"></section>');
-    // $spiralChunk8.append('<section class="page-content" id="about-frazier-section"> About placeholder </section>');
+    $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
+    $('#spiral-chunk-6').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
+    $('#spiral-chunk-7').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
+    $('#spiral-chunk-8').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
   },
 
+  onWindowResize: function(){
+    console.log('resize');
+    $spiralSizingBox = $('spiral-sizing-box');
+    var windowWidth = $spiralSizingBox.width();
+    var windowHeight = windowWidth;
+  },
 
 
   initialize: function(){
@@ -197,29 +186,44 @@ var fibonacci = {
     fibonacci.populateSpiralChunkList();
     fibonacci.drawSpiralChunks();
     fibonacci.drawElements();
+  },
+
+  firstNavClick: function(event, $this){
+    event.preventDefault();
+    $('.internal-link').parent().unwrap();
+    $('.internal-link').parent().empty();
+    var navbar = Handlebars.compile($('#navbar-template').html());
+    $('#spiral-chunk-6').append(navbar);
+    $('#navbar-list').slideToggle('slow');
 
 
+
+
+
+
+    $('#spiral-holder').one('click', '.internal-link', function(event){
+      fibonacci.navClick(event, $(this));
+    });
+  },
+
+  navClick: function(event, $this){
+    event.preventDefault();
+    console.log('navbar clicked');
+    console.log($this.id);
   }
 
 
-  // onWindowResize(){
-  //   console.log('resize');
-  //   $spiralSizingBox = $('spiral-sizing-box');
-  //   var windowWidth = $spiralSizingBox.width();
-  //   var windowHeight = windowWidth;
-  //
-  // }
 };
 
 
 
 $(function(){
-  // fibonacci.populateNumberArray();
-  // fibonacci.determineSize();
-  // fibonacci.populateSpiralChunkList();
-  // fibonacci.drawSpiralChunks();
-  // $(window).on('resize', fibonacci.onWindowResize);
+  $(window).on('resize', fibonacci.onWindowResize);
   fibonacci.initialize();
+
+  $('#spiral-holder').one('click', '.internal-link', function(event){
+    fibonacci.firstNavClick(event, $(this));
+  });
 });
 
 //TODO implement appropriate border radii
@@ -229,3 +233,10 @@ $(function(){
 //TODO add window resize event listener
 //TODO add debounce function on window resize
 //TODO add a way to change the theme colors as a game, maybe with the gold palette
+//TODO maybe add something hidden in the middle so that people can add extra spiral segments
+//TODO see if I can get rid of the square lines and if that looks good, maybe add them back on hover or something
+//TODO get the navbar working for mobile-navbar
+//TODO build the page for larger view sizes
+//TODO get dynamic content generation working
+//TODO see about getting dynamic color generation working
+//use unwrap

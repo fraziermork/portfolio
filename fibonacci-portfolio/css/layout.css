@@ -12,15 +12,12 @@
   height: 100%;
   position: relative;
   justify-content: center;
-  /*z-index: -1;*/
-  /*height: 100%;*/
 }
 
-.main-title-small{
+/*.main-title-small{
   padding: 10px;
   z-index: 1;
   text-align: center;
-  /*width: 100%;*/
   border-radius: 10px;
   margin-top: 15%;
-}
+}*/

@@ -1,8 +1,14 @@
-body {
+/*body {
   background-color: #283542;
   color: #333;
 }
-
+header{
+  background-color: black;
+  color: white;
+}
+footer{
+  background-color: black;
+}
 .main-title-small{
   background-color: white;
   border: 2px #796466 solid;
@@ -12,7 +18,7 @@ body {
   border: 2px #FFECA7 solid;
 }
 .spiral-chunk{
-  outline: 1px white solid;
+  outline: 2px white solid;
   border: 1px white solid;
 }
 
@@ -54,20 +60,36 @@ body {
 }
 #spiral-chunk-8:hover{
   background-color: #F0A384;
+}*/
+
+
+
+header{
+  background-color: black;
+  color: white;
+  outline: 1px #333 solid;
 }
-
-
-
-
-/*body {
+header:hover{
+  outline: 2px white solid;
+}
+footer{
+  background-color: black;
+}
+body {
   background-color: black;
   color: #333;
 }
 
 .spiral-chunk{
-  outline: 1px white solid;
-  border: 2px #FFECA7 solid;
+  /*outline: 1px white solid;*/
+  border: 1px #FFECA7 solid;
+  /*border-style: solid;*/
 }
+.spiral-chunk:hover{
+  outline: 2px white solid;
+  z-index: 1;
+}
+
 
 #spiral-chunk-0{
   background-color: black;
@@ -88,23 +110,39 @@ body {
   background-color: black;
 }
 #spiral-chunk-5:hover{
-  background-color: #FFECA7;
+  background-color: #BAAD7A;
+  border color: #333
+}
+#spiral-chunk-5:hover .navheader{
+  color: black;
 }
 #spiral-chunk-6{
   background-color: black;
 }
 #spiral-chunk-6:hover{
   background-color: #6E8091;
+  border color: #333
+}
+#spiral-chunk-6:hover .navheader{
+  color: black;
 }
 #spiral-chunk-7{
   background-color: black;
 }
 #spiral-chunk-7:hover{
   background-color: #A17E81;
+  border color: #333
+}
+#spiral-chunk-7:hover .navheader{
+  color: black;
 }
 #spiral-chunk-8{
   background-color: black;
 }
 #spiral-chunk-8:hover{
   background-color: #F0A384;
-}*/
+  border color: #333
+}
+#spiral-chunk-8:hover .navheader{
+  color: black;
+}

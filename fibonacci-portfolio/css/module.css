@@ -1,17 +1,18 @@
 .main-navbar{
   position: relative;
+  display: flex;
 }
 .navbar-list{
   display: none;
   padding: 0;
   list-style-type: none;
-  position: absolute;
+  position: relative;
   z-index: 2;
   margin: 0;
-  top: 105%;
-  right: 0;
+  top: 0;
+  left: 0;
   text-align: center;
-  width: 162%;
+  width: 100%;
   border-radius: 10px;
 }
 .icon-menu{
@@ -24,19 +25,71 @@
   margin: 0;
   padding: 10% 10%;
 }
-.navbar-link{
+.navheader{
+  font-size: .8em;
+  color: #D96459;
+  white-space: pre;
+  margin-top: 5px;
+  font-family: 'Open sans', sans-serif;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  line-height: 1;
+  text-align: left;
+  width: 100%;
+}
+.navlink{
   text-decoration: none;
   color: inherit;
 }
+#spiral-chunk-5{
 
+}
+#navheader-github{
+  color: #D96459;
+  font-size: .8em;
+  /*text-align: center;*/
+}
+#spiral-chunk-6{
+  align-items: flex-end;
+  /*justify-content: flex-end;*/
+}
+#navheader-features{
+  color: #D96459;
+  font-size: .8em;
+}
+#spiral-chunk-7{
 
-
+}
+#navheader-about{
+  color: #D96459;
+  font-size: 1em;
+  align-self: flex-end;
+  margin-left: 15px;
+}
+#spiral-chunk-8{
+  /*flex-direction: column;*/
+}
+#navheader-projects{
+  color: #D96459;
+  font-size: 1.5em;
+  margin-left: 15px;
+  /*text-align: left;*/
+  /*text-align: right;*/
+  /*width: 100%;*/
+  /*align-self: flex-end;*/
+}
+/*.textRotate{
+  text-align: center;
+  width: 1em;
+  display: inline-block;
+  transform: rotate(-90deg);
+  margin-left: 10px;
+}*/
 
 .spiral-chunk-wrapper{
   position: absolute;
-  /*z-index: inherit;*/
-  /*display: block;*/
-  /*height: 0;*/
 }
 .spiral-chunk-wrapper:before{
   content: "";
@@ -46,7 +99,8 @@
 }
 .spiral-chunk{
   /*z-index: inherit;*/
-  border-collapse: collapse;
+  border-collapse:separate;
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;
@@ -54,14 +108,33 @@
   left: 0;
 }
 .top{
-  border-width: 2px 2px 0px 0px;
+  border-width: 4px 4px 1px 0px;
+  border-color: #FFECA7;
+  /*border-color: #FFECA7 #FFECA7 #333 #333;*/
 }
 .bottom{
-  border-width: 0px 0px 2px 2px;
+  border-width: 1px 0px 4px 4px;
+  border-color: #FFECA7;
+  /*border-color: #333 #333 #FFECA7 #FFECA7;*/
 }
 .left{
-  border-width: 2px 0px 0px 2px;
+  border-width: 4px 1px 0px 4px;
+  border-color: #FFECA7;
+  /*border-color: #FFECA7 #333 #333 #FFECA7;*/
 }
 .right{
-  border-width: 0px 2px 2px 0px;
+  border-width: 0px 4px 4px 1px;
+  border-color: #FFECA7;
+  /*border-color: #333 #FFECA7 #FFECA7 #333;*/
+}
+#spiral-chunk-0{
+  border-width: 0px 0px 4px 0px;
+}
+#spiral-chunk-8{
+border-width: 1px 1px 4px 4px;
+border-color: #FFECA7;
+/*border-color: #333 #333 #FFECA7 #FFECA7;*/
+/*border-top-color: white;*/
+/*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
+/*https://code.google.com/p/chromium/issues/detail?id=106028*/
 }
