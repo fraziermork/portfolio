@@ -187,8 +187,8 @@ var fibonacci = {
     };
     // windowWidth = $spiralSizingBox.width();
     // windowHeight = windowWidth;
-    var displayType = $('#projects-section').css('display');
-    $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
+    // var displayType = $('#projects-section').css('display');
+    // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
   },
 
   redrawSmallSpiral: function(){
@@ -348,7 +348,7 @@ var fibonacci = {
       $this.find('.article-body').slideToggle();
     }
     var displayType = $('#projects-section').css('display');
-    $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
+    // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
   }
 
 };
