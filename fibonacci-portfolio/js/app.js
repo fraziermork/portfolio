@@ -212,7 +212,7 @@ var fibonacci = {
   redrawBigSpiral: function(){
     console.log('redrawBigSpiral called');
     var $pageContent = $('.page-content');
-    if ($pageContent){
+    if ($pageContent.length){
       $pageContent.detach();
     }
     fibonacci.numberArray = [1];
@@ -314,10 +314,18 @@ var fibonacci = {
   },
 
   handleProjectClick: function($this){
-    console.log('this article body is');
-    console.log($this.find('.article-body'));
-    $('.open-article').removeClass('open-article').slideToggle();
-    $this.find('.article-body').addClass('open-article').slideToggle();
+    if ($this.hasClass('open-article')){
+      $this.removeClass('open-article');
+      $this.find('.article-image').slideToggle();
+      $this.find('.article-body').slideToggle();
+    } else {
+      $('.open-article').find('.article-image').slideToggle();
+      $('.open-article').find('.article-body').slideToggle();
+      $('.open-article').removeClass('open-article');
+      $this.addClass('open-article');
+      $this.find('.article-image').slideToggle();
+      $this.find('.article-body').slideToggle();
+    }
   }
 
 };
@@ -353,4 +361,5 @@ $(function(){
 //TODO include another media query to get the text on the front page to look correct around 700px width
 //TODO use a class to set the border radius and background color on the section where
 //TODO reenable hover on header once you can click it to contact me in the same way as contact for about section, probably by triggering clicks on about and then on contact
-//TODO fix bug that makes it go back to its original state when you resize down and the nav is no longer functional
+//TODO fix bug that makes it go back to its original state when you resize down and the nav is no longer functional--redraw big and small spiral need to preserve state
+//TODO fix bug that prevents you from clicking a project article section and hiding its own content

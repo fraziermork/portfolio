@@ -34,7 +34,7 @@ projectsData = [
     articleTitle: 'RENT RIPOFF',
     articleIconClass: 'icon-office',
     articleCategory: 'utility',
-    articleImage: 'img/project-images/check-my-rent.png',
+    articleImage: 'img/project-images/rentripoff.png',
     publicationDate: '2016-01-29',
     articleTitleLink: 'https://github.com/gregmagdsick/checkMyRent',
     articleContent: "This was the final project I built as part of Codefellows 201 in a four person team. It uses the Zillow API, the Google maps API, and local storage.",
