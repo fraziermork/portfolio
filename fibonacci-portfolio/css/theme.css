@@ -140,9 +140,9 @@ body {
 #spiral-chunk-8:hover{
   background-color: #BF6168;
 }
-#spiral-chunk-9:hover{
+/*#spiral-chunk-9:hover{
   background-color: #F0A384;
-}
+}*/
 #spiral-chunk-8:hover .navheader{
   color: black;
 }

@@ -89,6 +89,8 @@ Adapt these stories as necessary to fit how you want to build your portfolio.
  - For bonus points, include styles for tablet displays, as well as desktop.
 
 
+
+
  class-04
  # Portfolio Assignment for Class 4 - Templates and Typography
 
@@ -110,3 +112,48 @@ Use what you learned in the class 4 lecture to improve the structure of your Por
 ## Helpful Resources
  - Handlebars: http://handlebarsjs.com
  - SMACSS: https://smacss.com/
+
+
+
+
+class-05
+# Portfolio Assignment for Class 5 - Code Review
+
+Work in pairs to improve your portfolio.
+
+Start with code review. Spend the first 30 minutes looking over your partner's portfolio code. Look for opportunities to improve the code base according to the best practices and concepts that we've covered in class so far.
+
+Remember, good code review:
+ - Focuses on the code, not the author
+ - Asks "Why is it this way?" rather than criticizing
+ - Will nitpick the details
+ - Seeks to make the code more understandable
+ - Embraces and congratulates best practices
+ - Respects the work that went into the current product
+
+Create descriptive issues for the most important issues that should be addressed. In the issue, describe what you see, ask clarifying questions as needed, and link to the related line of code in the repo.
+
+Once you both have a few issues logged, start writing code together.
+
+The Driver will work on the Navigator's codebase. The Navigator can talk them through what is where, and how changes should be made, and the Driver can implement them.
+
+Switch after you've worked through a few issues. Switch back again (and again) if time allows.
+
+
+
+
+
+class-06
+# Class 06 Portfolio assignment
+
+## User Stories: MVP
+ 1. As a developer, I want to store my project data in a .json file, so that I can keep it organized.
+ - As a developer, I want to retrieve that source data file asynchronously, so that my app logic gets the data just when I need it.
+
+### User Stories: Stretch Goals
+ - As a reader, I only want to have to fetch data when it's updated (and keep it cached locally), so that I don't make unneeded AJAX calls.
+
+## Technical Requirements and Grading Rubric
+ - Continue to follow good SMACSS principles.
+ - Be sure to use the correct jQuery method for each AJAX call.
+ - Be thoughtful when functions are executed asynchronously. This is a major source of bugs!
