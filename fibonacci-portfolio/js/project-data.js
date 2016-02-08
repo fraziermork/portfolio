@@ -7,7 +7,8 @@ projectsData = [
     publicationDate: '2016-01-20',
     articleTitleLink: 'https://github.com/fraziermork/snake',
     articleContent: "I built the game snake in canvas--check it out!",
-    idString: 'snakeArticle'
+    idString: 'snakeArticle',
+    linkId: 'snakeLink'
   },
 
   {
@@ -18,7 +19,8 @@ projectsData = [
     publicationDate: '2016-01-30',
     articleTitleLink: 'https://github.com/fraziermork/calculator',
     articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still enough bugs to keep it interesting.",
-    idString: 'calculatorArticle'
+    idString: 'calculatorArticle',
+    linkId: 'calculatorLink'
   },
   {
     articleTitle: 'CLOCKS',
@@ -28,16 +30,18 @@ projectsData = [
     publicationDate: '2016-01-21',
     articleTitleLink: 'https://github.com/fraziermork/clocks',
     articleContent: "I built two clocks--one is made in canvas and one is made of divs.",
-    idString: 'clocksArticle'
+    idString: 'clocksArticle',
+    linkId: 'clocksLink'
   },
   {
-    articleTitle: 'RENT RIPOFF',
+    articleTitle: 'CHECK MY RENT',
     articleIconClass: 'icon-office',
     articleCategory: 'utility',
     articleImage: 'img/project-images/rentripoff.png',
     publicationDate: '2016-01-29',
     articleTitleLink: 'https://github.com/gregmagdsick/checkMyRent',
     articleContent: "This was the final project I built as part of Codefellows 201 in a four person team. It uses the Zillow API, the Google maps API, and local storage.",
-    idString: 'checkMyRentArticle'
+    idString: 'checkMyRentArticle',
+    linkId: 'rentRipoffLink'
   }
 ];

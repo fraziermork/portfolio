@@ -256,13 +256,10 @@ var fibonacci = {
 
     $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
     $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
-    // <div class="background-image-holder">
-    //<img src="img/project-images/clock.png" id="main-image" class="article-image"></img>
     if (fibonacci.length === 10){
       console.log('fibonacci.length = 10, will use main-image');
-      $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>');
+      $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>').removeClass('div-highlightable');
     }
-    // $('.main-image').css('background-image', 'url(img/project-images/rentripoff.png)').css('background-size', 'cover');
     projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
@@ -270,11 +267,12 @@ var fibonacci = {
       fibonacci.navClick(event, $(this));
     });
     $('.page-content').on('click', 'article',function(event){
-      // console.log('on click this is');
-      // console.log($(this));
+      // event.preventDefault();
       fibonacci.handleProjectClick($(this));
     });
-    $('#projects-section article:first-of-type').trigger('click');
+    if (fibonacci.length === 10){
+      $('#projects-section article:first-of-type').trigger('click');
+    }
   },
 
   navClick: function(event, $this){
@@ -334,7 +332,7 @@ var fibonacci = {
       $this.find('.article-body').slideToggle();
       if (! imageSrc){
         console.log('if statement no imageSrc if executed');
-        $this.find('.article-image-holder').hide();
+        $this.find('.article-image-holder').slideToggle();
       }
     } else {
       console.log('closed article was clicked');
@@ -342,8 +340,8 @@ var fibonacci = {
       $('.open-article').find('.article-body').slideToggle();
       if (! imageSrc){
         console.log('else statement no imageSrc if executed');
-        $('.open-article').find('.article-image').slideToggle();
-        $this.find('.article-image-holder').show();
+        $('.open-article').find('.article-image-holder').slideToggle();
+        $this.find('.article-image-holder').slideToggle();
       }
       $('.open-article').removeClass('open-article');
       $this.addClass('open-article');

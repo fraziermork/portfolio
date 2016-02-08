@@ -211,6 +211,7 @@
   text-decoration: underline;
 }
 .article-github-link{
+  z-index: 3;
   text-decoration: none;
   color: inherit;
 }
