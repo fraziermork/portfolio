@@ -163,6 +163,9 @@ var fibonacci = {
         $('#' + inputChunk['spiral-chunk-id']).css(inputChunk.borderRadiusPlacement, '100%');
       }
     });
+    console.log('spiral-chunk-id is ');
+    console.log(fibonacci.spiralChunkList[fibonacci.spiralChunkList.length - 1]['spiral-chunk-id']);
+    $( '#' + fibonacci.spiralChunkList[fibonacci.spiralChunkList.length - 1]['spiral-chunk-id']).addClass('round-border');
   },
 
   drawElements: function(){
@@ -182,8 +185,8 @@ var fibonacci = {
       fibonacci.length = 9;
       fibonacci.redrawSmallSpiral();
     };
-    windowWidth = $spiralSizingBox.width();
-    windowHeight = windowWidth;
+    // windowWidth = $spiralSizingBox.width();
+    // windowHeight = windowWidth;
     var displayType = $('#projects-section').css('display');
     $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
   },
@@ -191,10 +194,10 @@ var fibonacci = {
   redrawSmallSpiral: function(){
     console.log('redrawSmallSpiral called');
     var $pageContent = $('.page-content');
-    // if ($pageContent){
-    //   var $pageContent = $('.page-content');
-    //   $pageContent.detach();
-    // }
+    if ($pageContent){
+      var $pageContent = $('.page-content');
+      $pageContent.detach();
+    }
     fibonacci.numberArray = [1];
     fibonacci.spiralChunkList = [];
     $('#spiral-holder').empty();
@@ -203,15 +206,15 @@ var fibonacci = {
     fibonacci.populateSpiralChunkList();
     fibonacci.drawSpiralChunks();
     fibonacci.drawElements();
-    // $('spiral-chunk-8').append($pageContent);
+    $('spiral-chunk-8').append($pageContent);
   },
 
   redrawBigSpiral: function(){
     console.log('redrawBigSpiral called');
     var $pageContent = $('.page-content');
-    // if ($pageContent){
-    //   $pageContent.detach();
-    // }
+    if ($pageContent){
+      $pageContent.detach();
+    }
     fibonacci.numberArray = [1];
     fibonacci.spiralChunkList = [];
     $('#spiral-holder').empty();
@@ -220,16 +223,20 @@ var fibonacci = {
     fibonacci.populateSpiralChunkList();
     fibonacci.drawSpiralChunks();
     fibonacci.drawElements();
-    // $('spiral-chunk-9').append($pageContent);
+    $('spiral-chunk-8').append($pageContent);
   },
 
   initialize: function(){
+    if (window.innerWidth > fibonacci.redrawScreenWidth - 1 && fibonacci.length !== 10){
+      fibonacci.length = 10;
+      // fibonacci.redrawBigSpiral();
+    };
     fibonacci.populateNumberArray();
     fibonacci.determineSize();
     fibonacci.populateSpiralChunkList();
     fibonacci.drawSpiralChunks();
     fibonacci.drawElements();
-    fibonacci.onWindowResize();
+    // fibonacci.onWindowResize();
   },
 
   backButtonClick: function(e){
@@ -247,10 +254,7 @@ var fibonacci = {
     $('#navbar-list').slideToggle();
     $('#navheader-github').addClass('nav-highlightable');
 
-
     $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
-
-
     $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
     // $('#spiral-chunk-8').css('background-color', '#F0A384');
     projectSummaries.constructProjectSummaries();
@@ -258,6 +262,11 @@ var fibonacci = {
 
     $('#spiral-holder').on('click', '.internal-link', function(event){
       fibonacci.navClick(event, $(this));
+    });
+    $('.page-content').on('click', 'article',function(event){
+      console.log('on click this is');
+      console.log($(this));
+      fibonacci.handleProjectClick($(this));
     });
   },
 
@@ -278,10 +287,10 @@ var fibonacci = {
 
     if (fibonacci.length === 10){
       fibonacci.handleBigSpiralNavClick(idString);
-      $spiralChunk9.removeClass('div-highlightable').addClass('round-border');
+      // $spiralChunk9.removeClass('div-highlightable').addClass('round-border');
     } else if (fibonacci.length === 9){
       fibonacci.handleSmallSpiralNavClick(idString);
-      $spiralChunk8.removeClass('div-highlightable').addClass('round-border');
+      // $spiralChunk8.removeClass('div-highlightable').addClass('round-border');
     } else {
       console.log('critical error');
     }
@@ -304,6 +313,12 @@ var fibonacci = {
     $(idString).slideToggle('fast');
   },
 
+  handleProjectClick: function($this){
+    console.log('this article body is');
+    console.log($this.find('.article-body'));
+    $('.open-article').removeClass('open-article').slideToggle();
+    $this.find('.article-body').addClass('open-article').slideToggle();
+  }
 
 };
 
@@ -335,5 +350,7 @@ $(function(){
 //TODO make pojectsummaries.getTotalHeight able to take a filter so that I can dynamically rewrite which ones will show up
 //TODO figure out how to preserve state across redraws--probably use detach()
 //TODO fix about and features moving at 500 from media query
+//TODO include another media query to get the text on the front page to look correct around 700px width
 //TODO use a class to set the border radius and background color on the section where
-//use unwrap
+//TODO reenable hover on header once you can click it to contact me in the same way as contact for about section, probably by triggering clicks on about and then on contact
+//TODO fix bug that makes it go back to its original state when you resize down and the nav is no longer functional

@@ -37,12 +37,12 @@
     </script>
 
     <script type="text/x-handlebars-template" id="project-article-template">
-      <article class="project-article flex-align-center" data-category="{{articleCategory}}" id={{idString}}>
+      <article class="project-article" data-category="{{articleCategory}}" id={{idString}}>
         <meta itemprop="datePublished" content="{{publicationDate}}">
         <header class="article-header">
-          <a href="{{articleTitleLink}}" class="article-title-link zero-margin"><h3 class="article-title"> {{articleTitle}}:</h3></a>
+          <h3 class="article-title"> {{articleTitle}}:</h3>
           <div class="full-line-div"></div>
-          <p class="publish-status">{{articlePublishStatus}}</p>
+          <a href="{{articleTitleLink}}" class="article-github-link zero-margin"><p class="publish-status">{{articlePublishStatus}}</p></a>
           <div class="full-line-div"></div>
         </header>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>

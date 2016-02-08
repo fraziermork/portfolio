@@ -13,7 +13,7 @@ function ProjectSummary(inputProject){
 //Use handlebars to generate page content
 ProjectSummary.prototype.returnProjectSummary = function() {
   var template = Handlebars.compile($('#project-article-template').html());
-  this.articlePublishStatus = 'Published about ' + parseInt( (new Date() - new Date(this.publicationDate))/60/60/24/1000 ) + ' days ago.';
+  this.articlePublishStatus = 'Github page updated about ' + parseInt( (new Date() - new Date(this.publicationDate))/60/60/24/1000 ) + ' days ago.';
   this.articlePublicationDateObj = new Date(this.publicationDate);
   return template(this);
 };
