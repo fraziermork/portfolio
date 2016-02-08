@@ -1,4 +1,4 @@
-var token = 'f6ce3f0c5cd7307592c1f6d79cdd02c19db8c861';
+var token = '';
 
 $.ajax({
   url: "https://api.github.com/users/fraziermork/repos" + "?per_page=5&sort=updated",

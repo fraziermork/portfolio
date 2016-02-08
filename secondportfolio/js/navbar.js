@@ -13,6 +13,6 @@ topNavBarObject.handleTopNav = function(){
   $('.top-navbar .navbar-link:first').click();
 };
 
-$(function(){
-  topNavBarObject.handleTopNav();
-});
+// $(function(){
+//   topNavBarObject.handleTopNav();
+// });

@@ -8,6 +8,7 @@ function ProjectSummary(inputProject){
   this.articleCategory = inputProject.articleCategory;
   this.articleImage = inputProject.articleImage;
 }
+ProjectSummary.all = [];
 
 //Use handlebars to generate page content
 ProjectSummary.prototype.returnProjectSummary = function() {
@@ -18,22 +19,80 @@ ProjectSummary.prototype.returnProjectSummary = function() {
 };
 
 //build the page content and store the completed article objects
-projectSummaries = {
-  projects: []
-};
-projectSummaries.drawProjectSummaries = function(){
+var projectSummaries = {};
+projectSummaries.drawProjectSummaries = function(projectData){
+  console.log('projectData is ');
+  console.log(projectData);
   var $projectArticleSection = $('#project-article-section');
   projectData.sort(function(a,b){
     return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
   });
+  console.log('projectData after sort is');
+  console.log(projectData);
+  console.log(projectData instanceof Array);
   projectData.forEach(function(inputProject){
-    projectSummaries.projects.push(new ProjectSummary(inputProject));
+    ProjectSummary.all.push(new ProjectSummary(inputProject));
   });
-  projectSummaries.projects.forEach(function(thisProjectObject){
+  console.log('ProjectSummary.all is');
+  console.log(ProjectSummary.all);
+  ProjectSummary.all.forEach(function(thisProjectObject){
     $projectArticleSection.append(thisProjectObject.returnProjectSummary());
   });
 };
 
-$(function(){
-  projectSummaries.drawProjectSummaries();
-});
+projectSummaries.makeAjaxCall = function(){
+  console.log('going to make ajax call');
+  if (localStorage.rawData){
+    console.log('stuff in storage');
+    $.ajax({
+      type: 'HEAD',
+      url: 'js/project-data.json',
+      success: function(data, message, xhr){
+        console.log(data);
+        console.log(message);
+        console.log(xhr);
+        var eTag = xhr.getResponseHeader('eTag');
+        if (! localStorage.eTag || localStorage.eTag !== eTag){
+          localStorage.eTag = eTag;
+          $.ajax({
+            type: 'GET',
+            url: 'js/project-data.json',
+            success: function(data, message, xhr){
+              localStorage.setItem('rawData', JSON.stringify(data));
+              localStorage.setItem('eTag', xhr.getResponseHeader('eTag'));
+              projectSummaries.initializePage();
+            }
+          });
+        } else {
+          projectSummaries.initializePage();
+        }
+      }
+    });
+  } else {
+    console.log('nothing in storage');
+    $.ajax({
+      type: 'GET',
+      url: 'js/project-data.json',
+      success: function(data, message, xhr){
+        console.log(data);
+        console.log(message);
+        console.log(xhr);
+        localStorage.setItem('rawData', JSON.stringify(data));
+        localStorage.setItem('eTag', xhr.getResponseHeader('eTag'));
+        projectSummaries.initializePage();
+      }
+    });
+  }
+};
+
+projectSummaries.initializePage = function(){
+  console.log('initializePage');
+  console.log(JSON.parse(localStorage.rawData));
+  projectSummaries.drawProjectSummaries(JSON.parse(localStorage.rawData));
+  topNavBarObject.handleTopNav();
+};
+
+// $(function(){
+//
+//   // projectSummaries.drawProjectSummaries();
+// });
