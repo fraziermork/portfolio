@@ -172,7 +172,7 @@ var fibonacci = {
     $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
     $('#spiral-chunk-6').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
     $('#spiral-chunk-7').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
-    $('#spiral-chunk-8').addClass('highlight-brown').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
+    $('#spiral-chunk-8').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
   },
 
   onWindowResize: function(){
@@ -256,7 +256,13 @@ var fibonacci = {
 
     $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"><h3>A B O U T</h3></div><div class="page-content" id="features-section"><h3>F E A T U R E S</h3></div>');
     $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
-    // $('#spiral-chunk-8').css('background-color', '#F0A384');
+    // <div class="background-image-holder">
+    //<img src="img/project-images/clock.png" id="main-image" class="article-image"></img>
+    if (fibonacci.length === 10){
+      console.log('fibonacci.length = 10, will use main-image');
+      $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>');
+    }
+    // $('.main-image').css('background-image', 'url(img/project-images/rentripoff.png)').css('background-size', 'cover');
     projectSummaries.constructProjectSummaries();
     fibonacci.navClick(event, $this);
 
@@ -264,10 +270,11 @@ var fibonacci = {
       fibonacci.navClick(event, $(this));
     });
     $('.page-content').on('click', 'article',function(event){
-      console.log('on click this is');
-      console.log($(this));
+      // console.log('on click this is');
+      // console.log($(this));
       fibonacci.handleProjectClick($(this));
     });
+    $('#projects-section article:first-of-type').trigger('click');
   },
 
   navClick: function(event, $this){
@@ -314,18 +321,36 @@ var fibonacci = {
   },
 
   handleProjectClick: function($this){
+    var imageSrc;
+    console.log('imageSrc is ' + imageSrc);
+    if (fibonacci.length === 10){
+      imageSrc = $this.find('.article-image').css('background-image');
+      console.log(' fibonacci.length === 10, imageSrc is');
+      console.log(imageSrc);
+    }
     if ($this.hasClass('open-article')){
+      console.log('open article was clicked');
       $this.removeClass('open-article');
-      $this.find('.article-image').slideToggle();
       $this.find('.article-body').slideToggle();
+      if (! imageSrc){
+        console.log('if statement no imageSrc if executed');
+        $this.find('.article-image-holder').hide();
+      }
     } else {
-      $('.open-article').find('.article-image').slideToggle();
+      console.log('closed article was clicked');
+      $('.main-image').css('background-image', imageSrc);
       $('.open-article').find('.article-body').slideToggle();
+      if (! imageSrc){
+        console.log('else statement no imageSrc if executed');
+        $('.open-article').find('.article-image').slideToggle();
+        $this.find('.article-image-holder').show();
+      }
       $('.open-article').removeClass('open-article');
       $this.addClass('open-article');
-      $this.find('.article-image').slideToggle();
       $this.find('.article-body').slideToggle();
     }
+    var displayType = $('#projects-section').css('display');
+    $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
   }
 
 };
@@ -340,26 +365,3 @@ $(function(){
     fibonacci.firstNavClick(event, $(this));
   });
 });
-
-//TODO implement appropriate border radii
-//TODO fix setSpiralChunkPosition and make it less awful, things that do left position just need to grab total widths of all with class left with index greater than their own, look into array filtering
-//TODO add debounce function on window resize
-//TODO add a way to change the theme colors as a game, maybe with the gold palette
-//TODO maybe add something hidden in the middle so that people can add extra spiral segments
-//TODO get the navbar working for mobile-navbar
-//TODO build the page for larger view sizes
-//TODO get dynamic content generation working
-//TODO see about getting dynamic color generation working
-//TODO fix sizing of textboxes in features and about
-//TODO give text in boxes rollover highlighting
-//TODO make it so that clicking the thing that says projects opens a menu that lets you select articles by name or filter them or something
-//TODO break up the outline highlighting feature into another class so it can be removed from elements if needed
-//TODO in features throw in some links to shit talking about the golden spiral
-//TODO make pojectsummaries.getTotalHeight able to take a filter so that I can dynamically rewrite which ones will show up
-//TODO figure out how to preserve state across redraws--probably use detach()
-//TODO fix about and features moving at 500 from media query
-//TODO include another media query to get the text on the front page to look correct around 700px width
-//TODO use a class to set the border radius and background color on the section where
-//TODO reenable hover on header once you can click it to contact me in the same way as contact for about section, probably by triggering clicks on about and then on contact
-//TODO fix bug that makes it go back to its original state when you resize down and the nav is no longer functional--redraw big and small spiral need to preserve state
-//TODO fix bug that prevents you from clicking a project article section and hiding its own content

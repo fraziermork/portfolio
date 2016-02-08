@@ -128,7 +128,8 @@ body {
   background-color: black;
 }
 #spiral-chunk-7:hover{
-  background-color: #A17E81;
+  background-color: #8C6E78;
+  /*background-color: #A17E81;*/
 }
 #spiral-chunk-7:hover .navheader{
   color: black;

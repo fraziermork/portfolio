@@ -53,6 +53,6 @@ projectSummaries.getTotalHeight = function(){
   //   return $(document).height();
   // });
   $('#projects-section').hide();
-  // console.log('totalHeight is ' + totalHeight);
+  console.log('totalHeight is ' + totalHeight);
   return totalHeight;
 };
