@@ -1,4 +1,4 @@
-projectData = [
+projectDataObsolete = [
   {
     articleTitle: 'Snake',
     articleIconClass:'icon-pacman',

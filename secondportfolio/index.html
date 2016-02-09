@@ -19,7 +19,7 @@
         <meta itemprop="datePublished" content="{{publicationDate}}">
         <header class="article-header">
           <a href="{{articleTitleLink}}" class="article-title-link zero-margin"><h3 class="article-title {{articleIconClass}}"> {{articleTitle}}</h3></a>
-          {{articlePublishStatus}}
+          {{articlePublishStatus}} {{totalWords}} words.
         </header>
         <div class="full-line-div"></div>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>
@@ -58,8 +58,12 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/project-data.js"></script>
-    <script type="text/javascript" src="js/project-articles.js"></script>
+    <!-- <script type="text/javascript" src="js/project-data.js"></script> -->
     <script type="text/javascript" src="js/navbar.js"></script>
+    <script type="text/javascript" src="js/project-articles.js"></script>
+
+    <script type="text/javascript">
+      ProjectSummary.makeAjaxCall();
+    </script>
   </body>
 </html>
