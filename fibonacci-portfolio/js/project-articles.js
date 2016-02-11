@@ -19,11 +19,10 @@ ProjectSummary.prototype.returnProjectSummary = function() {
 };
 
 //build the page content and store the completed article objects
-projectSummaries = {
-  projects: [],
-  jqProjectObjects:[],
-};
-projectSummaries.constructProjectSummaries = function(){
+ProjectSummary.projects = [];
+ProjectSummary.jqProjectObjects = [];
+
+ProjectSummary.constructProjectSummaries = function(){
   var $projectsSection = $('#projects-section');
 
   projectsData.sort(function(a,b){
@@ -31,27 +30,21 @@ projectSummaries.constructProjectSummaries = function(){
   });
   projectsData.forEach(function(inputProject){
     var newProjectSummaryObject = new ProjectSummary(inputProject);
-    projectSummaries.projects.push(newProjectSummaryObject);
+    ProjectSummary.projects.push(newProjectSummaryObject);
   });
-  projectSummaries.projects.forEach(function(thisProjectObject){
+  ProjectSummary.projects.forEach(function(thisProjectObject){
     $projectsSection.append(thisProjectObject.returnProjectSummary());
   });
-  projectSummaries.projects.forEach(function(thisProjectObject){
-    projectSummaries.jqProjectObjects.push( $('#' + thisProjectObject.idString) );
+  ProjectSummary.projects.forEach(function(thisProjectObject){
+    ProjectSummary.jqProjectObjects.push( $('#' + thisProjectObject.idString) );
   });
-  // $projectsSection.toggleSlide();
 };
-projectSummaries.getTotalHeight = function(){
+ProjectSummary.getTotalHeight = function(){
   var totalHeight = 0;
   $('#projects-section').show();
-  projectSummaries.jqProjectObjects.forEach(function($thisProjectObject){
-    // console.log($thisProjectObject);
-    // console.log($thisProjectObject.height());
+  ProjectSummary.jqProjectObjects.forEach(function($thisProjectObject){
     totalHeight += $thisProjectObject.height();
   });
-  // $('footer').css('top', function(){
-  //   return $(document).height();
-  // });
   $('#projects-section').hide();
   console.log('totalHeight is ' + totalHeight);
   return totalHeight;

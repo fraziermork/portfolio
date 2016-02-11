@@ -1,0 +1,116 @@
+.page-content{
+  top: 0;
+  left: 0;
+  height: auto;
+  margin-top: 5%;
+  display: none;
+  flex-direction: column;
+  width: 90%;
+  background-color: rgba(255,255,255, .9);
+  border: 2px #FFECA7 solid;
+  position: static;
+  border-top-right-radius: 5vw;
+  z-index: 2;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.project-article{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.article-header{
+  margin: 10px 0 5px 0px;
+  width: 100%;
+}
+.article-header-link{
+  text-decoration: none;
+  color: inherit;
+}
+.article-title{
+  font-family: 'Open sans', sans-serif;
+  margin-left: 10px;
+  font-size: 1.3em;
+}
+.article-title:hover{
+  text-decoration: underline;
+}
+.article-github-link{
+  z-index: 3;
+  text-decoration: none;
+  color: inherit;
+}
+.article-github-link:hover{
+  text-decoration: underline;
+}
+.publish-status{
+  margin: 0;
+  width: 100%;
+  text-align: right;
+  font-size: .8em;
+  color: black;
+}
+.article-body{
+  display: none;
+  margin-left: 5%;
+  width: 90%;
+  /*text-align: center;*/
+}
+
+
+.article-image-holder{
+  position: relative;
+  width: 90%;
+  height: 90%;
+  display: none;
+  border-radius: 5px;
+}
+.article-image{
+  position: static;
+  display: block;
+  padding-bottom: 100%;
+  margin:0;
+  margin-top: 5%;
+  border: 2px #FFECA7 solid;
+  border-top-right-radius: 5vw;
+  background-size: cover;
+}
+
+.main-image-holder{
+  position: relative;
+  width: 90%;
+  height: 90%;
+  display: inline-block;
+  border-radius: 5px;
+}
+.main-image{
+  position: static;
+  display: block;
+  padding-bottom: 100%;
+  margin:0;
+  margin-top: 5%;
+  border: 2px #FFECA7 solid;
+  border-top-right-radius: 5vw;
+  background-size: cover;
+  /*border-bottom-right-radius: 5vw;*/
+}
+.background-image-holder{
+
+}
+
+.article-image{
+  /*position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;*/
+}
+.full-line-div{
+  width: 100%;
+  background-color: rgba( 20, 20, 20, .3);
+  height: 2px;
+  color: #333;
+  margin: 0;
+}
