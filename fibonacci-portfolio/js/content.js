@@ -166,7 +166,9 @@ var content = {
       fibonacci.setUpSpiral();
       content.setUpPageContent();
       $('.internal-link[data-nav="' + currentSection + '"]').click();
-      $('#' + openArticle).click();
+      if (openArticle.length){
+        $('#' + openArticle).click();
+      }
     }
   },
 
@@ -194,7 +196,9 @@ var content = {
       fibonacci.setUpSpiral();
       content.setUpPageContent();
       $('.internal-link[data-nav="' + currentSection + '"]').click();
-      $('#' + openArticle).click();
+      if (openArticle.length){
+        $('#' + openArticle).click();
+      }
     }
   },
 

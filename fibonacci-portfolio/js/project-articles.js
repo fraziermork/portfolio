@@ -23,15 +23,18 @@ ProjectSummary.projects = [];
 ProjectSummary.jqProjectObjects = [];
 
 ProjectSummary.constructProjectSummaries = function(){
+  if (! ProjectSummary.projects.length){
+    projectsData.sort(function(a,b){
+      return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
+    });
+    projectsData.forEach(function(inputProject){
+      var newProjectSummaryObject = new ProjectSummary(inputProject);
+      ProjectSummary.projects.push(newProjectSummaryObject);
+    });  
+  }
+
   var $projectsSection = $('#projects-section');
 
-  projectsData.sort(function(a,b){
-    return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
-  });
-  projectsData.forEach(function(inputProject){
-    var newProjectSummaryObject = new ProjectSummary(inputProject);
-    ProjectSummary.projects.push(newProjectSummaryObject);
-  });
   ProjectSummary.projects.forEach(function(thisProjectObject){
     $projectsSection.append(thisProjectObject.returnProjectSummary());
   });
