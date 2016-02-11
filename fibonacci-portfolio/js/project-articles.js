@@ -39,6 +39,7 @@ ProjectSummary.constructProjectSummaries = function(){
     ProjectSummary.jqProjectObjects.push( $('#' + thisProjectObject.idString) );
   });
 };
+
 ProjectSummary.getTotalHeight = function(){
   var totalHeight = 0;
   $('#projects-section').show();
