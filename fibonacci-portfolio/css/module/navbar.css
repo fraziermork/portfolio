@@ -1,0 +1,86 @@
+.main-navbar{
+  position: relative;
+  display: flex;
+}
+.navbar-list{
+  display: none;
+  padding: 0;
+  list-style-type: none;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+.icon-menu{
+  position: absolute;
+  margin: 0px;
+  padding: 10px 10px;
+  padding-bottom: 60px;
+}
+.navbar-text{
+  margin: 0;
+  padding: 10% 10%;
+}
+.navheader{
+  font-size: .8em;
+  color: #D96459;
+  white-space: pre;
+  margin-top: 5px;
+  font-family: 'Open sans', sans-serif;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  line-height: 1;
+  text-align: left;
+  width: 100%;
+}
+.navlink{
+  text-decoration: none;
+  color: inherit;
+}
+.nav-highlightable:hover{
+  color: #FFECA7 !important;
+}
+
+#navheader-github{
+  color: #D96459;
+  font-size: .8em;
+  height: 60%;
+  /*text-align: center;*/
+}
+
+
+.section-title{
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.5em;
+  margin: 0;
+  margin-bottom: 5px;
+  margin-left: 8%;
+  align-self: flex-end;
+}
+#navheader-features{
+  color: #D96459;
+  font-size: .8em;
+  padding-top: 70%;
+}
+#navheader-about{
+  color: #D96459;
+  font-size: 1em;
+  align-self: flex-end;
+  margin-left: 17px;
+  padding-top: 70%;
+}
+#navheader-projects{
+  align-self: flex-start;
+  color: #D96459;
+  font-size: 1.5em;
+  margin-left: 15px;
+  height: 70%;
+}

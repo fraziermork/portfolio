@@ -1,0 +1,85 @@
+.spiral-chunk-wrapper{
+  position: absolute;
+}
+.spiral-chunk-wrapper:before{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+  margin: 0;
+}
+.spiral-chunk{
+  /*z-index: inherit;*/
+  border-collapse:separate;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.sidelength-label{
+  display: none;
+}
+
+.top{
+  border-width: 4px 4px 1px 0px;
+  border-color: #FFECA7;
+  /*border-color: #FFECA7 #FFECA7 #333 #333;*/
+}
+.bottom{
+  border-width: 1px 0px 4px 4px;
+  border-color: #FFECA7;
+  /*border-color: #333 #333 #FFECA7 #FFECA7;*/
+}
+.left{
+  border-width: 4px 1px 0px 4px;
+  border-color: #FFECA7;
+  /*border-color: #FFECA7 #333 #333 #FFECA7;*/
+}
+.right{
+  border-width: 0px 4px 4px 1px;
+  border-color: #FFECA7;
+  /*border-color: #333 #FFECA7 #FFECA7 #333;*/
+}
+
+#spiral-chunk-0{
+  border-width: 0px 0px 4px 0px;
+}
+#spiral-chunk-5{
+
+}
+#spiral-chunk-6{
+  align-items: flex-end;
+  /*justify-content: flex-end;*/
+}
+#spiral-chunk-7{
+
+}
+#spiral-chunk-8{
+  align-items: center;
+  /*justify-content: center;*/
+  flex-direction: column;
+  flex-wrap: nowrap;
+  display: flex;
+  border-width: 1px 1px 4px 4px;
+  border-color: #FFECA7;
+  margin-bottom: 20px;
+  /*border-color: #333 #333 #FFECA7 #FFECA7;*/
+  /*border-top-color: white;*/
+  /*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
+  /*https://code.google.com/p/chromium/issues/detail?id=106028*/
+}
+#spiral-chunk-8 .page-content{
+  border-top-right-radius: 5vw;
+}
+
+#spiral-chunk-9{
+  border-width: 1px 4px 4px 1px;
+  border-color: #FFECA7;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+#spiral-chunk-9 .page-content{
+  border-top-left-radius: 5vw;
+}
