@@ -22,6 +22,8 @@
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script defer type="text/javascript" src="js/project-data.js"></script>
+    <script defer type="text/javascript" src="js/about-data.js"></script>
+    <script defer type="text/javascript" src="js/features-data.js"></script>
     <script defer type="text/javascript" src="js/project-articles.js"></script>
     <script defer type="text/javascript" src="js/spiral.js"></script>
     <script defer type="text/javascript" src="js/content.js"></script>
@@ -59,9 +61,19 @@
         </header></a>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>
         <div class="article-image-holder">
-          <div class="article-image" style="background-image: url({{articleImage}})"></div>
+          <div class="article-image" style="background-image: url({{articleImage.0.url}})"></div>
         </div>
       </article>
+    </script>
+
+    <script type="text/x-handlebars-template" id="article-option-template">
+      <p class="article-option" id="{{article-option-id}}">{{option-text}}</p>
+    </script>
+
+    <script type="text/x-handlebars-template" id="article-additional-image-template">
+      <div class="article-image-holder">
+        <div class="article-image" style="background-image: url({{url}})"></div>
+      </div>
     </script>
   </head>
 
@@ -74,9 +86,6 @@
       <div class="spiral-holder" id="spiral-holder">
       </div>
     </div>
-
-
-
 
   </body>
 </html>
