@@ -1,11 +1,25 @@
-aboutData = {
-  articleTitle: 'ABOUT',
-  articleIconClass:'icon-user-suit',
-  articleCategory: 'about',
-  articleImage: 'img/frazier.jpg',
-  publicationDate: '2016-01-20',
-  articleTitleLink: 'https://github.com/fraziermork',
-  articleContent: 'I built the game snake in canvas--check it out!',
-  idString: 'aboutArticle',
-  linkId: 'githubLink'
-};
+aboutData = [
+  {
+    articleTitle: 'ABOUT FRAZIER',
+    articleIconClass:'icon-user-suit',
+    articleCategory: 'about',
+    articleImage: 'img/about-images/frazier.jpg',
+    publicationDate: '2016-01-20',
+    articleTitleLink: 'https://github.com/fraziermork',
+    articleContent: 'I am an aspiring full-stack developer in the Seattle area. ',
+    idString: 'aboutFrazierArticle',
+    linkId: 'githubLink'
+  },
+  {
+    articleTitle: 'ABOUT THIS SITE',
+    articleIconClass:'icon-user-suit',
+    articleCategory: 'about',
+    articleImage: 'img/about-images/frazier.jpg',
+    publicationDate: '2016-01-20',
+    articleTitleLink: 'https://en.wikipedia.org/wiki/Golden_spiral',
+    articleContent: 'I built the game snake in canvas--check it out!',
+    idString: 'aboutSpiralArticle',
+    linkId: 'spiralLink'
+  }
+
+];

@@ -40,9 +40,9 @@ var content = {
     content.navClick(event, $this);
 
 
-    // if (fibonacci.length === 10){
-    //   $('#projects-section article:first-of-type').trigger('click');
-    // }
+    if (fibonacci.length === 10){
+      $('#projects-section article:first-of-type').trigger('click');
+    }
   },
 
   navClick: function(event, $this){
