@@ -51,25 +51,22 @@
 
     <script type="text/x-handlebars-template" id="article-template">
       <article class="project-article" data-category="{{articleCategory}}" id={{idString}}>
-        <meta itemprop="datePublished" content="{{publicationDate}}">
+        <meta itemprop="datePublished" content="{{datePublished}}">
         <a href="#" class="article-header-link"><header class="article-header">
           <h3 class="article-title">{{articleTitle}}:</h3>
           <div class="full-line-div"></div>
-          <a href="{{articleTitleLink}}" class="article-github-link zero-margin"><p class="publish-status">{{articlePublishStatus}}</p></a>
+          <a href="{{articleTitleLink}}" class="article-github-link zero-margin"><p class="publish-status">{{articleSubtitle}}</p></a>
           <div class="full-line-div"></div>
         </header></a>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>
-        <div class="article-image-holder">
-          <div class="article-image" style="background-image: url({{articleImage.0.url}})"></div>
-        </div>
       </article>
     </script>
 
     <script type="text/x-handlebars-template" id="article-option-template">
-      <p class="article-option" id="{{article-option-id}}">{{option-text}}</p>
+      <a href="#" class="{{articleOptionClass}}" id="{{article-option-id}}"><p >{{optionText}}</p></a>
     </script>
 
-    <script type="text/x-handlebars-template" id="article-additional-image-template">
+    <script type="text/x-handlebars-template" id="article-image-template">
       <div class="article-image-holder">
         <div class="article-image" style="background-image: url({{url}})"></div>
       </div>

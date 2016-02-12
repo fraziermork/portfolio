@@ -5,10 +5,11 @@ function Article(inputProject){
 };
 
 Article.prototype.returnNewArticle = function() {
-  this.articlePublishStatus = 'Github page updated about ' + parseInt( (new Date() - new Date(this.publicationDate))/60/60/24/1000 ) + ' days ago.';
-  this.articlePublicationDateObj = new Date(this.publicationDate);
-  var template = Handlebars.compile($('#article-template').html());
-  return template(this);
+  if(this.datePublished){
+    this.articleSubtitle = 'Github repo updated ' + parseInt( (new Date() - new Date(this.datePublished))/60/60/24/1000 ) + ' days ago.';
+  }
+  var articleTemplate = Handlebars.compile($('#article-template').html());
+  return articleTemplate(this);
 };
 
 Article.pageContentSections = [['#projects-section', projectsData, 'projects'], ['#about-section', aboutData, 'about'], ['#features-section', featuresData, 'features']];
@@ -16,7 +17,7 @@ Article.pageContentSections = [['#projects-section', projectsData, 'projects'], 
 Article.sortArticlesByDate = function(dataArray, articleArray){
   if (! Article[articleArray]){
     dataArray.sort(function(a,b){
-      return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
+      return (new Date(b.datePublished)) - (new Date(a.datePublished));
     });
   }
 };
@@ -38,8 +39,13 @@ Article.constructArticles = function(sections){
     }
     Article.instantiateArticleObjects(section[1], section[2]);
     var $currentSection = $(section[0]);
+    var imageTemplate = Handlebars.compile($('#article-image-template').html());
     Article[section[2]].forEach(function(thisProjectObject){
       $currentSection.append(thisProjectObject.returnNewArticle());
+      var $thisProject = $('#' + thisProjectObject.idString);
+      thisProjectObject.articleImage.forEach(function(thisImage){
+        $thisProject.append(imageTemplate(thisImage));
+      });
     });
 
   });

@@ -1,6 +1,7 @@
 (function(module){
   var content = {
     redrawScreenWidth: 800,
+    redrawFlag: false,
 
     initializeSpiral: function(){
       if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.length !== 10){
@@ -12,10 +13,12 @@
     onWindowResize: function(){
       $spiralSizingBox = $('.spiral-sizing-box');
       if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.length !== 10){
-        content.redrawBigSpiral();
+        fibonacci.resetFibonacci(10);
+        content.redrawSpiral();
       };
       if (window.innerWidth < content.redrawScreenWidth && fibonacci.length !== 9){
-        content.redrawSmallSpiral();
+        fibonacci.resetFibonacci(9);
+        content.redrawSpiral();
       };
       // windowWidth = $spiralSizingBox.width();
       // windowHeight = windowWidth;
@@ -23,9 +26,8 @@
       // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
     },
 
-    redrawSmallSpiral: function(){
-      console.log('redrawSmallSpiral called');
-      fibonacci.resetFibonacci(9);
+    redrawSpiral: function(){
+      console.log('redrawSpiral called');
       if ( $('#navheader-projects').length ){
         console.log('on home page');
         $('#spiral-holder').empty();
@@ -49,41 +51,9 @@
         $('.internal-link[data-nav="' + currentSection + '"]').click();
         if (openArticle.length){
           $('#' + openArticle).click();
+          content.redrawFlag = true;
         }
-      }
-    },
-
-    redrawBigSpiral: function(){
-      fibonacci.resetFibonacci(10);
-      console.log('redrawBigSpiral called');
-      if ( $('#navheader-projects').length ){
-        console.log('on home page');
-        $('#spiral-holder').empty();
-        content.initializeSpiral();
-        content.drawInitialElements();
-      } else {
-        console.log('page-content section open');
-        var openArticle = $('.open-article');
-        console.log('openArticle is');
-        console.log(openArticle);
-        console.log(openArticle.length);
-        if (openArticle.length){
-          openArticle = openArticle[0].id;
-          console.log('openArticle is ' + openArticle);
-        }
-        var currentSection = $('#section-title').data('nav');
-        console.log('currentSection is ' + currentSection);
-        $('#spiral-holder').empty();
-        fibonacci.setUpSpiral();
-        content.setUpPageContent();
-        $('.internal-link[data-nav="' + currentSection + '"]').click();
-        if (openArticle.length){
-          $('#' + openArticle).click();
-        } else {
-          $('#projects-section article:first-of-type').trigger('click');
-          // $('#about-section article:first-of-type').trigger('click');
-          // $('#features-section article:first-of-type').trigger('click');
-        }
+        $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
       }
     },
 
@@ -104,7 +74,6 @@
       });
       $('.page-content').on('click', 'article', function(event){
         if (! event.target.classList.contains('publish-status')){
-          event.preventDefault();
         }
         content.handleProjectClick($(this));
       });
@@ -118,12 +87,6 @@
 
       content.setUpPageContent();
       content.navClick(event, $this);
-
-      if (fibonacci.length === 10){ //need to know trigger clicks on first articles in all three sections
-        $('#projects-section article:first-of-type').trigger('click');
-        // $('#about-section article:first-of-type').trigger('click');
-        // $('#features-section article:first-of-type').trigger('click');
-      }
     },
 
     navClick: function(event, $this){
@@ -143,13 +106,18 @@
       console.log('idString is ' + idString);
       $('.page-content').fadeOut('fast');
       $(idString).slideToggle('fast');
+
+      if (fibonacci.length === 10 && ! content.redrawFlag){ //need to know trigger clicks on first articles in all three sections
+        content.redrawFlag = false;
+        $(idString + ' article:first-of-type').click();
+      }
     },
 
     handleProjectClick: function($this){
       var imageSrc;
       console.log('imageSrc is ' + imageSrc);
       if (fibonacci.length === 10){
-        imageSrc = $this.find('.article-image').css('background-image');
+        imageSrc = $this.find('.article-image:first-of-type').css('background-image');
         console.log(' fibonacci.length === 10, imageSrc is');
         console.log(imageSrc);
       }
@@ -188,20 +156,11 @@
   };
 
   module.content = content;
-})(window);
-
-
-
-
-
-$(function(){
-  $(window).on('resize', content.onWindowResize);
-
   content.initializeSpiral();
   content.drawInitialElements();
-
+  $(window).on('resize', content.onWindowResize);
   $('#spiral-holder').one('click', '.internal-link', function(event){
-    event.preventDefault();
+    // event.preventDefault();
     content.firstNavClick(event, $(this));
   });
-});
+})(window);
