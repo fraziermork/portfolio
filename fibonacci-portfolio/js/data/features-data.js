@@ -1,15 +1,16 @@
 featuresData = [
-  // {
-  //   articleTitle: 'PLAY WITH THE SPIRAL',
-  //   articleSubtitle: 'Change how this page looks',
-  //   articleIconClass:'icon-user-suit',
-  //   articleCategory: 'demonstration',
-  //   articleImage: [{}],
-  //   articleTitleLink: 'https://en.wikipedia.org/wiki/Golden_spiral',
-  //   articleContent: 'Like the spiral? Here you can play with it, change the color scheme, etc.',
-  //   idString: 'playWithSpiralArticle',
-  //   linkId: 'spiralLink'
-  // },
+  {
+    articleTitle: 'PLAY WITH THE SPIRAL',
+    articleSubtitle: 'Change how this page looks',
+    articleIconClass:'icon-user-suit',
+    articleCategory: 'demonstration',
+    articleImage: [{}],
+    articleTitleLink: 'https://en.wikipedia.org/wiki/Golden_spiral',
+    articleContent: 'Like the spiral? Here you can play with it, change the color scheme, etc.',
+    idString: 'playWithSpiralArticle',
+    linkId: 'spiralLink',
+    optionalArticleClass: 'hasDemoModule'
+  },
   {
     articleTitle: 'BUG COLLECTION',
     articleSubtitle: 'Immortalizing my mistakes',

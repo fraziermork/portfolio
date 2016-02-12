@@ -8,6 +8,7 @@ Article.prototype.returnNewArticle = function() {
   if(this.datePublished){
     this.articleSubtitle = 'Github repo updated ' + parseInt( (new Date() - new Date(this.datePublished))/60/60/24/1000 ) + ' days ago.';
   }
+  //may need to put the article into an array containing which articles have demo modules
   var articleTemplate = Handlebars.compile($('#article-template').html());
   return articleTemplate(this);
 };

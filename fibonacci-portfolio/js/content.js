@@ -2,6 +2,7 @@
   var content = {
     redrawScreenWidth: 800,
     redrawFlag: false,
+    demoModuleAttachEventListenerFunctionsArray: [],
 
     initializeSpiral: function(){
       if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.length !== 10){
@@ -130,6 +131,9 @@
         // if(event.target.id === 'playWithSpiralFormSubmit'){
           // colorThemes.onSubmit();
         // }
+      } else if ($this.hasClass('hasDemoModule')){
+        console.log('hasDemoModule clicked');
+
       } else {
         var imageSrc;
         console.log('imageSrc is ' + imageSrc);
@@ -165,6 +169,30 @@
         // var displayType = $('#projects-section').css('display');
         // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
       }
+    },
+
+    handleDemoModuleCreation: function(inputProject, demoModule){ // use this to handle drawing inserted modules into the box below the article
+      //module naming convention--all modules must have a 'buildModule' method that takes a CSS selector as an input to append their content into
+      //all demo modules must be written into a div inside of .article-image div with width and height 100%
+      //all articles with demo modules must gain class hasDemoModule so that we can determine
+      //all articles with demo modules need to have a method called attachModuleEventListener that will put the callback function in an array, demoModuleAttachEventListenerFunctionsArray, so that the appropriate function will fire on an article click
+
+
+    },
+
+
+    handeDemoModuleArticleClick: function(currentArticle){//event listener for article open and close is attached to the article, so will have to navigate down from there
+      if (fibonacci.length === 10){ //if the project is opened and we are in the big spiral, need to set background-image of .main-image to none, need to detach the contents of the .article-image and appendTo the .main-image
+
+      }
+      // else if (fibonacci.length === 9 && currentArticle.fin){} need to detect whether the article .article-image div is empty but should have contents in it
+      // also need to check
+    },
+
+    //this is the method that will be called if another article is clicked and the contents need to be hidden. This should take care of itself in the small spiral, because the containing container will be hidden, but for the large spiral we will need to
+    handleDemoModuleArticleClose: function(){ //slap this in on condition that $('.open-article').hasClass('hasDemoModule')
+      //if another article is clicked, we will need to know which article to append this back onto. Probably will need to set a data-category onto the module prototype with a value of the article idString like playWithSpiralArticle to append the content back onto
+      //if (fibonacci.length === 9){}// set the display of .article-image to none in exactly the same way as we would if
     },
 
     drawInitialElements: function(){
