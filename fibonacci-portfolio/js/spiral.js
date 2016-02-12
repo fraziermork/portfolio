@@ -12,7 +12,7 @@
     this.horizontalPosition = 0;
     this.absHorizontalPosition = 0;
   }
-  
+
   SpiralChunk.prototype.initializeDivTypeAndIds = function(){
     this['spiral-chunk-wrapper-id'] = 'spiral-chunk-wrapper-' + this.spiralChunkNumber;
     this['spiral-chunk-id'] = 'spiral-chunk-' + this.spiralChunkNumber;

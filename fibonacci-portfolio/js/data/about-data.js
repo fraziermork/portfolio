@@ -4,12 +4,13 @@ aboutData = [
     articleSubtitle: 'Visit my LinkedIn Profile',
     articleIconClass:'icon-user-suit',
     articleCategory: 'about',
-    articleImage: [{url:'img/about-images/frazier.JPG'}],
+    articleImage: [{url:'img/about-images/frazier.png'}],
     articleTitleLink: 'https://www.linkedin.com/in/frazier-mork-b2672a57',
     articleContent: "I am an aspiring full-stack developer in the Seattle area. Right now I'm focusing on learning html, css, and javascript, but I'm always looking for something to teach myself next.",
     idString: 'aboutFrazierArticle',
     linkId: 'myGithubLink',
-    articleOptions: [{articleOptionClass: 'contactMe article-option', articleOptionId: 'contactMe', optionText: 'Contact me'}]
+    articleOptions: [{articleOptionClass: 'contactMe article-option', articleOptionId: 'contactMe', optionText: 'Contact me'}],
+    optionalArticleClass: 'hasDemoModule'
   },
   {
     articleTitle: 'ABOUT THIS SITE',
@@ -31,7 +32,8 @@ aboutData = [
     articleTitleLink: 'https://en.wikipedia.org/wiki/Golden_spiral',
     articleContent: 'The fibonacci sequence, which the golden ratio is based on, appears all over nature. Nautilus shells, like the golden spiral, are examples of logarithmic spirals and differ only by the value of their growth constant.',
     idString: 'aboutSpiralArticle',
-    linkId: 'spiralLink'
+    linkId: 'spiralLink',
+    //optionalArticleClass: 'hasDemoModule'
   }
 
 ];
