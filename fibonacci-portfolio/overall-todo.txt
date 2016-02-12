@@ -1,0 +1,12 @@
+TODO: "if (condition){" is usually spaced "if (condition) {"  (you can find/replace this)
+
+TODO: See if, rather than having your #backbutton class reload the page, undo
+the changes you have made instead
+
+TODO: Do you want the article-headers in projects and about pages to toggle
+back in again when re-clicked?
+
+TODO: A note - there are two separate types of refactoring suggestions for
+the spiral.js module. It's probably best to pick one, or just do a little
+work making your functions more pure and then think about larger structural
+refactoring.

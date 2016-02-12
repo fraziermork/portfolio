@@ -44,3 +44,7 @@ projectsData = [
     linkId: 'rentRipoffLink'
   }
 ];
+
+/* TODO: Try to follow eslint and use its quoting styles for the .js data files;
+if you break it back out into a .json file, re-lint it with a real json
+linter! */

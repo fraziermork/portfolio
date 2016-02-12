@@ -34,6 +34,14 @@
   };
 
   var fibonacci = {
+    /* TODO: Any of these variables that you are only referencing from inside
+    functions should probably be refactored into those functions as parameters; likewise
+    anything that is being set from these functions should also probably be
+    your return values. Anything you're keeping in your live state can be
+    stored in another module entirely; you want this module to just include
+    the functions that make it happen, and leave the results to be managed
+    by your core module. */
+
     length: 9,
     numberArray: [1],
     spiralChunkList: [],
@@ -51,6 +59,8 @@
       fibonacci.spiralChunkList = [];
     },
 
+    /* TODO: Refactor this to be a pure function that simply returns the array;
+    probably also rename it along with that to reflet this. */
     populateNumberArray: function(){
       var thisNumber=1;
       var lastNumber=0;
@@ -138,6 +148,26 @@
       fibonacci.determineSize();
       fibonacci.populateSpiralChunkList();
       fibonacci.drawSpiralChunks();
+
+      /* TODO: Look towards potentially doing the layout of the page with
+      nested containers, each with 1 corner of the spiral:
+
+      master container
+      	spiral part (with a class for which corner...)
+      	container that takes up the rest of the space
+      		spiral part (corner...)
+      		container
+      			spiral part (...)
+      			container
+      				spiral part
+      				container
+      					...
+      with corner classes that have (golden ratio%) width and 100% height or w/e
+
+      This can be done in a single function call that returns you the spiral
+      leaf elements in an array from the outside in, allowing you to give them
+      their special classes and add contents for your UI functionality etc.
+      */
     },
   };
 

@@ -74,6 +74,10 @@
         content.navClick(event, $(this));
       });
       $('.page-content').on('click', 'article', function(event){
+        /* TODO: Try to break this into multiple targeted on-events with more
+        specific sub-selectors than 'article', rather than accepting virtually
+        all clicks and doing logic to find out what's even being clicked on */
+
         if (! event.target.classList.contains('article-subtitle')){
           event.preventDefault();
         }
@@ -92,6 +96,7 @@
     },
 
     firstNavClick: function(event, $this){
+      // TODO: $this is a potentially confusing parameter name
       event.preventDefault();
       var $internalLink = $('.internal-link');
       $internalLink.parent().unwrap();
@@ -196,6 +201,10 @@
     },
 
     drawInitialElements: function(){
+      /* TODO: Consider getting the 'internal-link' class onto a more outer
+      element and getting your clicking functionality onto the whole spiral leaf;
+      this way you can have the mouseover only touch the curved part and you can
+      remove the sizing on this h3 element (navbar.css line 80) */
       $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
       $('#spiral-chunk-6').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
       $('#spiral-chunk-7').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-about" data-nav="about">A B O U T</h3>');

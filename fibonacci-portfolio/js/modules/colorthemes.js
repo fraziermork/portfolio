@@ -8,3 +8,7 @@
 //     console.log('hello');
 //   }
 // };
+
+/* TODO: You can implement this by adding and removing stylesheet links to the
+$('header') of the document, with an element id like 'theme-stylesheet' so you
+can remove it again */
