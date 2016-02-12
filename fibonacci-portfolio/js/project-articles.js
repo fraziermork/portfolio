@@ -40,12 +40,19 @@ Article.constructArticles = function(sections){
     Article.instantiateArticleObjects(section[1], section[2]);
     var $currentSection = $(section[0]);
     var imageTemplate = Handlebars.compile($('#article-image-template').html());
+    var optionTemplate = Handlebars.compile($('#article-option-template').html());
     Article[section[2]].forEach(function(thisProjectObject){
       $currentSection.append(thisProjectObject.returnNewArticle());
+
       var $thisProject = $('#' + thisProjectObject.idString);
-      thisProjectObject.articleImage.forEach(function(thisImage){
+      thisProjectObject.articleImage.forEach(function(thisImage, index, array){
+        if (thisProjectObject.articleOptions){
+          $thisProject.append(optionTemplate(thisProjectObject.articleOptions[index]));
+        }
         $thisProject.append(imageTemplate(thisImage));
       });
+
+
     });
 
   });

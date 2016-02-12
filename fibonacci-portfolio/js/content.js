@@ -73,10 +73,21 @@
         content.navClick(event, $(this));
       });
       $('.page-content').on('click', 'article', function(event){
-        if (! event.target.classList.contains('publish-status')){
+        if (! event.target.classList.contains('article-subtitle')){
+          event.preventDefault();
         }
-        content.handleProjectClick($(this));
+        content.handleProjectClick($(this), event);
       });
+      content.individualizeArticles();
+    },
+
+    individualizeArticles: function(){
+      $('.bugCollectionOption').on('click mouseenter', function(){
+        if (fibonacci.length === 10){
+          $('.main-image').css('background-image', 'url(img/bug-collection/'+ $(this)[0].id + '.png)');
+        }
+      });
+      // colorThemes.buildForm();
     },
 
     firstNavClick: function(event, $this){
@@ -113,37 +124,47 @@
       }
     },
 
-    handleProjectClick: function($this){
-      var imageSrc;
-      console.log('imageSrc is ' + imageSrc);
-      if (fibonacci.length === 10){
-        imageSrc = $this.find('.article-image:first-of-type').css('background-image');
-        console.log(' fibonacci.length === 10, imageSrc is');
-        console.log(imageSrc);
-      }
-      if ($this.hasClass('open-article')){
-        console.log('open article was clicked');
-        $this.removeClass('open-article');
-        $this.find('.article-body').slideToggle();
-        if (! imageSrc){
-          console.log('if statement no imageSrc if executed');
-          $this.find('.article-image-holder').slideToggle();
-        }
+    handleProjectClick: function($this, event){
+      console.log(event.target);
+      if (event.target.classList.contains('dontCloseOnClick')){
+        // if(event.target.id === 'playWithSpiralFormSubmit'){
+          // colorThemes.onSubmit();
+        // }
       } else {
-        console.log('closed article was clicked');
-        $('.main-image').css('background-image', imageSrc);
-        $('.open-article').find('.article-body').slideToggle();
-        if (! imageSrc){
-          console.log('else statement no imageSrc if executed');
-          $('.open-article').find('.article-image-holder').slideToggle();
-          $this.find('.article-image-holder').slideToggle();
+        var imageSrc;
+        console.log('imageSrc is ' + imageSrc);
+        if (fibonacci.length === 10){
+          imageSrc = $this.find('.article-image:first-of-type').css('background-image');
+          console.log(' fibonacci.length === 10, imageSrc is');
+          console.log(imageSrc);
         }
-        $('.open-article').removeClass('open-article');
-        $this.addClass('open-article');
-        $this.find('.article-body').slideToggle();
+        if ($this.hasClass('open-article')){
+          console.log('open article was clicked');
+          $this.removeClass('open-article');
+          $this.find('.article-body').slideToggle();
+          $this.find('.article-option').slideToggle();
+          if (! imageSrc){
+            console.log('if statement no imageSrc if executed');
+            $this.find('.article-image-holder').slideToggle();
+          }
+        } else {
+          console.log('closed article was clicked');
+          $('.main-image').css('background-image', imageSrc);
+          $('.open-article').find('.article-body').slideToggle();
+          $('.open-article').find('.article-option').slideToggle();
+          if (! imageSrc){
+            console.log('else statement no imageSrc if executed');
+            $('.open-article').find('.article-image-holder').slideToggle();
+            $this.find('.article-image-holder').slideToggle();
+          }
+          $('.open-article').removeClass('open-article');
+          $this.addClass('open-article');
+          $this.find('.article-body').slideToggle();
+          $this.find('.article-option').slideToggle();
+        }
+        // var displayType = $('#projects-section').css('display');
+        // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
       }
-      var displayType = $('#projects-section').css('display');
-      // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
     },
 
     drawInitialElements: function(){

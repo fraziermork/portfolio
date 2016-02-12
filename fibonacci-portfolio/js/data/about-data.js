@@ -8,7 +8,8 @@ aboutData = [
     articleTitleLink: 'https://www.linkedin.com/in/frazier-mork-b2672a57',
     articleContent: "I am an aspiring full-stack developer in the Seattle area. Right now I'm focusing on learning html, css, and javascript, but I'm always looking for something to teach myself next.",
     idString: 'aboutFrazierArticle',
-    linkId: 'myGithubLink'
+    linkId: 'myGithubLink',
+    articleOptions: [{articleOptionClass: 'contactMe article-option', articleOptionId: 'contactMe', optionText: 'Contact me'}]
   },
   {
     articleTitle: 'ABOUT THIS SITE',
