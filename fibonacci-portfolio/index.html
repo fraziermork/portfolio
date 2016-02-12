@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta itemprop="datePublished" content="2016-01">
+    <title>Fibonacci-spiral</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/base.css" type="text/css" charset="utf-8">
@@ -28,8 +29,6 @@
     <script defer type="text/javascript" src="js/spiral.js"></script>
     <script defer type="text/javascript" src="js/content.js"></script>
 
-    <title>Fibonacci-spiral</title>
-
     <script type="text/x-handlebars-template" id="spiral-chunk-template">
       <div class="spiral-chunk-wrapper" id="{{spiral-chunk-wrapper-id}}">
         <div class="spiral-chunk div-highlightable {{divType}}" id="{{spiral-chunk-id}}" data-divType="{{divType}}">
@@ -50,13 +49,13 @@
       <h3 class="section-title" id="section-title" data-nav="{{dataNav}}">{{title}}</h3>
     </script>
 
-    <script type="text/x-handlebars-template" id="project-article-template">
+    <script type="text/x-handlebars-template" id="article-template">
       <article class="project-article" data-category="{{articleCategory}}" id={{idString}}>
         <meta itemprop="datePublished" content="{{publicationDate}}">
         <a href="#" class="article-header-link"><header class="article-header">
-          <h3 class="article-title"> {{articleTitle}}:</h3>
+          <h3 class="article-title">{{articleTitle}}:</h3>
           <div class="full-line-div"></div>
-          <a href="{{articleTitleLink}}" class="article-github-link zero-margin" id="{{linkId}}"><p class="publish-status">{{articlePublishStatus}}</p></a>
+          <a href="{{articleTitleLink}}" class="article-github-link zero-margin"><p class="publish-status">{{articlePublishStatus}}</p></a>
           <div class="full-line-div"></div>
         </header></a>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>

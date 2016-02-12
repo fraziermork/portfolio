@@ -18,8 +18,6 @@
     if (this.direction === 'counterClockWise'){
       this['divType'] = fibonacci.divtypesCCW[0][this.spiralChunkNumber % 4];
       this.borderRadiusPlacement = fibonacci.divtypesCCW[1][this.spiralChunkNumber % 4];
-    } else {
-      console.log('critical error--direction not recognized');
     }
     this.percentSize = (0.9 * 100 * this.sidelength / fibonacci.totalWidth);
     if (this.divType === 'bottom' || this.divType === 'right'){
