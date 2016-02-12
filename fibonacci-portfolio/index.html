@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta itemprop="datePublished" content="2016-01">
+    <title>Fibonacci-spiral</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/base.css" type="text/css" charset="utf-8">
@@ -21,16 +22,17 @@
 
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script defer type="text/javascript" src="js/project-data.js"></script>
+    <script defer type="text/javascript" src="js/data/project-data.js"></script>
+    <script defer type="text/javascript" src="js/data/about-data.js"></script>
+    <script defer type="text/javascript" src="js/data/features-data.js"></script>
+    <script defer type="text/javascript" src="js/modules/colorthemes.js"></script>
     <script defer type="text/javascript" src="js/project-articles.js"></script>
     <script defer type="text/javascript" src="js/spiral.js"></script>
     <script defer type="text/javascript" src="js/content.js"></script>
 
-    <title>Fibonacci-spiral</title>
-
     <script type="text/x-handlebars-template" id="spiral-chunk-template">
       <div class="spiral-chunk-wrapper" id="{{spiral-chunk-wrapper-id}}">
-        <div class="spiral-chunk div-highlightable {{divType}}" id="{{spiral-chunk-id}}" data-divType="{{divType}}">
+        <div class="spiral-chunk div-highlightable {{divType}}" id="{{spiral-chunk-id}}" data-divType="{{divType}}" data-sidelength="{{sidelength}}">
           <p class="sidelength-label">{{sidelength}}</p>
         </div>
       </div>
@@ -48,20 +50,48 @@
       <h3 class="section-title" id="section-title" data-nav="{{dataNav}}">{{title}}</h3>
     </script>
 
-    <script type="text/x-handlebars-template" id="project-article-template">
+    <script type="text/x-handlebars-template" id="article-template">
       <article class="project-article" data-category="{{articleCategory}}" id={{idString}}>
-        <meta itemprop="datePublished" content="{{publicationDate}}">
+        <meta itemprop="datePublished" content="{{datePublished}}">
         <a href="#" class="article-header-link"><header class="article-header">
-          <h3 class="article-title"> {{articleTitle}}:</h3>
+          <h3 class="article-title">{{articleTitle}}:</h3>
           <div class="full-line-div"></div>
-          <a href="{{articleTitleLink}}" class="article-github-link zero-margin" id="{{linkId}}"><p class="publish-status">{{articlePublishStatus}}</p></a>
+          <a href="{{articleTitleLink}}" class="article-subtitle-link zero-margin"><p class="article-subtitle">{{articleSubtitle}}</p></a>
           <div class="full-line-div"></div>
         </header></a>
         <section class="article-body flex-align-center">{{{articleContent}}}</section>
-        <div class="article-image-holder">
-          <div class="article-image" style="background-image: url({{articleImage}})"></div>
-        </div>
       </article>
+    </script>
+
+    <script type="text/x-handlebars-template" id="article-option-template">
+      <a href="#" class="{{articleOptionClass}}" id="{{articleOptionId}}"><p class="dontCloseOnClick">{{optionText}}</p></a>
+    </script>
+
+    <script type="text/x-handlebars-template" id="article-image-template">
+      <div class="article-image-holder">
+        <div class="article-image" style="background-image: url({{url}})"></div>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars-template" id="playWithSpiral-template">
+      <form id="playWithSpiralForm" class="playWithSpiralForm">
+        <input type="checkbox" name="elementToChange" value="body">Body</input>
+        <input type="checkbox" name="elementToChange" value=".spiral-chunk">Spiral chunks</input>
+        <input type="checkbox" name="elementToChange" value=".top">Top chunks</input>
+        <input type="checkbox" name="elementToChange" value=".bottom">Bottom chunks</input>
+        <input type="checkbox" name="elementToChange" value=".left">Left chunks</input>
+        <input type="checkbox" name="elementToChange" value=".right">Right chunks</input>
+
+        <input type="radio" name="ChangeToMake" value="border-radius">Border radius</input>
+        <input type="radio" name="ChangeToMake" value="border-width">Border thickness</input>
+        <input type="radio" name="ChangeToMake" value="border-color">Border color</input>
+        <input type="radio" name="ChangeToMake" value="outline-width">Box outline thickness</input>
+        <input type="radio" name="ChangeToMake" value="outline-color">Box outline color</input>
+        <input type="radio" name="ChangeToMake" value="background-color">Background-color</input>
+
+        <input type="text" name="colorInput" placeholder="Enter a color or width here">
+        <input type="submit" value="Change theme!" id="playWithSpiralFormSubmit">
+      </form>
     </script>
   </head>
 
@@ -74,9 +104,6 @@
       <div class="spiral-holder" id="spiral-holder">
       </div>
     </div>
-
-
-
 
   </body>
 </html>

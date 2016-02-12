@@ -8,3 +8,4 @@ img/**
 .DS_Store
 .eslintrc
 .eslintignore
+**data.js

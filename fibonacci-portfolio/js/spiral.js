@@ -12,14 +12,13 @@
     this.horizontalPosition = 0;
     this.absHorizontalPosition = 0;
   }
+  
   SpiralChunk.prototype.initializeDivTypeAndIds = function(){
     this['spiral-chunk-wrapper-id'] = 'spiral-chunk-wrapper-' + this.spiralChunkNumber;
     this['spiral-chunk-id'] = 'spiral-chunk-' + this.spiralChunkNumber;
     if (this.direction === 'counterClockWise'){
       this['divType'] = fibonacci.divtypesCCW[0][this.spiralChunkNumber % 4];
       this.borderRadiusPlacement = fibonacci.divtypesCCW[1][this.spiralChunkNumber % 4];
-    } else {
-      console.log('critical error--direction not recognized');
     }
     this.percentSize = (0.9 * 100 * this.sidelength / fibonacci.totalWidth);
     if (this.divType === 'bottom' || this.divType === 'right'){
@@ -82,11 +81,11 @@
 
     populateSpiralChunkList: function(){
       var topPos = 0, leftPos = 0, bottomPos = 0, rightPos = 0;
-      for (var i = 0; i < fibonacci.numberArray.length; i++){
-        var currentSpiralChunk = new SpiralChunk( i, fibonacci.numberArray[i], fibonacci.direction, 'black');
+      fibonacci.numberArray.forEach(function(currentFibonacciArrayValue, idx, array){
+        var currentSpiralChunk = new SpiralChunk( idx, currentFibonacciArrayValue, fibonacci.direction, 'black');
         currentSpiralChunk.initializeDivTypeAndIds();
         fibonacci.spiralChunkList.push(currentSpiralChunk);
-      }
+      });
     },
 
     setSpiralChunkPosition: function(inputChunk, idx){
@@ -140,7 +139,6 @@
       fibonacci.populateSpiralChunkList();
       fibonacci.drawSpiralChunks();
     },
-
   };
 
 
