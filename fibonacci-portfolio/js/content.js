@@ -171,7 +171,7 @@
       }
     },
 
-    handleDemoModuleCreation: function(demoModule){ // use this to handle drawing inserted modules into the box below the article
+    handleDemoModuleCreation: function(inputProject, demoModule){ // use this to handle drawing inserted modules into the box below the article
       //module naming convention--all modules must have a 'buildModule' method that takes a CSS selector as an input to append their content into
       //all demo modules must be written into a div inside of .article-image div with width and height 100%
       //all articles with demo modules must gain class hasDemoModule so that we can determine
@@ -190,7 +190,7 @@
     },
 
     //this is the method that will be called if another article is clicked and the contents need to be hidden. This should take care of itself in the small spiral, because the containing container will be hidden, but for the large spiral we will need to
-    handleDemoModuleArticleClose: function(){
+    handleDemoModuleArticleClose: function(){ //slap this in on condition that $('.open-article').hasClass('hasDemoModule')
       //if another article is clicked, we will need to know which article to append this back onto. Probably will need to set a data-category onto the module prototype with a value of the article idString like playWithSpiralArticle to append the content back onto
       //if (fibonacci.length === 9){}// set the display of .article-image to none in exactly the same way as we would if
     },
