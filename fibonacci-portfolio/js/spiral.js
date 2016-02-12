@@ -80,11 +80,11 @@
 
     populateSpiralChunkList: function(){
       var topPos = 0, leftPos = 0, bottomPos = 0, rightPos = 0;
-      for (var i = 0; i < fibonacci.numberArray.length; i++){
-        var currentSpiralChunk = new SpiralChunk( i, fibonacci.numberArray[i], fibonacci.direction, 'black');
+      fibonacci.numberArray.forEach(function(currentFibonacciArrayValue, idx, array){
+        var currentSpiralChunk = new SpiralChunk( idx, currentFibonacciArrayValue, fibonacci.direction, 'black');
         currentSpiralChunk.initializeDivTypeAndIds();
         fibonacci.spiralChunkList.push(currentSpiralChunk);
-      }
+      });
     },
 
     setSpiralChunkPosition: function(inputChunk, idx){
