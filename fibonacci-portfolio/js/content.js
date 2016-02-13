@@ -27,7 +27,7 @@
       // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
     },
 
-    redrawSpiral: function(){
+    redrawSpiral: function(){ //may need to split this into two again if I decide to put the text in the big holder on the large spiral
       console.log('redrawSpiral called');
       if ( $('#navheader-projects').length ){
         console.log('on home page');
