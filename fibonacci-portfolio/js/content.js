@@ -1,23 +1,23 @@
-(function(module){
+(function(module) {
   var content = {
     redrawScreenWidth: 800,
     redrawFlag: false,
     demoModuleAttachEventListenerFunctionsArray: [],
 
-    initializeSpiral: function(){
-      if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.length !== 10){
-        fibonacci.length = 10;
+    initializeSpiral: function() {
+      if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.arrayLength !== 10) {
+        fibonacci.arrayLength = 10;
       };
       fibonacci.setUpSpiral();
     },
 
-    onWindowResize: function(){
+    onWindowResize: function() {
       $spiralSizingBox = $('.spiral-sizing-box');
-      if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.length !== 10){
+      if (window.innerWidth > content.redrawScreenWidth - 1 && fibonacci.arrayLength !== 10) {
         fibonacci.resetFibonacci(10);
         content.redrawSpiral();
       };
-      if (window.innerWidth < content.redrawScreenWidth && fibonacci.length !== 9){
+      if (window.innerWidth < content.redrawScreenWidth && fibonacci.arrayLength !== 9) {
         fibonacci.resetFibonacci(9);
         content.redrawSpiral();
       };
@@ -27,9 +27,9 @@
       // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
     },
 
-    redrawSpiral: function(){ //may need to split this into two again if I decide to put the text in the big holder on the large spiral
+    redrawSpiral: function() { //may need to split this into two again if I decide to put the text in the big holder on the large spiral
       console.log('redrawSpiral called');
-      if ( $('#navheader-projects').length ){
+      if ( $('#navheader-projects').length ) {
         console.log('on home page');
         $('#spiral-holder').empty();
         content.initializeSpiral();
@@ -40,7 +40,7 @@
         console.log('openArticle is');
         console.log(openArticle);
         console.log(openArticle.length);
-        if (openArticle.length){
+        if (openArticle.length) {
           openArticle = openArticle[0].id;
           console.log('openArticle is ' + openArticle);
         }
@@ -50,7 +50,7 @@
         fibonacci.setUpSpiral();
         content.setUpPageContent();
         $('.internal-link[data-nav="' + currentSection + '"]').click();
-        if (openArticle.length){
+        if (openArticle.length) {
           $('#' + openArticle).click();
           content.redrawFlag = true;
         }
@@ -58,7 +58,7 @@
       }
     },
 
-    setUpPageContent: function(){
+    setUpPageContent: function() {
       var navbar = Handlebars.compile($('#navbar-template').html());
       $('#spiral-chunk-6').append(navbar);
       $('#navbar-list').slideToggle();
@@ -66,15 +66,15 @@
       $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"></div><div class="page-content" id="features-section"></div>');
       Article.constructArticles(Article.pageContentSections);
       $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
-      if (fibonacci.length === 10){
-        console.log('fibonacci.length = 10, will use main-image');
+      if (fibonacci.arrayLength === 10) {
+        console.log('fibonacci.arrayLength = 10, will use main-image');
         $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>').removeClass('div-highlightable');
       }
-      $('#spiral-chunk-6').on('click', '.internal-link', function(event){
+      $('#spiral-chunk-6').on('click', '.internal-link', function(event) {
         content.navClick(event, $(this));
       });
-      $('.page-content').on('click', 'article', function(event){
-        if (! event.target.classList.contains('article-subtitle')){
+      $('.page-content').on('click', 'article', function(event) {
+        if (! event.target.classList.contains('article-subtitle')) {
           event.preventDefault();
         }
         content.handleProjectClick($(this), event);
@@ -82,16 +82,16 @@
       content.individualizeArticles();
     },
 
-    individualizeArticles: function(){
-      $('.bugCollectionOption').on('click mouseenter', function(){
-        if (fibonacci.length === 10){
+    individualizeArticles: function() {
+      $('.bugCollectionOption').on('click mouseenter', function() {
+        if (fibonacci.arrayLength === 10) {
           $('.main-image').css('background-image', 'url(img/bug-collection/'+ $(this)[0].id + '.png)');
         }
       });
       // colorThemes.buildForm();
     },
 
-    firstNavClick: function(event, $this){
+    firstNavClick: function(event, $this) {
       event.preventDefault();
       var $internalLink = $('.internal-link');
       $internalLink.parent().unwrap();
@@ -101,7 +101,7 @@
       content.navClick(event, $this);
     },
 
-    navClick: function(event, $this){
+    navClick: function(event, $this) {
       event.preventDefault();
       var $spiralChunk7 = $('#spiral-chunk-7');
       var $spiralChunk8 = $('#spiral-chunk-8');
@@ -119,35 +119,35 @@
       $('.page-content').fadeOut('fast');
       $(idString).slideToggle('fast');
 
-      if (fibonacci.length === 10 && ! content.redrawFlag){ //need to know trigger clicks on first articles in all three sections
+      if (fibonacci.arrayLength === 10 && ! content.redrawFlag) { //need to know trigger clicks on first articles in all three sections
         content.redrawFlag = false;
         $(idString + ' article:first-of-type').click();
       }
     },
 
-    handleProjectClick: function($this, event){
+    handleProjectClick: function($this, event) {
       console.log(event.target);
-      if (event.target.classList.contains('dontCloseOnClick')){
-        // if(event.target.id === 'playWithSpiralFormSubmit'){
+      if (event.target.classList.contains('dontCloseOnClick')) {
+        // if(event.target.id === 'playWithSpiralFormSubmit') {
           // colorThemes.onSubmit();
         // }
-      } else if ($this.hasClass('hasDemoModule')){
+      } else if ($this.hasClass('hasDemoModule')) {
         console.log('hasDemoModule clicked');
 
       } else {
         var imageSrc;
         console.log('imageSrc is ' + imageSrc);
-        if (fibonacci.length === 10){
+        if (fibonacci.arrayLength === 10) {
           imageSrc = $this.find('.article-image:first-of-type').css('background-image');
-          console.log(' fibonacci.length === 10, imageSrc is');
+          console.log(' fibonacci.arrayLength === 10, imageSrc is');
           console.log(imageSrc);
         }
-        if ($this.hasClass('open-article')){
+        if ($this.hasClass('open-article')) {
           console.log('open article was clicked');
           $this.removeClass('open-article');
           $this.find('.article-body').slideToggle();
           $this.find('.article-option').slideToggle();
-          if (! imageSrc){
+          if (! imageSrc) {
             console.log('if statement no imageSrc if executed');
             $this.find('.article-image-holder').slideToggle();
           }
@@ -156,7 +156,7 @@
           $('.main-image').css('background-image', imageSrc);
           $('.open-article').find('.article-body').slideToggle();
           $('.open-article').find('.article-option').slideToggle();
-          if (! imageSrc){
+          if (! imageSrc) {
             console.log('else statement no imageSrc if executed');
             $('.open-article').find('.article-image-holder').slideToggle();
             $this.find('.article-image-holder').slideToggle();
@@ -171,7 +171,7 @@
       }
     },
 
-    handleDemoModuleCreation: function(inputProject, demoModule){ // use this to handle drawing inserted modules into the box below the article
+    handleDemoModuleCreation: function(inputProject, demoModule) { // use this to handle drawing inserted modules into the box below the article
       //module naming convention--all modules must have a 'buildModule' method that takes a CSS selector as an input to append their content into
       //all demo modules must be written into a div inside of .article-image div with width and height 100%
       //all articles with demo modules must gain class hasDemoModule so that we can determine
@@ -181,21 +181,21 @@
     },
 
 
-    handeDemoModuleArticleClick: function(currentArticle){//event listener for article open and close is attached to the article, so will have to navigate down from there
-      if (fibonacci.length === 10){ //if the project is opened and we are in the big spiral, need to set background-image of .main-image to none, need to detach the contents of the .article-image and appendTo the .main-image
+    handeDemoModuleArticleClick: function(currentArticle) {//event listener for article open and close is attached to the article, so will have to navigate down from there
+      if (fibonacci.arrayLength === 10) { //if the project is opened and we are in the big spiral, need to set background-image of .main-image to none, need to detach the contents of the .article-image and appendTo the .main-image
 
       }
-      // else if (fibonacci.length === 9 && currentArticle.fin){} need to detect whether the article .article-image div is empty but should have contents in it
+      // else if (fibonacci.arrayLength === 9 && currentArticle.fin) {} need to detect whether the article .article-image div is empty but should have contents in it
       // also need to check
     },
 
     //this is the method that will be called if another article is clicked and the contents need to be hidden. This should take care of itself in the small spiral, because the containing container will be hidden, but for the large spiral we will need to
-    handleDemoModuleArticleClose: function(){ //slap this in on condition that $('.open-article').hasClass('hasDemoModule')
+    handleDemoModuleArticleClose: function() { //slap this in on condition that $('.open-article').hasClass('hasDemoModule')
       //if another article is clicked, we will need to know which article to append this back onto. Probably will need to set a data-category onto the module prototype with a value of the article idString like playWithSpiralArticle to append the content back onto
-      //if (fibonacci.length === 9){}// set the display of .article-image to none in exactly the same way as we would if
+      //if (fibonacci.arrayLength === 9) {}// set the display of .article-image to none in exactly the same way as we would if
     },
 
-    drawInitialElements: function(){
+    drawInitialElements: function() {
       $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
       $('#spiral-chunk-6').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
       $('#spiral-chunk-7').wrap('<a href="" class="navlink"></a>').append('<h3 class=" internal-link navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
@@ -208,7 +208,7 @@
   content.initializeSpiral();
   content.drawInitialElements();
   $(window).on('resize', content.onWindowResize);
-  $('#spiral-holder').one('click', '.internal-link', function(event){
+  $('#spiral-holder').one('click', '.internal-link', function(event) {
     // event.preventDefault();
     content.firstNavClick(event, $(this));
   });

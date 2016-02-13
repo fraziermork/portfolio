@@ -1,5 +1,5 @@
 //constructor function
-function ProjectSummary(inputProject){
+function ProjectSummary(inputProject) {
   this.projectTitleLink = inputProject.projectTitleLink;
   this.publicationDate = inputProject.publicationDate;
   this.articleTitle = inputProject.articleTitle;
@@ -21,15 +21,15 @@ ProjectSummary.prototype.returnProjectSummary = function() {
 projectSummaries = {
   projects: []
 };
-projectSummaries.drawProjectSummaries = function(){
+projectSummaries.drawProjectSummaries = function() {
   var $projects = $('#projects');
-  projectData.sort(function(a,b){
+  projectData.sort(function(a,b) {
     return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
   });
-  projectData.forEach(function(inputProject){
+  projectData.forEach(function(inputProject) {
     projectSummaries.projects.push(new ProjectSummary(inputProject));
   });
-  projectSummaries.projects.forEach(function(thisProjectObject){
+  projectSummaries.projects.forEach(function(thisProjectObject) {
     $projects.append(thisProjectObject.returnProjectSummary());
   });
 };

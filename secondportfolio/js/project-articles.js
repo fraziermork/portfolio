@@ -1,7 +1,7 @@
-(function(module){
+(function(module) {
 
   //constructor function
-  function ProjectSummary(inputProject){
+  function ProjectSummary(inputProject) {
     this.articleTitleLink = inputProject.articleTitleLink;
     this.publicationDate = inputProject.publicationDate;
     this.articleTitle = inputProject.articleTitle;
@@ -23,44 +23,44 @@
 
   //build the page content and store the completed article objects
 
-  ProjectSummary.drawProjectSummaries = function(projectData){
+  ProjectSummary.drawProjectSummaries = function(projectData) {
     var $projectArticleSection = $('#project-article-section');
-    projectData.sort(function(a,b){
+    projectData.sort(function(a,b) {
       return (new Date(b.publicationDate)) - (new Date(a.publicationDate));
     });
 
-    ProjectSummary.all = projectData.map(function(inputProject){
+    ProjectSummary.all = projectData.map(function(inputProject) {
       return new ProjectSummary(inputProject);
     });
 
-    ProjectSummary.all.forEach(function(thisProjectObject){
+    ProjectSummary.all.forEach(function(thisProjectObject) {
       $projectArticleSection.append(thisProjectObject.returnProjectSummary());
     });
 
-    var totalWordsOnPage = ProjectSummary.all.reduce(function(previous, current, index, array){
+    var totalWordsOnPage = ProjectSummary.all.reduce(function(previous, current, index, array) {
       return previous + current.totalWords;
     }, 0);
     $('footer').append('<p>' + totalWordsOnPage + ' total words. </p>');
   };
 
-  ProjectSummary.makeAjaxCall = function(){
+  ProjectSummary.makeAjaxCall = function() {
     console.log('going to make ajax call');
-    if (localStorage.rawData){
+    if (localStorage.rawData) {
       console.log('stuff in storage');
       $.ajax({
         type: 'HEAD',
         url: 'js/project-data.json',
-        success: function(data, message, xhr){
+        success: function(data, message, xhr) {
           console.log(data);
           console.log(message);
           console.log(xhr);
           var eTag = xhr.getResponseHeader('eTag');
-          if (! localStorage.eTag || localStorage.eTag !== eTag){
+          if (! localStorage.eTag || localStorage.eTag !== eTag) {
             localStorage.eTag = eTag;
             $.ajax({
               type: 'GET',
               url: 'js/project-data.json',
-              success: function(data, message, xhr){
+              success: function(data, message, xhr) {
                 localStorage.setItem('rawData', JSON.stringify(data));
                 localStorage.setItem('eTag', xhr.getResponseHeader('eTag'));
                 ProjectSummary.initializePage();
@@ -76,7 +76,7 @@
       $.ajax({
         type: 'GET',
         url: 'js/project-data.json',
-        success: function(data, message, xhr){
+        success: function(data, message, xhr) {
           console.log(data);
           console.log(message);
           console.log(xhr);
@@ -88,7 +88,7 @@
     }
   };
 
-  ProjectSummary.initializePage = function(){
+  ProjectSummary.initializePage = function() {
     console.log('initializePage');
     console.log(JSON.parse(localStorage.rawData));
     ProjectSummary.drawProjectSummaries(JSON.parse(localStorage.rawData));
@@ -102,7 +102,7 @@
 }(window));
 
 
-// $(function(){
+// $(function() {
 //
 //   // projectSummaries.drawProjectSummaries();
 // });
