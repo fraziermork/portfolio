@@ -1,6 +1,6 @@
-(function(module){
+(function(module) {
 
-  function SpiralChunk(iterator, sidelength, direction, borderColor){
+  function SpiralChunk(iterator, sidelength, direction, borderColor) {
     this.spiralChunkNumber = iterator;
     this.sidelength = sidelength;
     this.direction = direction;
@@ -13,28 +13,28 @@
     this.absHorizontalPosition = 0;
   }
 
-  SpiralChunk.prototype.initializeDivTypeAndIds = function(){
+  SpiralChunk.prototype.initializeDivTypeAndIds = function() {
     this['spiral-chunk-wrapper-id'] = 'spiral-chunk-wrapper-' + this.spiralChunkNumber;
     this['spiral-chunk-id'] = 'spiral-chunk-' + this.spiralChunkNumber;
-    if (this.direction === 'counterClockWise'){
+    if (this.direction === 'counterClockWise') {
       this['divType'] = fibonacci.divtypesCCW[0][this.spiralChunkNumber % 4];
       this.borderRadiusPlacement = fibonacci.divtypesCCW[1][this.spiralChunkNumber % 4];
     }
     this.percentSize = (0.9 * 100 * this.sidelength / fibonacci.totalWidth);
-    if (this.divType === 'bottom' || this.divType === 'right'){
+    if (this.divType === 'bottom' || this.divType === 'right') {
       this.verticalPositionType = 'bottom';
-    } else if (this.divType === 'top' || this.divType === 'left'){
+    } else if (this.divType === 'top' || this.divType === 'left') {
       this.verticalPositionType = 'top';
     }
-    if (this.divType === 'bottom' || this.divType === 'left'){
+    if (this.divType === 'bottom' || this.divType === 'left') {
       this.horizontalPositionType = 'left';
-    } else if (this.divType === 'top' || this.divType === 'right'){
+    } else if (this.divType === 'top' || this.divType === 'right') {
       this.horizontalPositionType = 'right';
     }
   };
 
   var fibonacci = {
-    length: 9,
+    arrayLength: 9,
     numberArray: [1],
     spiralChunkList: [],
     totalHeight: 0,
@@ -45,69 +45,70 @@
     divtypesCCW:[['bottom', 'right', 'top', 'left'],['border-bottom-left-radius', 'border-bottom-right-radius', 'border-top-right-radius', 'border-top-left-radius']],
     divtypesCW:[['bottom', 'left', 'top', 'right'],['border-top-right-radius', 'border-bottom-right-radius', 'border-bottom-left-radius', 'border-top-left-radius']],//might need to flip placement of 1st and 3rd element
 
-    resetFibonacci: function(newLength){
-      fibonacci.length = newLength;
+    resetFibonacci: function(newLength) {
+      fibonacci.arrayLength = newLength;
       fibonacci.numberArray = [1];
       fibonacci.spiralChunkList = [];
     },
 
-    populateNumberArray: function(){
+    populateNumberArray: function(length ) {
       var thisNumber=1;
       var lastNumber=0;
-      var newNumber;
-      for (var i = 0; i < fibonacci.length - 1; i++){
+      var newNumber, array = [1];
+      for (var i = 0; i < length - 1; i++) {
         newNumber = lastNumber + thisNumber;
-        fibonacci.numberArray.push(newNumber);
+        array.push(newNumber);
         lastNumber = thisNumber;
         thisNumber = newNumber;
       }
+      return array;
     },
 
-    determineSize: function(){
-      if (fibonacci.length > 1){
-        if (fibonacci.length % 2 === 0){
-          fibonacci.totalHeight = fibonacci.numberArray[fibonacci.length - 1];
-          fibonacci.totalWidth = fibonacci.numberArray[fibonacci.length - 1] + fibonacci.numberArray[fibonacci.length - 2];
+    determineSize: function(array) {
+      var totalHeight, totalWidth;
+      if (array.length > 1) {
+        if (array.length % 2 === 0) {
+          totalHeight = array[array.length - 1];
+          totalWidth = array[array.length - 1] + array[array.length - 2];
         } else {
-          fibonacci.totalHeight = fibonacci.numberArray[fibonacci.length - 1] + fibonacci.numberArray[fibonacci.length - 2];
-          fibonacci.totalWidth = fibonacci.numberArray[fibonacci.length - 1];
+          totalHeight = array[array.length - 1] + array[array.length - 2];
+          totalWidth = array[array.length - 1];
         }
       } else {
-        fibonacci.totalHeight = fibonacci.numberArray[0];
-        fibonacci.totalWidth = fibonacci.numberArray[0];
+        totalHeight = array[0];
+        totalWidth = array[0];
       }
-      fibonacci.aspectRatio = Math.ceil(fibonacci.totalHeight/fibonacci.totalWidth);
+      return [totalWidth, totalHeight];
     },
 
-    populateSpiralChunkList: function(){
-      var topPos = 0, leftPos = 0, bottomPos = 0, rightPos = 0;
-      fibonacci.numberArray.forEach(function(currentFibonacciArrayValue, idx, array){
-        var currentSpiralChunk = new SpiralChunk( idx, currentFibonacciArrayValue, fibonacci.direction, 'black');
+    populateSpiralChunkList: function(array, direction, color) {
+      return array.map(function(currentFibonacciArrayValue, idx, array) {
+        var currentSpiralChunk = new SpiralChunk( idx, currentFibonacciArrayValue, direction, color);
         currentSpiralChunk.initializeDivTypeAndIds();
-        fibonacci.spiralChunkList.push(currentSpiralChunk);
+        return currentSpiralChunk;
       });
     },
 
-    setSpiralChunkPosition: function(inputChunk, idx){
+    setSpiralChunkPosition: function(inputChunk, idx) {
       var vertPos = fibonacci.spiralChunkList.slice(idx + 1)
-      .filter(function(element, index, array){
+      .filter(function(element, index, array) {
         return element.divType === inputChunk.verticalPositionType;
-      }).reduce(function(previous, current, index, array){
+      }).reduce(function(previous, current, index, array) {
         return previous += current.sidelength;
       }, 0);
-      if (inputChunk.verticalPositionType === 'bottom'){
+      if (inputChunk.verticalPositionType === 'bottom') {
         inputChunk.verticalPosition = fibonacci.totalHeight - inputChunk.sidelength - vertPos;
         inputChunk.verticalPositionType = 'top';
       } else {
         inputChunk.verticalPosition = vertPos;
       }
       var horizPos = fibonacci.spiralChunkList.slice(idx + 1)
-      .filter(function(element, index, array){
+      .filter(function(element, index, array) {
         return element.divType === inputChunk.horizontalPositionType;
-      }).reduce(function(previous, current, index, array){
+      }).reduce(function(previous, current, index, array) {
         return previous += current.sidelength;
       }, 0);
-      if (inputChunk.horizontalPositionType === 'right'){
+      if (inputChunk.horizontalPositionType === 'right') {
         inputChunk.horizontalPosition = fibonacci.totalWidth - inputChunk.sidelength - horizPos;
         inputChunk.horizontalPositionType = 'left';
       } else {
@@ -115,29 +116,32 @@
       }
     },
 
-    drawSpiralChunks: function(){
+    drawSpiralChunks: function(array) {
       var $spiralHolder = $('#spiral-holder');
       var template = Handlebars.compile( $('#spiral-chunk-template').html() );
-      fibonacci.spiralChunkList.forEach(fibonacci.setSpiralChunkPosition);
-      fibonacci.spiralChunkList.forEach(function(inputChunk, idx){
+      array.forEach(fibonacci.setSpiralChunkPosition);
+      array.forEach(function(inputChunk, idx) {
         var newChunk = template(inputChunk);
         $spiralHolder.append(newChunk);
         inputChunk.absVerticalPosition = (0.9 * 100 * inputChunk.verticalPosition / fibonacci.totalWidth);
         inputChunk.absHorizontalPosition = (0.9 *100 * inputChunk.horizontalPosition / fibonacci.totalWidth);
         var unit = 'vw';
         $('#' + inputChunk['spiral-chunk-wrapper-id']).width( inputChunk.percentSize + unit ).css('top', inputChunk.absVerticalPosition + unit).css('left', inputChunk.absHorizontalPosition + unit);
-        if (idx !== 0){
+        if (idx !== 0) {
           $('#' + inputChunk['spiral-chunk-id']).css(inputChunk.borderRadiusPlacement, '100%');
         }
       });
-      $( '#' + fibonacci.spiralChunkList[fibonacci.spiralChunkList.length - 1]['spiral-chunk-id']).addClass('round-border');
+      $( '#' + array[array.length - 1]['spiral-chunk-id']).addClass('round-border');
     },
 
-    setUpSpiral: function(){
-      fibonacci.populateNumberArray();
-      fibonacci.determineSize();
-      fibonacci.populateSpiralChunkList();
-      fibonacci.drawSpiralChunks();
+    setUpSpiral: function() {
+      fibonacci.numberArray = fibonacci.populateNumberArray(fibonacci.arrayLength);
+      var heightWidth = fibonacci.determineSize(fibonacci.numberArray);
+      console.log(heightWidth);
+      fibonacci.totalWidth = heightWidth[0];
+      fibonacci.totalHeight = heightWidth[1];
+      fibonacci.spiralChunkList = fibonacci.populateSpiralChunkList(fibonacci.numberArray, fibonacci.direction, 'black');
+      fibonacci.drawSpiralChunks(fibonacci.spiralChunkList);
     },
   };
 

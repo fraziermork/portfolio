@@ -6,7 +6,7 @@ $.ajax({
   headers:{
     'Authorization': 'token ' + token
   },
-  success: function(data, message, xhr){
+  success: function(data, message, xhr) {
     console.log('data is');
     console.log(data);
     console.log('message is');

@@ -1,10 +1,10 @@
-(function(module){
+(function(module) {
   var topNavBarObject = {};
 
-  topNavBarObject.handleTopNav = function(){
-    $('.top-navbar').on('click','.navbar-link', function(event){
+  topNavBarObject.handleTopNav = function() {
+    $('.top-navbar').on('click','.navbar-link', function(event) {
       $('.page-content').hide();
-      if( $(this).attr('data-nav')){
+      if( $(this).attr('data-nav')) {
         event.preventDefault();
         var sectionId = '#' + $(this).attr('data-nav');
         $(sectionId).fadeIn();
@@ -18,6 +18,6 @@
 }(window))
 
 
-// $(function(){
+// $(function() {
 //   topNavBarObject.handleTopNav();
 // });
