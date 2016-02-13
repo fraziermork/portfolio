@@ -128,7 +128,10 @@
         var newChunk = template(inputChunk);
         $spiralHolder.append(newChunk);
         var unit = 'vw';
-        $('#' + inputChunk['spiral-chunk-wrapper-id']).width( inputChunk.percentSize + unit ).css('top', inputChunk.absVerticalPosition + unit).css('left', inputChunk.absHorizontalPosition + unit);
+        $('#' + inputChunk['spiral-chunk-wrapper-id'])
+          .width( inputChunk.percentSize + unit )
+          .css('top', inputChunk.absVerticalPosition + unit)
+          .css('left', inputChunk.absHorizontalPosition + unit);
         if (idx !== 0) {
           $('#' + inputChunk['spiral-chunk-id']).css(inputChunk.borderRadiusPlacement, '100%');
         }
