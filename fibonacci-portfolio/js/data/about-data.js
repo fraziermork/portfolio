@@ -10,7 +10,7 @@ aboutData = [
     idString: 'aboutFrazierArticle',
     linkId: 'myGithubLink',
     articleOptions: [{articleOptionClass: 'contactMe article-option', articleOptionId: 'contactMe', optionText: 'Contact me'}],
-    optionalArticleClass: 'hasDemoModule'
+    // optionalArticleClass: 'hasDemoModule'
   },
   {
     articleTitle: 'ABOUT THIS SITE',

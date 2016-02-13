@@ -63,11 +63,17 @@
   display: flex;
   border-width: 1px 1px 4px 4px;
   border-color: #FFECA7;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   /*border-color: #333 #333 #FFECA7 #FFECA7;*/
   /*border-top-color: white;*/
   /*known issue in chrome is that they render border colors wrong for elements with more than one border color and rounded borders*/
   /*https://code.google.com/p/chromium/issues/detail?id=106028*/
+}
+#spiral-chunk-wrapper-8{
+  margin-bottom: 5%;
+}
+#spiral-chunk-wrapper-9{
+  margin-bottom: 5%;
 }
 #spiral-chunk-8 .page-content{
   border-top-right-radius: 5vw;
@@ -76,7 +82,7 @@
 #spiral-chunk-9{
   border-width: 1px 4px 4px 1px;
   border-color: #FFECA7;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   display: flex;
   justify-content: center;
 }
