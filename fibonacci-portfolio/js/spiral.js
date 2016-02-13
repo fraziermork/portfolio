@@ -89,42 +89,44 @@
       });
     },
 
-    setSpiralChunkPosition: function(inputChunk, idx) {
-      var vertPos = fibonacci.spiralChunkList.slice(idx + 1)
-      .filter(function(element, index, array) {
-        return element.divType === inputChunk.verticalPositionType;
+    setSpiralChunkPosition: function(inputChunk, idx, array, width, height) {
+      var vertPos = array.slice(idx + 1)
+      .filter(function(chunk, index, array) {
+        return chunk.divType === inputChunk.verticalPositionType;
       }).reduce(function(previous, current, index, array) {
         return previous += current.sidelength;
       }, 0);
       if (inputChunk.verticalPositionType === 'bottom') {
-        inputChunk.verticalPosition = fibonacci.totalHeight - inputChunk.sidelength - vertPos;
+        inputChunk.verticalPosition = height - inputChunk.sidelength - vertPos;
         inputChunk.verticalPositionType = 'top';
       } else {
         inputChunk.verticalPosition = vertPos;
       }
-      var horizPos = fibonacci.spiralChunkList.slice(idx + 1)
-      .filter(function(element, index, array) {
-        return element.divType === inputChunk.horizontalPositionType;
+      var horizPos = array.slice(idx + 1)
+      .filter(function(chunk, index, array) {
+        return chunk.divType === inputChunk.horizontalPositionType;
       }).reduce(function(previous, current, index, array) {
         return previous += current.sidelength;
       }, 0);
       if (inputChunk.horizontalPositionType === 'right') {
-        inputChunk.horizontalPosition = fibonacci.totalWidth - inputChunk.sidelength - horizPos;
+        inputChunk.horizontalPosition = width - inputChunk.sidelength - horizPos;
         inputChunk.horizontalPositionType = 'left';
       } else {
         inputChunk.horizontalPosition = horizPos;
       }
+      inputChunk.absVerticalPosition = (0.9 * 100 * inputChunk.verticalPosition / width);
+      inputChunk.absHorizontalPosition = (0.9 *100 * inputChunk.horizontalPosition / width);
     },
 
     drawSpiralChunks: function(array) {
       var $spiralHolder = $('#spiral-holder');
       var template = Handlebars.compile( $('#spiral-chunk-template').html() );
-      array.forEach(fibonacci.setSpiralChunkPosition);
+      array.forEach(function(inputChunk, idx, array){
+        fibonacci.setSpiralChunkPosition(inputChunk, idx, array, fibonacci.totalWidth, fibonacci.totalHeight);
+      });
       array.forEach(function(inputChunk, idx) {
         var newChunk = template(inputChunk);
         $spiralHolder.append(newChunk);
-        inputChunk.absVerticalPosition = (0.9 * 100 * inputChunk.verticalPosition / fibonacci.totalWidth);
-        inputChunk.absHorizontalPosition = (0.9 *100 * inputChunk.horizontalPosition / fibonacci.totalWidth);
         var unit = 'vw';
         $('#' + inputChunk['spiral-chunk-wrapper-id']).width( inputChunk.percentSize + unit ).css('top', inputChunk.absVerticalPosition + unit).css('left', inputChunk.absHorizontalPosition + unit);
         if (idx !== 0) {
