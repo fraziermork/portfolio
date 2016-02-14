@@ -48,17 +48,18 @@
         console.log('currentSection is ' + currentSection);
         $('#spiral-holder').empty();
         fibonacci.setUpSpiral();
+        $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader nav-highlightable" id="navheader-github">G H U B</h3>');
         content.setUpPageContent();
         $('.internal-link[data-nav="' + currentSection + '"]').click();
         if (openArticle.length) {
           $('#' + openArticle).click();
           content.redrawFlag = true;
         }
-        $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader" id="navheader-github">G H U B</h3>');
       }
     },
 
     setUpPageContent: function() {
+      console.log('setUpPageContent called');
       var navbar = Handlebars.compile($('#navbar-template').html());
       $('#spiral-chunk-6').append(navbar);
       $('#navbar-list').slideToggle();
