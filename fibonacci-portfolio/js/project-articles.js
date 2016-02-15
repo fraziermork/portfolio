@@ -57,6 +57,7 @@ Article.buildFromSessionStorage = function(){
       console.log($currentArticle);
       $currentSection.append(current.returnNewArticle());
       var $currentArticle = $('#' + current.idString);
+      //need to rewrite this and the data in JSON file so that I can order these in the order they should come in without needing 1-1 image to article options
       current.articleImage.forEach(function(thisImage, index, array) {
         console.log('thisImage is');
         console.log(thisImage);
@@ -67,25 +68,6 @@ Article.buildFromSessionStorage = function(){
       });
     });
   });
-  // contentSections.forEach(function(current, index, array){
-  //   Article.instantiateArticleObjects(current[1], arrayName);
-  // });
-  //
-  // Article.instantiateArticleObjects(data[key][1], arrayName);
-  // console.log(Article[arrayName]);
-  // var $currentSection = $('#' + data[key][0]);
-  // var imageTemplate = Handlebars.compile($('#article-image-template').html());
-  // var optionTemplate = Handlebars.compile($('#article-option-template').html());
-  // Article[arrayName].forEach(function(thisProjectObject) {
-  //   $currentSection.append(thisProjectObject.returnNewArticle());
-  //   var $thisProject = $('#' + thisProjectObject.idString);
-  //   thisProjectObject.articleImage.forEach(function(thisImage, index, array) {
-  //     if (thisProjectObject.articleOptions) {
-  //       $thisProject.append(optionTemplate(thisProjectObject.articleOptions[index]));
-  //     }
-  //     $thisProject.append(imageTemplate(thisImage));
-  //   });
-  // });
 };
 
 Article.ensureData = function(sections, callback) {
@@ -114,6 +96,9 @@ Article.ensureData = function(sections, callback) {
         console.log(contentSections);
         sessionStorage.setItem('contentSections', JSON.stringify(contentSections));
         Article.buildFromSessionStorage();
+        content.completeArticles();
+
+        //callback from setUpPageContent, expect either navclick or bit at end of redrawSpiral to click appropriate sections
         callback();
       },
       error: function(xhr, textStatus, errorThrown) {
@@ -152,10 +137,7 @@ Article.constructArticles = function(sections) {
         }
         $thisProject.append(imageTemplate(thisImage));
       });
-
-
     });
-
   });
 };
 
