@@ -92,7 +92,7 @@
     console.log('initializePage');
     console.log(JSON.parse(localStorage.rawData));
     ProjectSummary.drawProjectSummaries(JSON.parse(localStorage.rawData));
-    topNavBarObject.handleTopNav();
+    // topNavBarObject.handleTopNav();
   };
 
 
