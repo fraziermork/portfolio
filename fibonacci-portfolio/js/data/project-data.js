@@ -42,5 +42,16 @@ projectsData = [
     articleContent: "This was the final project I built as part of Codefellows 201 in a four person team. It uses the Zillow API, the Google maps API, and local storage.",
     idString: 'checkMyRentArticle',
     linkId: 'rentRipoffLink'
-  }
+  },
+  // {
+  //   articleTitle: 'HANGMAN',
+  //   articleIconClass: 'icon-calculator',
+  //   articleCategory: 'demonstration',
+  //   articleImage: [{url:'img/project-images/Hangman.png'}],
+  //   datePublished: '2016-02-14',
+  //   articleTitleLink: 'https://github.com/fraziermork/canvas-hangman',
+  //   articleContent: "I'm building a calculator as a learning exercise. It's mostly complete, but there are still enough bugs to keep it interesting.",
+  //   idString: 'calculatorArticle',
+  //   linkId: 'calculatorLink'
+  // },
 ];
