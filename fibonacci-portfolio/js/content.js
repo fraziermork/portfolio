@@ -50,6 +50,8 @@
         fibonacci.setUpSpiral();
         $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink"></a>').append('<h3 class="external-link navheader nav-highlightable" id="navheader-github">G H U B</h3>');
         content.setUpPageContent();
+
+        //needs to be given to ensuredata callback
         $('.internal-link[data-nav="' + currentSection + '"]').click();
         if (openArticle.length) {
           $('#' + openArticle).find('.article-title').click();
@@ -58,7 +60,7 @@
       }
     },
 
-    setUpPageContent: function() {
+    setUpPageContent: function( callback) {
       console.log('setUpPageContent called');
       var navbar = Handlebars.compile($('#navbar-template').html());
       $('#spiral-chunk-6').append(navbar);
@@ -71,14 +73,16 @@
         $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>').removeClass('div-highlightable');
       }
       $('#spiral-chunk-6').on('click', '.internal-link', function(event) {
-        content.navClick(event, $(this));
+        event.preventDefault();
+        content.navClick($(this));
       });
 
 
       Article.constructArticles(Article.pageContentSections);
       content.completeArticles();
-      // Article.ensureData(Article.pageContentSections, content.completeArticles);
-
+      // Article.ensureData(Article.pageContentSections, Article.callbackFunction);
+      // Article.ensureData(Article.pageContentSections, callback);
+      //replace content.completeArticles with a callback supplied to setUpPageContent
     },
 
 
@@ -105,11 +109,12 @@
       $internalLink.parent().empty();
 
       content.setUpPageContent();
-      content.navClick(event, $clickedInternalLink);
+      //callback likely to be function(){content.navClick($clickedInternalLink)}
+      //need to be able to pass this as a callback to ensure data callback
+      content.navClick($clickedInternalLink);
     },
 
-    navClick: function(event, $clickedInternalLink) {
-      event.preventDefault();
+    navClick: function($clickedInternalLink) {
       var $spiralChunk7 = $('#spiral-chunk-7');
       var $spiralChunk8 = $('#spiral-chunk-8');
       var $spiralChunk9 = $('#spiral-chunk-9');
@@ -170,6 +175,12 @@
       }
       // var displayType = $('#projects-section').css('display');
       // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
+    },
+
+    //the purpose of this function is to keep track of which articles have been clicked so that the back button can work
+    updateHistory: function(){
+      //every time an article or a navlink is clicked, it needs to update the most recent article and navlink in sessionStorage
+      //when the back button is clicked, all it needs to do is generate click events on the appropriate navlink and article
     },
 
     handleDemoModuleCreation: function(inputProject, demoModule) { // use this to handle drawing inserted modules into the box below the article
