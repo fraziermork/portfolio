@@ -190,8 +190,8 @@ For this assignment, you will be refactoring your portfolio to better fit the OO
  - Have fun, be creative, and take your code to the next level!
 
 
- class-10:
- # Assignment for Class 10 - Pair Project
+class-10:
+# Assignment for Class 10 - Pair Project
 
 Apply what you've learned. With a pair, dive into a new code base. Learn your way around, and refactor the app with the principles you've learned over the past 2 weeks.
 
@@ -214,3 +214,14 @@ Write your own user stories as you explore the new code base.
  - Make the site responsive, for mobile and desktop.
  - Persist any user-generated data and user selections.
  - Use AJAX to load any significant data sources.  - Cache data where appropriate.
+
+
+
+class-11:
+# Portfolio Assignment for Class 11 - Single-Page Apps
+
+We converted the blog into a SPA by using the page.js library to capture clicks and execute a function to modify the page, rather than reloading content from a server.
+
+Give your portfolio the same treatment. Update your main nav so that each clickable item is a link to a different url, that is handled by a function as indicated by page.js.
+
+Keep your code organized in a M-V-C structure that isolates data management from presentation layer, from the controller that holds it all together.
