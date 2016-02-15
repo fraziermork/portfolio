@@ -65,38 +65,29 @@
       $('#navbar-list').slideToggle();
       $('#navheader-github').addClass('nav-highlightable');
       $('#spiral-chunk-8').append('<div class="page-content" id="projects-section"></div><div class="page-content" id="about-section"></div><div class="page-content" id="features-section"></div>');
-      Article.constructArticles(Article.pageContentSections);
       $('body').append('<a href=""><h3 class="backButton nav-highlightable" id="backButton"> &#60</h3></a>');
       if (fibonacci.arrayLength === 10) {
         console.log('fibonacci.arrayLength = 10, will use main-image');
         $('#spiral-chunk-9').append('<div class="main-image-holder"><div class="main-image"></div></div>').removeClass('div-highlightable');
       }
-
       $('#spiral-chunk-6').on('click', '.internal-link', function(event) {
         content.navClick(event, $(this));
       });
+      Article.constructArticles(Article.pageContentSections);
 
-      // $('.page-content').on('click', function(event){
-      //   event.preventDefault();
-      //   console.log($(this));
-      // });
 
+
+    },
+
+
+    //this will be the callback function to run after the AJAX call
+    completeArticles: function() {
       $('.article-title').on('click', function(event){
         event.preventDefault();
         console.log($(this));
         content.handleProjectClick($(this), event);
       });
 
-      // $('.page-content').on('click', 'article', function(event) {
-      //   if (! event.target.classList.contains('article-subtitle')) {
-      //     event.preventDefault();
-      //   }
-      //   content.handleProjectClick($(this), event);
-      // });
-      content.individualizeArticles();
-    },
-
-    individualizeArticles: function() {
       $('.bugCollectionOption').on('click mouseenter', function() {
         if (fibonacci.arrayLength === 10) {
           $('.main-image').css('background-image', 'url(img/bug-collection/'+ $(this)[0].id + '.png)');
@@ -142,21 +133,8 @@
     //Switched from using event delegation for this to not using event delegation because it gets infinitely more complicated when demo modules are included that also have click events attached
     handleProjectClick: function($clickedArticleTitle, event) {
       console.log('handleProjectClick called ');
-
       var $clickedArticle = $clickedArticleTitle.parents('.project-article');
       console.log($clickedArticle);
-      // console.log(event.target);
-      // if (event.target.classList.contains('dontCloseOnClick')) {
-      //   // if(event.target.id === 'playWithSpiralFormSubmit') {
-      //     // colorThemes.onSubmit();
-      //   // }
-      // } else if ($this.hasClass('hasDemoModule')) {
-      //   console.log('hasDemoModule clicked');
-      //
-      // } else {
-      // }
-
-
       var imageSrc;
       console.log('imageSrc is ' + imageSrc);
       if (fibonacci.arrayLength === 10) {
@@ -188,10 +166,8 @@
         $clickedArticle.find('.article-body').slideToggle();
         $clickedArticle.find('.article-option').slideToggle();
       }
-
-
-        // var displayType = $('#projects-section').css('display');
-        // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
+      // var displayType = $('#projects-section').css('display');
+      // $('#projects-section').height(projectSummaries.getTotalHeight() + 250).css('display', displayType);
     },
 
     handleDemoModuleCreation: function(inputProject, demoModule) { // use this to handle drawing inserted modules into the box below the article
