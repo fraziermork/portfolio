@@ -102,8 +102,7 @@
       // colorThemes.buildForm();
     },
 
-    firstNavClick: function(event, $clickedInternalLink) {
-      event.preventDefault();
+    firstNavClick: function($clickedInternalLink) {
       var $internalLink = $('.internal-link');
       $internalLink.parent().unwrap();
       $internalLink.parent().empty();
@@ -221,7 +220,7 @@
   content.drawInitialElements();
   $(window).on('resize', content.onWindowResize);
   $('#spiral-holder').one('click', '.internal-link', function(event) {
-    // event.preventDefault();
-    content.firstNavClick(event, $(this));
+    event.preventDefault();
+    content.firstNavClick($(this));
   });
 })(window);
