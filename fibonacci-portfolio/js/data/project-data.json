@@ -1,6 +1,7 @@
 [
   {
     "articleTitle": "SNAKE",
+    "contentSection": "projects-section",
     "articleIconClass":"con-pacman",
     "articleCategory": "game",
     "articleImage": [{"url":"img/project-images/snake.png"}],
@@ -12,6 +13,7 @@
   },
   {
     "articleTitle": "CALCULATOR",
+    "contentSection": "projects-section",
     "articleIconClass": "icon-calculator",
     "articleCategory": "demonstration",
     "articleImage": [{"url":"img/project-images/calculator.png"}],
@@ -23,6 +25,7 @@
   },
   {
     "articleTitle": "CLOCKS",
+    "contentSection": "projects-section",
     "articleIconClass": "icon-clock",
     "articleCategory": "demonstration",
     "articleImage": [{"url":"img/project-images/clock.png"}],
@@ -34,6 +37,7 @@
   },
   {
     "articleTitle": "CHECK MY RENT",
+    "contentSection": "projects-section",
     "articleIconClass": "icon-office",
     "articleCategory": "utility",
     "articleImage": [{"url":"img/project-images/rentripoff.png"}],

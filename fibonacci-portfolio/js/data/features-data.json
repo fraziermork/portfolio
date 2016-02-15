@@ -1,6 +1,7 @@
 [
   {
     "articleTitle": "PLAY WITH THE SPIRAL",
+    "contentSection": "features-section",
     "articleSubtitle": "Change how this page looks",
     "articleIconClass":"icon-user-suit",
     "articleCategory": "demonstration",
@@ -13,6 +14,7 @@
   },
   {
     "articleTitle": "BUG COLLECTION",
+    "contentSection": "features-section",
     "articleSubtitle": "Immortalizing my mistakes",
     "articleIconClass":"icon-user-suit",
     "articleCategory": "about",

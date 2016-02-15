@@ -73,9 +73,11 @@
       $('#spiral-chunk-6').on('click', '.internal-link', function(event) {
         content.navClick(event, $(this));
       });
+
+
       Article.constructArticles(Article.pageContentSections);
-
-
+      content.completeArticles();
+      // Article.ensureData(Article.pageContentSections, content.completeArticles);
 
     },
 
