@@ -18,9 +18,9 @@
     var $pageContent = $('.page-content');
     var $spiralChunks = $('.spiral-chunk');
     var mainSpiralChunk = 'spiral-chunk-8';
-    // if (fibonacci.arrayLength === 10){
-    //   mainSpiralChunk = 'spiral-chunk-9';
-    // }
+    if (fibonacci.arrayLength === 10){
+      mainSpiralChunk = 'spiral-chunk-9';
+    }
 
     //loading /about with no prior history
     if (! $spiralChunks.length ) { //spiral is not yet built, need to make the AJAX call, build the articles, and open the about section

@@ -60,7 +60,7 @@
     });
   };
 
-  //this is run inside indexContent.makeAjaxCall to sort the project articles by publishedOn
+
 
 
   //this is the callback for indexContent.ensureArticlesInSessionStorage that builds the final interactivity only after
@@ -98,9 +98,14 @@
     console.log(pageState);
 
     if (pageState[2]){//in a page-content section, needs to run the same stuff as in pageContentController index on fresh page except that stuff is already in session storage
+      var mainSpiralChunk = 'spiral-chunk-8';
+      if (fibonacci.arrayLength === 10){
+        mainSpiralChunk = 'spiral-chunk-9';
+      }
+
       pageContent.buildTopNavbar();
       $('#spiral-chunk-5').append('<h3 class="navheader external-navheader nav-highlightable" id="navheader-github">G H U B</h3>').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
-      pageContent.buildPageContentSectionsIn('spiral-chunk-8'); //this will need to be changed once the main image holder is built
+      pageContent.buildPageContentSectionsIn(mainSpiralChunk); //this will need to be changed once the main image holder is built
       Article.buildFromSessionStorage(pageState[2]);
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[pageState[2]][0], pageState[2]);
       $('#' + pageState[2] + '-section').slideToggle();
