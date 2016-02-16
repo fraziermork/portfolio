@@ -1,0 +1,37 @@
+/*.hamburger-navbar:hover .navbar-list{
+  display: block;
+}*/
+
+@media only screen and (min-width: 500px) {
+  .spiral-sizing-box{
+    margin-top: 10%;
+  }
+  .navheader{
+      font-size: 1em;
+      margin-bottom: 10%;
+      margin-left: 10%;
+  }
+  .section-title{
+    font-size: 2em;
+    margin-bottom: 3%;
+  }
+
+}
+@media only screen and (min-width: 800px) {
+  .spiral-sizing-box{
+    margin-top: 10%;
+  }
+  .navheader{
+      font-size: .8em;
+      margin-bottom: 10%;
+      margin-left: 10%;
+  }
+  .section-title{
+    font-size: 1.5em;
+    margin-bottom: 3%;
+  }
+  #spiral-chunk-8{
+    border-width: 1px 0px 4px 4px;
+  }
+
+}
