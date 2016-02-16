@@ -1,14 +1,11 @@
 page('/', indexController.index);
 page.exit('/',indexController.onExit);
 page('/about', aboutController.index);
-page('/about/dummy', console.log('about'));
+// page('/about/dummy', console.log('about'));
 page('/features', featuresController.index);
-page('/features/dummy', console.log('features'));
+// page('/features/dummy', console.log('features'));
 page('/projects', projectsController.index);
-page('/projects/dummy', console.log('projects'));
-// page('/dummy', function(event){
-//   event.preventDefault();
-// });
+// page('/projects/dummy', console.log('projects'));
 page();
 
 

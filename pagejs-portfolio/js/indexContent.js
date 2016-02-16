@@ -74,9 +74,9 @@
     console.log('indexContent.wrapSpiralChunksInLinksAndAddEventListeners called');
     //wrap each of them in the appropriate link
     $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
-    $('#spiral-chunk-6').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //features
+    $('#spiral-chunk-6').wrap('<a href="/features" class="navlink internal-link index-link"></a>'); //features
     $('#spiral-chunk-7').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //about
-    $('#spiral-chunk-8').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //projects
+    $('#spiral-chunk-8').wrap('<a href="/projects" class="navlink internal-link index-link"></a>'); //projects
 
     //attach the event listener that allows them to move to one of the page content pages
     // var internalNavheaders = document.getElementsByClassName('internal-navheader');
@@ -136,19 +136,21 @@
   //   // page('/' + sectionToNavigateTo);
   // };
 
-
+  //this should be switched to content
   indexContent.buildPageContentSectionsIn = function(sectionToAppendToId){
     console.log('indexContent.buildPageContentSectionsIn called');
     var pageContentSections = Handlebars.compile($('#page-content-sections-template').html());
     $('#' + sectionToAppendToId).append(pageContentSections);
   };
 
+  //this should be switched to content
   indexContent.buildTopNavbar = function(){
     var topNavbar = Handlebars.compile($('#navbar-template').html());
     $('#spiral-chunk-6').append(topNavbar);
 
   };
 
+  //this should be switched to content
   indexContent.buildSectionTitle = function(title, dataNav){
     var sectionTitle = Handlebars.compile($('#section-title-template').html());
     $('#spiral-chunk-7').append(sectionTitle({'title': title, 'dataNav': dataNav}));

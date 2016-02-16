@@ -22,7 +22,9 @@
       indexContent.ensureArticlesInSessionStorage(indexContent.wrapSpiralChunksInLinksAndAddEventListeners);
     }
 
-
+    $(window).on('resize', function(){
+      console.log('window resized');
+    });
   };
 
 
