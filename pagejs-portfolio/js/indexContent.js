@@ -78,87 +78,9 @@
     $('#spiral-chunk-7').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //about
     $('#spiral-chunk-8').wrap('<a href="/projects" class="navlink internal-link index-link"></a>'); //projects
 
-    //attach the event listener that allows them to move to one of the page content pages
-    // var internalNavheaders = document.getElementsByClassName('internal-navheader');
-    // console.table(internalNavheaders);
-    // console.log(internalNavheaders.length);
-    // // note: THIS IS AN HTML COLLECTION, NOT AN ARRAY, ARRAY METHODS DO NOT WORK HERE
-    // for (var i = 0; i < internalNavheaders.length; i++) {
-    //   internalNavheaders[i].addEventListener('click', function(){
-    //     event.preventDefault();
-    //     console.log('this is', this);
-    //     console.log('this id is ' + this.id);
-    //     console.log('$(this) is ', $(this));
-    //     console.log('$(this).data("nav") is', $(this).data('nav'));
-    //     indexContent.firstNavClick($(this));
-    //     event.stopImmediatePropagation();
-    //     return false;
-    //   }, true);
-    // }
-    // internalNavheaders.forEach(function(current, index, array){
-    //   console.log('this internalNavheader is ', current);
-    //   current.addEventListener('click', function(event){
-    //     event.preventDefault();
-    //     console.log('this is', this);
-    //     console.log('this id is ' + this.id);
-    //     indexContent.firstNavClick($(this));
-    //     event.stopImmediatePropagation();
-    //     return false;
-    //   }, true);
-    // });
 
-    //THIS DOES NOT PREVENT THE DEFAULT BEHAVIOR REGARDLESS OF WHAT IS PUT IN AS THE HREF OF THE CLICKED LINKS
-    // $('.internal-navheader').one(function(event){
-    //   event.preventDefault();
-    //   console.log('$this is ', $(this));
-    //   content.firstNavClick($(this));
-    //   event.stopImmediatePropagation();
-    //   return false;
-    // });
     console.log('FINISHED BUILDING INITIAL INDEX PAGE');
   };
-
-  //needs to revert back to the basic spiral so that it is ready for page content
-  // indexContent.firstNavClick = function($clickedInternalNavHeader){
-  //   console.log('indexContent.firstNavClick  called');
-  //   //reset the spiral to its original state
-  //   var sectionToNavigateTo = $clickedInternalNavHeader.parents('.internal-link').data('nav');
-  //   var $internalNavHeader = $('.internal-navheader');
-  //   $internalNavHeader.parents('.spiral-chunk').unwrap();
-  //   $internalNavHeader.parents('.spiral-chunk').empty();
-  //
-  //   //build all the page content sections
-  //   indexContent.buildPageContentSectionsIn('spiral-chunk-8');
-  //   Article.buildFromSessionStorage();
-  //
-  //   //link prevent default not working, so having to include this one each of the Controllers instead of just the indexController
-  //   //navigate to the appropriate content section
-  //   // page('/' + sectionToNavigateTo);
-  // };
-
-  //this should be switched to content
-  indexContent.buildPageContentSectionsIn = function(sectionToAppendToId){
-    console.log('indexContent.buildPageContentSectionsIn called');
-    var pageContentSections = Handlebars.compile($('#page-content-sections-template').html());
-    $('#' + sectionToAppendToId).append(pageContentSections);
-  };
-
-  //this should be switched to content
-  indexContent.buildTopNavbar = function(){
-    var topNavbar = Handlebars.compile($('#navbar-template').html());
-    $('#spiral-chunk-6').append(topNavbar);
-
-  };
-
-  //this should be switched to content
-  indexContent.buildSectionTitle = function(title, dataNav){
-    var sectionTitle = Handlebars.compile($('#section-title-template').html());
-    $('#spiral-chunk-7').append(sectionTitle({'title': title, 'dataNav': dataNav}));
-  };
-
-
-
-
   module.indexContent = indexContent;
 })(window);
 

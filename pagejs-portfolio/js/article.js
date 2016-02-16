@@ -36,7 +36,7 @@
     var imageTemplate = Handlebars.compile($('#article-image-template').html());
     var optionTemplate = Handlebars.compile($('#article-option-template').html());
     // Article['pageContentDataArrays'] = pageContentDataArrays;
-    
+
     //take things out of local storage and build the variables needed for each page content section as a whole
     pageContentDataArrays.forEach(function(currentDataArrayName, dataArraysIndex, pageContentDataArrays){
       // var currentDataArrayName = current;
@@ -56,10 +56,10 @@
         console.log('$currentArticle is ', $currentArticle);
         //need to rewrite this and the data in JSON file so that I can order these in the order they should come in without needing 1-1 image to article options
         currentArticle.articleImage.forEach(function(currentImage, articleImageIndex, articleImageArray){
-          $currentArticle.append(imageTemplate(currentImage));
           if (currentArticle.articleOptions){
             $currentArticle.append(optionTemplate(currentArticle.articleOptions[articleImageIndex]));
           }
+          $currentArticle.append(imageTemplate(currentImage));
         });//end of for each article image
       });//end of forEach Article
     });//end of forEach page content section
