@@ -3,7 +3,7 @@
 
   aboutController.index = function(){
     console.log('aboutController.index called');
-    console.log('fibonacci.length is ' + fibonacci.length);
+    console.log('fibonacci.arrayLength is ' + fibonacci.arrayLength);
     //needs to check if the spiral exists--if not, build it and all page content and open the articles section
     //else if needs to check if pagecontent exists, if not, build pagecontent and open to the articles section
     //else just needs to open the articles section
@@ -25,7 +25,7 @@
     var $pageContent = $('.page-content');
     var $spiralChunks = $('.spiral-chunk');
     var mainSpiralChunk = 'spiral-chunk-8';
-    // if (fibonacci.length === 10){
+    // if (fibonacci.arrayLength === 10){
     //   mainSpiralChunk = 'spiral-chunk-9';
     // }
     //loading /about with no prior history

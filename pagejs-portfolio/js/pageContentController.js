@@ -8,7 +8,7 @@
 
   pageContentController.index = function(ctx, next) {
     console.log('pageContentController.index called');
-    console.log('fibonacci.length is ' + fibonacci.length);
+    console.log('fibonacci.arrayLength is ' + fibonacci.arrayLength);
     var currentPageContentSection = ctx.params.currentPageContentSection;
     console.log('currentPageContentSection is ' + currentPageContentSection);
     if (! pageContentController.sectionTitleInfo[currentPageContentSection]) {
@@ -18,7 +18,7 @@
     var $pageContent = $('.page-content');
     var $spiralChunks = $('.spiral-chunk');
     var mainSpiralChunk = 'spiral-chunk-8';
-    // if (fibonacci.length === 10){
+    // if (fibonacci.arrayLength === 10){
     //   mainSpiralChunk = 'spiral-chunk-9';
     // }
 
@@ -30,7 +30,7 @@
         pageContent.buildTopNavbar();
         $('#spiral-chunk-5').append('<h3 class="navheader external-navheader nav-highlightable" id="navheader-github">G H U B</h3>').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
         pageContent.buildPageContentSectionsIn(mainSpiralChunk);
-        Article.buildFromSessionStorage();
+        Article.buildFromSessionStorage(currentPageContentSection);
         pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
         $('#' + currentPageContentSection + '-section').slideToggle();
       });
@@ -41,7 +41,7 @@
       pageContent.buildTopNavbar();
       $('#navheader-github').addClass('nav-highlightable');
       pageContent.buildPageContentSectionsIn(mainSpiralChunk);
-      Article.buildFromSessionStorage();
+      Article.buildFromSessionStorage(currentPageContentSection);
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
       $('#' + currentPageContentSection + '-section').slideToggle();
 
@@ -57,6 +57,11 @@
     }
 
     $(window).on('resize', indexContent.onWindowResize);
+
+    //click the first article on big spiral
+    if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length){ //probably should cache this jqobject
+      $('#' + currentPageContentSection + '-section').find('.project-article:first-of-type .article-title').click();
+    }
 
     ctx.handled = true;
     next();

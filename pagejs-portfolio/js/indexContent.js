@@ -90,6 +90,7 @@
     };
   };
 
+
   indexContent.restoreHistoryState = function(){
     console.log('indexContent.restoreHistoryState called');
     var historyState = history.state.path;
@@ -100,7 +101,7 @@
       pageContent.buildTopNavbar();
       $('#spiral-chunk-5').append('<h3 class="navheader external-navheader nav-highlightable" id="navheader-github">G H U B</h3>').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
       pageContent.buildPageContentSectionsIn('spiral-chunk-8'); //this will need to be changed once the main image holder is built
-      Article.buildFromSessionStorage();
+      Article.buildFromSessionStorage(pageState[2]);
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[pageState[2]][0], pageState[2]);
       $('#' + pageState[2] + '-section').slideToggle();
       if(pageState[3]){ //on a particular project's article

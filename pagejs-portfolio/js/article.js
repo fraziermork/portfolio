@@ -36,7 +36,7 @@
   };
 
   //this will take all of the articles from session storage, instantiate instances of Article for them, compile the handlebars template, and append it to the appropriate page content section
-  Article.buildFromSessionStorage = function(){
+  Article.buildFromSessionStorage = function(sectionToClickArticleIn){
     // console.log('Article.buildFromSessionStorage called');
 
     var pageContentDataArrays = JSON.parse(sessionStorage.getItem('pageContentDataArrays'));
@@ -71,6 +71,8 @@
         });//end of for each article image
       });//end of forEach Article
     });//end of forEach page content section
+
+    
   };
 
 
