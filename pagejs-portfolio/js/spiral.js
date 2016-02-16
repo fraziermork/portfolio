@@ -34,7 +34,7 @@
   };
 
   var fibonacci = {
-    redrawScreenWidth: 800,
+    redrawScreenWidth: 800, //this needs to be kept up to data with the media query changing from small to big spiral
     arrayLength: 9,
     numberArray: [1],
     spiralChunkList: [],

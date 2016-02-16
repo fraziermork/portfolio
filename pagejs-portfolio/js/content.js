@@ -3,13 +3,16 @@
 
   //This just needs to build the initial headers for the whole navigation thing, the links around each will be added once projects are confirmed in sessionstorage
   indexContent.buildIndexPageHeaders = function(){
-    $('#spiral-chunk-5').append('<h3 class="navheader" id="navheader-github">G H U B</h3>');
-    $('#spiral-chunk-6').append('<h3 class="navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
-    $('#spiral-chunk-7').append('<h3 class="navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
-    $('#spiral-chunk-8').append('<h3 class="navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
+    console.log('indexContent.buildIndexPageHeaders called');
+
+    $('#spiral-chunk-5').append('<h3 class="navheader external-navheader" id="navheader-github">G H U B</h3>');
+    $('#spiral-chunk-6').append('<h3 class="navheader internal-navheader" id="navheader-features" data-nav="features">F E A T U R E S</h3>');
+    $('#spiral-chunk-7').append('<h3 class="navheader internal-navheader" id="navheader-about" data-nav="about">A B O U T</h3>');
+    $('#spiral-chunk-8').append('<h3 class="navheader internal-navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
   };
 
   indexContent.ensureArticlesInSessionStorage = function(callback){
+    console.log('indexContent.ensureArticlesInSessionStorage called');
     //if it's not in session storage we need to make the ajax call and wrap the spiral chunks as a callback
     if (! sessionStorage['pageContentDataArrays']){
       console.log('No pageContentDataArrays in sessionStorage');
@@ -22,6 +25,7 @@
   };
 
   indexContent.makeAjaxCall = function(callback){
+    console.log('indexContent.makeAjaxCall called');
     $.ajax({
       url: 'js/data/articles.json',
       method: 'GET',
@@ -45,7 +49,6 @@
         console.log(pageContentDataArrays);
         sessionStorage.setItem('pageContentDataArrays', JSON.stringify(pageContentDataArrays));
 
-        //callback from setUpPageContent, expect either navclick or bit at end of redrawSpiral to click appropriate sections
         callback();
       },
       error: function(xhr, textStatus, errorThrown) {
@@ -60,6 +63,7 @@
   //this is run inside indexContent.makeAjaxCall to sort the project articles by publishedOn
   indexContent.sortArticlesByDateBeforePuttingInSessionStorage = function(dataArray){
     console.log('indexContent.sortArticlesByDateBeforePuttingInSessionStorage called');
+
     dataArray.sort(function(a, b){
       return (new Date(b.datePublished)) - (new Date(a.datePublished));
     });
@@ -67,43 +71,89 @@
 
   //this is the callback for indexContent.ensureArticlesInSessionStorage that builds the final interactivity only after
   indexContent.wrapSpiralChunksInLinksAndAddEventListeners = function(){
+    console.log('indexContent.wrapSpiralChunksInLinksAndAddEventListeners called');
     //wrap each of them in the appropriate link
     $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
-    $('#spiral-chunk-6').wrap('<a href="" class="navlink internal-link"></a>');
-    $('#spiral-chunk-7').wrap('<a href="" class="navlink internal-link"></a>');
-    $('#spiral-chunk-8').wrap('<a href="" class="navlink internal-link"></a>');
+    $('#spiral-chunk-6').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //features
+    $('#spiral-chunk-7').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //about
+    $('#spiral-chunk-8').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //projects
 
     //attach the event listener that allows them to move to one of the page content pages
-    $('.internal-link').one(function(event){
-      event.preventDefault();
-      // console.log('$this is ', $(this));
-      content.firstNavClick($(this));
-    });
+    // var internalNavheaders = document.getElementsByClassName('internal-navheader');
+    // console.table(internalNavheaders);
+    // console.log(internalNavheaders.length);
+    // // note: THIS IS AN HTML COLLECTION, NOT AN ARRAY, ARRAY METHODS DO NOT WORK HERE
+    // for (var i = 0; i < internalNavheaders.length; i++) {
+    //   internalNavheaders[i].addEventListener('click', function(){
+    //     event.preventDefault();
+    //     console.log('this is', this);
+    //     console.log('this id is ' + this.id);
+    //     console.log('$(this) is ', $(this));
+    //     console.log('$(this).data("nav") is', $(this).data('nav'));
+    //     indexContent.firstNavClick($(this));
+    //     event.stopImmediatePropagation();
+    //     return false;
+    //   }, true);
+    // }
+    // internalNavheaders.forEach(function(current, index, array){
+    //   console.log('this internalNavheader is ', current);
+    //   current.addEventListener('click', function(event){
+    //     event.preventDefault();
+    //     console.log('this is', this);
+    //     console.log('this id is ' + this.id);
+    //     indexContent.firstNavClick($(this));
+    //     event.stopImmediatePropagation();
+    //     return false;
+    //   }, true);
+    // });
+
+    //THIS DOES NOT PREVENT THE DEFAULT BEHAVIOR REGARDLESS OF WHAT IS PUT IN AS THE HREF OF THE CLICKED LINKS
+    // $('.internal-navheader').one(function(event){
+    //   event.preventDefault();
+    //   console.log('$this is ', $(this));
+    //   content.firstNavClick($(this));
+    //   event.stopImmediatePropagation();
+    //   return false;
+    // });
+    console.log('FINISHED BUILDING INITIAL INDEX PAGE');
   };
 
-  //needs torevert back to the basic spiral so that it is ready for page content
-  //needs to build the sections for page content to be written into
-  //needs to instatiate all the articles and put them into their respective sections
-  indexContent.firstNavClick = function($clickedInternalNavLink){
-    //reset the spiral to its original state
-    var sectionToNavigateTo = $clickedInternalNavLink.data('nav');
-    var $internalNavLink = $('.internal-link');
-    $internalNavLink.parents('.spiral-chunk').unwrap();
-    $internalNavLink.parents('.spiral-chunk').empty();
-
-    //build all the page content sections
-    indexContent.buildPageContentSectionsIn('spiral-chunk-8');
-
-
-    //navigate to the appropriate content section
-    page('/' + sectionToNavigateTo);
-  };
+  //needs to revert back to the basic spiral so that it is ready for page content
+  // indexContent.firstNavClick = function($clickedInternalNavHeader){
+  //   console.log('indexContent.firstNavClick  called');
+  //   //reset the spiral to its original state
+  //   var sectionToNavigateTo = $clickedInternalNavHeader.parents('.internal-link').data('nav');
+  //   var $internalNavHeader = $('.internal-navheader');
+  //   $internalNavHeader.parents('.spiral-chunk').unwrap();
+  //   $internalNavHeader.parents('.spiral-chunk').empty();
+  //
+  //   //build all the page content sections
+  //   indexContent.buildPageContentSectionsIn('spiral-chunk-8');
+  //   Article.buildFromSessionStorage();
+  //
+  //   //link prevent default not working, so having to include this one each of the Controllers instead of just the indexController
+  //   //navigate to the appropriate content section
+  //   // page('/' + sectionToNavigateTo);
+  // };
 
 
   indexContent.buildPageContentSectionsIn = function(sectionToAppendToId){
-    var pageContentSections = handlebars.compile($('#page-content-sections-template').html());
+    console.log('indexContent.buildPageContentSectionsIn called');
+    var pageContentSections = Handlebars.compile($('#page-content-sections-template').html());
     $('#' + sectionToAppendToId).append(pageContentSections);
   };
+
+  indexContent.buildTopNavbar = function(){
+    var topNavbar = Handlebars.compile($('#navbar-template').html());
+    $('#spiral-chunk-6').append(topNavbar);
+
+  };
+
+  indexContent.buildSectionTitle = function(title, dataNav){
+    var sectionTitle = Handlebars.compile($('#section-title-template').html());
+    $('#spiral-chunk-7').append(sectionTitle({'title': title, 'dataNav': dataNav}));
+  };
+
 
 
 

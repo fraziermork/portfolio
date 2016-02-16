@@ -3,9 +3,10 @@
 
 
   indexController.index = function(){
+    console.log('BEGINNING TO BUILD INITIAL INDEX PAGE');
     console.log('indexController.index called');
-    var $spiralChunk = $('.spiral-chunk');
 
+    var $spiralChunk = $('.spiral-chunk');
     //if content already exists
     if ($spiralChunk.length){
       console.log('spiral chunks already exist, just going to empty them');
@@ -22,10 +23,18 @@
     }
 
 
-
-
-
   };
+
+
+  indexController.onExit = function(ctx, next){
+    console.log('indexContent.onExit called');
+    var $internalNavHeader = $('.internal-navheader');
+    $internalNavHeader.parents('.spiral-chunk').unwrap();
+    $internalNavHeader.parents('.spiral-chunk').empty();
+    next();
+  };
+
+
 
 
   module.indexController = indexController;
