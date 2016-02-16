@@ -17,7 +17,7 @@
 
   //this builds all of the articles for a particular section (projects, features, about), and puts them into an appropriate array attached to the Article object
   Article.instantiateArticleObjects = function(dataArray, articleArray) {
-    console.log('Article.instantiateArticleObjects called for ' + articleArray);
+    // console.log('Article.instantiateArticleObjects called for ' + articleArray);
     if (! Article[articleArray]) {
       Article[articleArray] = [];
       dataArray.forEach(function(inputProject) {
@@ -29,10 +29,10 @@
 
   //this will take all of the articles from session storage, instantiate instances of Article for them, compile the handlebars template, and append it to the appropriate page content section
   Article.buildFromSessionStorage = function(){
-    console.log('Article.buildFromSessionStorage called');
+    // console.log('Article.buildFromSessionStorage called');
 
     var pageContentDataArrays = JSON.parse(sessionStorage.getItem('pageContentDataArrays'));
-    console.log('contentSections is ', pageContentDataArrays);
+    // console.log('contentSections is ', pageContentDataArrays);
     var imageTemplate = Handlebars.compile($('#article-image-template').html());
     var optionTemplate = Handlebars.compile($('#article-option-template').html());
     // Article['pageContentDataArrays'] = pageContentDataArrays;
@@ -40,20 +40,20 @@
     //take things out of local storage and build the variables needed for each page content section as a whole
     pageContentDataArrays.forEach(function(currentDataArrayName, dataArraysIndex, pageContentDataArrays){
       // var currentDataArrayName = current;
-      console.log('sectionName is ' + currentDataArrayName);
+      // console.log('sectionName is ' + currentDataArrayName);
       var dataArrayFromSS = JSON.parse(sessionStorage.getItem(currentDataArrayName));
       var sectionId = dataArrayFromSS[0];
-      console.log('sectionId is ' + sectionId);
+      // console.log('sectionId is ' + sectionId);
       Article.instantiateArticleObjects(dataArrayFromSS[1], currentDataArrayName);
-      console.log('Article[currentDataArrayName] is ');
-      console.log(Article[currentDataArrayName]);
+      // console.log('Article[currentDataArrayName] is ');
+      // console.log(Article[currentDataArrayName]);
       var $currentSection = $('#' + sectionId);
       //build each individual article
       Article[currentDataArrayName].forEach(function(currentArticle, thisDataArrayIndex, thisDataArray){
-        console.log('currentArticle is ', currentArticle);
+        // console.log('currentArticle is ', currentArticle);
         $currentSection.append(currentArticle.returnNewArticle());
         var $currentArticle = $('#' + currentArticle.idString);
-        console.log('$currentArticle is ', $currentArticle);
+        // console.log('$currentArticle is ', $currentArticle);
         //need to rewrite this and the data in JSON file so that I can order these in the order they should come in without needing 1-1 image to article options
         currentArticle.articleImage.forEach(function(currentImage, articleImageIndex, articleImageArray){
           if (currentArticle.articleOptions){
