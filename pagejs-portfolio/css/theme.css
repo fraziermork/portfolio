@@ -159,7 +159,7 @@ body {
 #projects-section{
   margin-left: 5%;
   position: absolute;
-  overflow: scroll;
+  overflow: auto;
   height: 600px;
 }
 
