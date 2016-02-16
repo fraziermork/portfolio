@@ -1,9 +1,9 @@
 (function(module){
-  projectsController = {};
+  var projectsController = {};
 
 
   projectsController.index = function(){
-    console.log('hello');
+    console.log('projectsController.index caled');
 
 
   };

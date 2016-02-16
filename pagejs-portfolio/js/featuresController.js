@@ -1,9 +1,9 @@
 (function(module){
-  featuresController = {};
+  var featuresController = {};
 
 
   featuresController.index = function(){
-    console.log('hello');
+    console.log('featuresController.index called');
 
   };
 

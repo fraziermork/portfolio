@@ -30,7 +30,8 @@
     <!-- <script defer type="text/javascript" src="js/data/about-data.js"></script> -->
     <!-- <script defer type="text/javascript" src="js/data/features-data.js"></script> -->
     <!-- <script defer type="text/javascript" src="js/modules/colorthemes.js"></script> -->
-    <script defer type="text/javascript" src="js/project-articles.js"></script>
+    <!-- <script defer type="text/javascript" src="js/project-articles.js"></script> -->
+    <script defer type="text/javascript" src="js/article.js"></script>
     <script defer type="text/javascript" src="js/spiral.js"></script>
     <script defer type="text/javascript" src="js/content.js"></script>
 
@@ -52,10 +53,16 @@
 
     <script type="text/x-handlebars-template" id="navbar-template">
       <ul class="navbar-list" id="navbar-list">
-        <a href="" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="about">A B O U T</h3></li></a>
-        <a href="" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="projects">P R O J E C T S</h3></li></a>
-        <a href="" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="features">F E A T U R E S</h3></li></a>
+        <a href="/about" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="about">A B O U T</h3></li></a>
+        <a href="/projects" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="projects">P R O J E C T S</h3></li></a>
+        <a href="/features" class="navlink"><li><h3 class="internal-link navheader nav-highlightable" data-nav="features">F E A T U R E S</h3></li></a>
       </ul>
+    </script>
+
+    <script type="text/x-handlebars-template" id="page-content-sections-template">
+      <div class="page-content" id="projects-section"></div>
+      <div class="page-content" id="about-section"></div>
+      <div class="page-content" id="features-section"></div>
     </script>
 
     <script type="text/x-handlebars-template" id="section-title-template">

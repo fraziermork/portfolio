@@ -1,8 +1,8 @@
 (function(module){
-  aboutController = {};
+  var aboutController = {};
 
   aboutController.index = function(){
-    console.log('hello');
+    console.log('aboutController.index called');
 
 
   };

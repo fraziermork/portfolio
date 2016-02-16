@@ -34,6 +34,7 @@
   };
 
   var fibonacci = {
+    redrawScreenWidth: 800,
     arrayLength: 9,
     numberArray: [1],
     spiralChunkList: [],
@@ -139,10 +140,20 @@
       $( '#' + array[array.length - 1]['spiral-chunk-id']).addClass('round-border');
     },
 
+    initializeSpiral: function() {
+      console.log('fibonacci.initializeSpiral called');
+      if (window.innerWidth > fibonacci.redrawScreenWidth - 1 && fibonacci.arrayLength !== 10) {
+        fibonacci.resetFibonacci(10);
+      } else {
+        fibonacci.resetFibonacci(9);
+      }
+      fibonacci.setUpSpiral();
+    },
+
     setUpSpiral: function() {
       fibonacci.numberArray = fibonacci.populateNumberArray(fibonacci.arrayLength);
       var heightWidth = fibonacci.determineSize(fibonacci.numberArray);
-      console.log(heightWidth);
+      console.log('heightWidth is ', heightWidth);
       fibonacci.totalWidth = heightWidth[0];
       fibonacci.totalHeight = heightWidth[1];
       fibonacci.spiralChunkList = fibonacci.populateSpiralChunkList(fibonacci.numberArray, fibonacci.direction, 'black');
