@@ -3,6 +3,8 @@
   left: 0;
   height: auto;
   margin-top: 5%;
+  margin-left: 5%;
+  height: 600px;
   display: none;
   flex-direction: column;
   width: 90%;
@@ -11,6 +13,7 @@
   position: static;
   border-top-right-radius: 5vw;
   z-index: 2;
+  overflow: auto;
   justify-content: space-between;
   align-items: flex-start;
 }

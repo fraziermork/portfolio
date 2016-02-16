@@ -27,7 +27,7 @@
   indexContent.makeAjaxCall = function(callback){
     console.log('indexContent.makeAjaxCall called');
     $.ajax({
-      url: 'js/data/articles.json',
+      url: '/js/data/articles.json',
       method: 'GET',
       dataType: 'json',
       success: function(data, textStatus, xhr) {
