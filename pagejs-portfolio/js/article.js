@@ -15,6 +15,14 @@
     return articleTemplate(this);
   };
 
+  Article.sortArticlesByDateBeforePuttingInSessionStorage = function(dataArray){
+    console.log('Article.sortArticlesByDateBeforePuttingInSessionStorage called');
+
+    dataArray.sort(function(a, b){
+      return (new Date(b.datePublished)) - (new Date(a.datePublished));
+    });
+  },
+
   //this builds all of the articles for a particular section (projects, features, about), and puts them into an appropriate array attached to the Article object
   Article.instantiateArticleObjects = function(dataArray, articleArray) {
     // console.log('Article.instantiateArticleObjects called for ' + articleArray);
