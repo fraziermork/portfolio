@@ -15,6 +15,7 @@
     return articleTemplate(this);
   };
 
+  //this is run inside indexContent.makeAjaxCall to sort the project articles by publishedOn
   Article.sortArticlesByDateBeforePuttingInSessionStorage = function(dataArray){
     console.log('Article.sortArticlesByDateBeforePuttingInSessionStorage called');
 
@@ -72,7 +73,7 @@
       });//end of forEach Article
     });//end of forEach page content section
 
-    
+
   };
 
 

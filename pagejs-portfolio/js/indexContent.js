@@ -11,6 +11,7 @@
     $('#spiral-chunk-8').append('<h3 class="navheader internal-navheader" id="navheader-projects" data-nav="projects">P R O J E C T S</h3>');
   };
 
+  //Checks if there is stuff in session storage--if not, it makes the ajax call and puts it in storage, otherwise it just goes to the callback
   indexContent.ensureArticlesInSessionStorage = function(callback){
     console.log('indexContent.ensureArticlesInSessionStorage called');
     //if it's not in session storage we need to make the ajax call and wrap the spiral chunks as a callback
@@ -27,7 +28,7 @@
   indexContent.makeAjaxCall = function(callback){
     console.log('indexContent.makeAjaxCall called');
     $.ajax({
-      url: 'js/data/articles.json',
+      url: '/js/data/articles.json',
       method: 'GET',
       dataType: 'json',
       success: function(data, textStatus, xhr) {
@@ -60,7 +61,7 @@
     });
   };
 
-  //this is run inside indexContent.makeAjaxCall to sort the project articles by publishedOn
+
 
 
   //this is the callback for indexContent.ensureArticlesInSessionStorage that builds the final interactivity only after
@@ -68,11 +69,9 @@
     console.log('indexContent.wrapSpiralChunksInLinksAndAddEventListeners called');
     //wrap each of them in the appropriate link
     $('#spiral-chunk-5').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
-    $('#spiral-chunk-6').wrap('<a href="/features" class="navlink internal-link index-link"></a>'); //features
-    $('#spiral-chunk-7').wrap('<a href="/about" class="navlink internal-link index-link"></a>'); //about
-    $('#spiral-chunk-8').wrap('<a href="/projects" class="navlink internal-link index-link"></a>'); //projects
-
-
+    $('#spiral-chunk-6').wrap('<a href="/features" class="navlink internal-link index-link"></a>');
+    $('#spiral-chunk-7').wrap('<a href="/about" class="navlink internal-link index-link"></a>');
+    $('#spiral-chunk-8').wrap('<a href="/projects" class="navlink internal-link index-link"></a>');
     console.log('FINISHED BUILDING INITIAL INDEX PAGE');
   };
 
@@ -90,7 +89,7 @@
     };
   };
 
-
+  //When the window is resized, this uses the stored history state to determine whether things need to be shown
   indexContent.restoreHistoryState = function(){
     console.log('indexContent.restoreHistoryState called');
     var historyState = history.state.path;
@@ -98,20 +97,37 @@
     console.log(pageState);
 
     if (pageState[2]){//in a page-content section, needs to run the same stuff as in pageContentController index on fresh page except that stuff is already in session storage
+      var mainSpiralChunk = 'spiral-chunk-8';
+      if (fibonacci.arrayLength === 10){ //if its the big spiral
+        mainSpiralChunk = 'spiral-chunk-9';
+        $('#spiral-chunk-8').append('<div class="main-image-holder" id="main-image-holder"><div class="main-image" id="main-image"></div></div>');
+      }
       pageContent.buildTopNavbar();
       $('#spiral-chunk-5').append('<h3 class="navheader external-navheader nav-highlightable" id="navheader-github">G H U B</h3>').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
-      pageContent.buildPageContentSectionsIn('spiral-chunk-8'); //this will need to be changed once the main image holder is built
+      pageContent.buildPageContentSectionsIn(mainSpiralChunk); //this will need to be changed once the main image holder is built
       Article.buildFromSessionStorage(pageState[2]);
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[pageState[2]][0], pageState[2]);
       $('#' + pageState[2] + '-section').slideToggle();
       if(pageState[3]){ //on a particular project's article
         console.log('pageState[3] is ' + pageState[3]);
         $('#' + pageState[3]).find('.article-title').click();//as is, this probably adds the page into history again, which could be confusing, but it's a minor problem that can be fixed later
+      } else if (fibonacci.arrayLength === 10){
+        $('#' + pageState[2] + '-section').find('.project-article:first-of-type .article-title').click();
       }
     } else { //on the index page, need to run same stuff as indexController index except stuff already in session storage
       indexContent.buildIndexPageHeaders();
       indexContent.wrapSpiralChunksInLinksAndAddEventListeners();
     }
+  };
+
+  indexContent.addPageUpdatedOnText = function(portfolioDataObj){
+    console.log(new Date(portfolioDataObj.updated_at));
+    $('body').append('<meta http-equiv="last-modified" content="' + new Date(portfolioDataObj.updated_at) +'">');
+  };
+
+  indexContent.buildPageUpdatedOn = function() {
+    console.log('indexContent.buildPageUpdatedOn');
+    ghApi.getRepo('portfolio', indexContent.addPageUpdatedOnText);
   };
 
   module.indexContent = indexContent;

@@ -156,12 +156,9 @@ body {
   /*background-color:#BF6168;*/
 }
 
-#projects-section{
-  margin-left: 5%;
-  position: absolute;
-  overflow: scroll;
-  height: 600px;
-}
+/*#projects-section{
+
+}*/
 
 .highlight-brown:hover {
 

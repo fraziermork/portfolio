@@ -6,31 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fibonacci-spiral</title>
 
-    <link rel="stylesheet" href="css/base.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/layout.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/module/header.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/module/spiral.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/module/navbar.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/module/content.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="css/state.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/base.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/layout.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/theme.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/module/header.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/module/spiral.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/module/navbar.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/module/content.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/state.css" type="text/css" charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="vendor/iconstyle.css" type="text/css" charset="utf-8">
-    <link rel="stylesheet" href="vendor/normalize.css" type="text/css" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/vendor/normalize.css" type="text/css" charset="utf-8">
 
     <script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script defer type="text/javascript" src="vendor/page.js"></script>
+    <script defer type="text/javascript" src="/vendor/page.js"></script>
 
-    <script defer type="text/javascript" src="js/spiral.js"></script>
-    <script defer type="text/javascript" src="js/article.js"></script>
-    <script defer type="text/javascript" src="js/indexContent.js"></script>
-    <script defer type="text/javascript" src="js/pageContent.js"></script>
+    <script defer type="text/javascript" src="/js/github_token.js"></script>
+    <script defer type="text/javascript" src="/js/ghapi.js"></script>
 
-    <script defer type="text/javascript" src="js/indexController.js"></script>
-    <script defer type="text/javascript" src="js/pageContentController.js"></script>
-    <script defer type="text/javascript" src="js/routes.js"></script>
+    <script defer type="text/javascript" src="/js/spiral.js"></script>
+    <script defer type="text/javascript" src="/js/article.js"></script>
+    <script defer type="text/javascript" src="/js/articleIndividualization.js"></script>
+    <script defer type="text/javascript" src="/js/indexContent.js"></script>
+    <script defer type="text/javascript" src="/js/pageContent.js"></script>
+
+    <script defer type="text/javascript" src="/js/indexController.js"></script>
+    <script defer type="text/javascript" src="/js/pageContentController.js"></script>
+    <script defer type="text/javascript" src="/js/routes.js"></script>
 
 
     <script type="text/x-handlebars-template" id="spiral-chunk-template">
@@ -73,7 +76,7 @@
     </script>
 
     <script type="text/x-handlebars-template" id="article-option-template">
-      <a href="#" class="{{articleOptionClass}}" id="{{articleOptionId}}"><p class="dontCloseOnClick">{{optionText}}</p></a>
+      <p class="dontCloseOnClick fake-link {{articleOptionClass}}" id="{{articleOptionId}}">{{optionText}}</p>
     </script>
 
     <script type="text/x-handlebars-template" id="article-image-template">
