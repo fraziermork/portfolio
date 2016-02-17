@@ -6,6 +6,7 @@
     console.log('indexController.index called');
     var $spiralChunk = $('.spiral-chunk');
     indexContent.buildPageUpdatedOn();
+    indexContent.addGHTitle();
     //if content already exists and all we need to do is revert back to the index page
     if ($spiralChunk.length){
       console.log('spiral chunks already exist, just going to empty them');

@@ -33,10 +33,20 @@
     });
   };
 
-  // ghApi.sortReposByDate = function(repoNameArray){
-  //
-  //   // $.when()
-  // };
+  ghApi.queryMe = function(callback){
+    $.ajax({
+      url: 'https://api.github.com/users/fraziermork',
+      method: 'GET',
+      headers: {'Authorization': 'token ' + githubToken},
+      success: function(data, message, xhr){
+        console.log(data);
+        callback(data);
+      },
+      error: function(){
+        console.log('error making gh ajax call');
+      }});
+
+  };
 
 
   module.ghApi = ghApi;
