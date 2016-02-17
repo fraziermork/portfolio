@@ -130,5 +130,11 @@
     ghApi.getRepo('portfolio', indexContent.addPageUpdatedOnText);
   };
 
+  indexContent.addGHTitle = function() {
+    ghApi.queryMe(function(fraziermorkGHObj){
+      $('#navheader-github').attr('title', fraziermorkGHObj.public_repos + ' public repositories on GitHub');
+    });
+  };
+
   module.indexContent = indexContent;
 })(window);
