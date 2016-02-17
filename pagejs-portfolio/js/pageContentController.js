@@ -25,6 +25,7 @@
       fibonacci.initializeSpiral();
       if (fibonacci.arrayLength === 10){
         mainSpiralChunk = 'spiral-chunk-9';
+        $('#spiral-chunk-8').append('<div class="main-image-holder" id="main-image-holder"><div class="main-image" id="main-image"></div></div>');
       }
       indexContent.ensureArticlesInSessionStorage(function(){
         pageContent.buildTopNavbar();
@@ -43,6 +44,7 @@
       console.log('SPIRAL BUILT, WILL BUILD ARTICLES');
       if (fibonacci.arrayLength === 10){
         mainSpiralChunk = 'spiral-chunk-9';
+        $('#spiral-chunk-8').append('<div class="main-image-holder" id="main-image-holder"><div class="main-image" id="main-image"></div></div>');
       }
       pageContent.buildTopNavbar();
       $('#navheader-github').addClass('nav-highlightable');
@@ -90,6 +92,7 @@
         var mainSpiralChunk = 'spiral-chunk-8';
         if (fibonacci.arrayLength === 10){
           mainSpiralChunk = 'spiral-chunk-9';
+          $('#spiral-chunk-8').append('<div class="main-image-holder" id="main-image-holder"><div class="main-image" id="main-image"></div></div>');
         }
         pageContent.buildTopNavbar();
         $('#spiral-chunk-5').append('<h3 class="navheader external-navheader nav-highlightable" id="navheader-github">G H U B</h3>').wrap('<a href="https://github.com/fraziermork" class="navlink external-link"></a>');
@@ -123,35 +126,36 @@
       alert('invalid article');
       return false;
     }
-
-    //This is for when the main image holder is built
-    // var imageSrc;
-    // console.log('imageSrc is ' + imageSrc);
-    // if (fibonacci.arrayLength === 10) {
-    //   imageSrc = $clickedArticle.find('.article-image:first-of-type').css('background-image');
-    //   console.log(' fibonacci.arrayLength === 10, imageSrc is');
-    //   console.log(imageSrc);
-    // }
+    $mainImage = $('#main-image');
+    var imageSrc;
+    console.log('imageSrc is ' + imageSrc);
+    if (fibonacci.arrayLength === 10) {
+      imageSrc = $clickedArticle.find('.article-image:first-of-type').css('background-image');
+      console.log(' fibonacci.arrayLength === 10, imageSrc is');
+      console.log(imageSrc);
+      console.log(imageSrc == false);
+    }
 
     if ($clickedArticle.hasClass('open-article')) {
       console.log('open article was clicked');
       $clickedArticle.removeClass('open-article');
       $clickedArticle.find('.article-body').slideToggle();
       $clickedArticle.find('.article-option').slideToggle();
-      $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
-      // if (! imageSrc) {
-      //   console.log('if statement no imageSrc if executed');
-      // }
+      if (! $mainImage.length) {
+        console.log('if statement no $mainImage.length if executed');
+        $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
+      }
     } else {
       console.log('closed article was clicked');
       $('.open-article').find('.article-body').slideToggle();
       $('.open-article').find('.article-option').slideToggle();
-      // $('.main-image').css('background-image', imageSrc); //will need to be put back into the if statement below after main image holder built
-      $('.open-article').find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
-      $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
-      // if (! imageSrc) {
-      //   console.log('else statement no imageSrc if executed');
-      // }
+      if (! $mainImage.length) {
+        console.log('else statement no imageSrc if executed');
+        $('.open-article').find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
+        $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
+      } else {
+        $mainImage.css('background-image', imageSrc); //will need to be put back into the if statement below after main image holder built
+      }
       $('.open-article').removeClass('open-article');
       $clickedArticle.addClass('open-article');
       $clickedArticle.find('.article-body').slideToggle();

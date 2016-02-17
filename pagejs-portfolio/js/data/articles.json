@@ -72,7 +72,7 @@
       "articleSubtitle": "Change how this page looks",
       "articleIconClass":"icon-user-suit",
       "articleCategory": "demonstration",
-      "articleImage": [{}],
+      "articleImage": [{"url": false}],
       "articleTitleLink": "https://en.wikipedia.org/wiki/Golden_spiral",
       "articleContent": "Like the spiral? Here you can play with it, change the color scheme, etc.",
       "idString": "playWithTheSpiral",
