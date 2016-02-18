@@ -25,6 +25,7 @@
     }
   };
 
+  //make an ajax call to articles.json to build the article objects
   indexContent.makeAjaxCall = function(callback){
     console.log('indexContent.makeAjaxCall called');
     $.ajax({
@@ -64,7 +65,7 @@
 
 
 
-  //this is the callback for indexContent.ensureArticlesInSessionStorage that builds the final interactivity only after
+  //this is the callback for indexContent.ensureArticlesInSessionStorage that builds the final interactivity only after the ajax call is done
   indexContent.wrapSpiralChunksInLinksAndAddEventListeners = function(){
     console.log('indexContent.wrapSpiralChunksInLinksAndAddEventListeners called');
     //wrap each of them in the appropriate link
@@ -90,6 +91,7 @@
   };
 
   //When the window is resized, this uses the stored history state to determine whether things need to be shown
+  //can probably replace with ctx.params instead of history.state
   indexContent.restoreHistoryState = function(){
     console.log('indexContent.restoreHistoryState called');
     var historyState = history.state.path;
@@ -120,21 +122,24 @@
     }
   };
 
-  indexContent.addPageUpdatedOnText = function(portfolioDataObj){
-    console.log(new Date(portfolioDataObj.updated_at));
-    $('body').append('<meta http-equiv="last-modified" content="' + new Date(portfolioDataObj.updated_at) +'">');
-  };
 
+  //makes the ajax call to github for page updated text
   indexContent.buildPageUpdatedOn = function() {
     console.log('indexContent.buildPageUpdatedOn');
-    ghApi.getRepo('portfolio', indexContent.addPageUpdatedOnText);
+    ghApi.getRepo('portfolio', function(portfolioDataObj){
+      console.log(new Date(portfolioDataObj.updated_at));
+      $('body').append('<meta http-equiv="last-modified" content="' + new Date(portfolioDataObj.updated_at) +'">');
+    });
   };
 
+  //makes the ajax call to github for number of github repos and makes it a title for the navbar link to github
   indexContent.addGHTitle = function() {
+    console.log('indexContent.addGHTitle');
     ghApi.queryMe(function(fraziermorkGHObj){
       $('#navheader-github').attr('title', fraziermorkGHObj.public_repos + ' public repositories on GitHub');
     });
   };
 
+  //export to window
   module.indexContent = indexContent;
 })(window);
