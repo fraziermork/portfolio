@@ -1,11 +1,15 @@
 (function(module) {
   pageContentController = {};
-  pageContentController.sectionTitleInfo = {
-    projects: ['P R O J E C T S', 'projects'],
-    features: ['F E A T U R E S', 'features'],
-    about: ['A B O U T', 'about']
-  };
 
+  //relates the text for the section titles in chunk7 to the urls for pagejs
+  pageContentController.sectionTitleInfo = {};
+  pageContentController.sectionTitleInfo.projects = ['P R O J E C T S', 'projects'];
+  pageContentController.sectionTitleInfo.features = ['F E A T U R E S', 'features'];
+  pageContentController.sectionTitleInfo.about = ['A B O U T', 'about'];
+
+
+
+  //runs on page load
   pageContentController.index = function(ctx, next) {
     console.log('pageContentController.index called');
     console.log('fibonacci.arrayLength is ' + fibonacci.arrayLength);
@@ -75,16 +79,17 @@
     // if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length){ //probably should cache this jqobject
     //   $('#' + currentPageContentSection + '-section').find('.project-article:first-of-type .article-title').click();
     // }
-
-
     ctx.handled = true;
     next();
   };
 
 
+
+  //runs first when a url for a pagecontent section is hit
   pageContentController.ensurePageContent = function(ctx, next) {
     console.log('pageContentController.ensurePageContent called');
     var currentPageContentSection = ctx.params.currentPageContentSection;
+    var $currentPageContentSection = $('#' + currentPageContentSection + '-section');
     if (! $('.spiral-chunk').length){
       console.log('Inside pageContentController.ensurePageContent, no spiral chunks');
       console.log('SPIRAL NOT YET BUILT, WILL BUILD, MAKE AJAX CALL, AND BUILD ARTICLES');
@@ -100,12 +105,20 @@
         pageContent.buildPageContentSectionsIn(mainSpiralChunk);
         Article.buildFromSessionStorage(currentPageContentSection);
         pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
-        $('#' + currentPageContentSection + '-section').slideToggle();
+        $currentPageContentSection.slideToggle();
         $(window).on('resize', indexContent.onWindowResize);
         ctx.handled = true;
         next();
       });
       // pageContentController.index(ctx, next);
+    } else if ($currentPageContentSection.css('display') === 'none') {
+      console.log('currentPageContentSection display was none');
+      $('.page-content').hide();
+      $('#spiral-chunk-7').empty();
+      pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
+      $currentPageContentSection.slideToggle();
+      ctx.handled = true;
+      next();
     } else {
       console.log('Inside pageContentController.ensurePageContent, spiral chunks exist already');
       ctx.handled = true;
@@ -116,7 +129,7 @@
 
 
 
-
+  //runs when we go to an article page
   pageContentController.onArticleClick = function(ctx, next) {
     console.log('pageContentController.onArticleClick called');
     var clickedArticleIdString = ctx.params.article;
@@ -144,7 +157,7 @@
       $clickedArticle.find('.article-option').slideToggle();
       if (! $mainImage.length) {
         console.log('if statement no $mainImage.length if executed');
-        $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
+        $clickedArticle.find('.article-image-holder').slideToggle();
       }
     } else {
       console.log('closed article was clicked');
@@ -152,10 +165,10 @@
       $('.open-article').find('.article-option').slideToggle();
       if (! $mainImage.length) {
         console.log('else statement no imageSrc if executed');
-        $('.open-article').find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
-        $clickedArticle.find('.article-image-holder').slideToggle();//will need to be put back into the if statement below after main image holder built
+        $('.open-article').find('.article-image-holder').slideToggle();
+        $clickedArticle.find('.article-image-holder').slideToggle();
       } else {
-        $mainImage.css('background-image', imageSrc); //will need to be put back into the if statement below after main image holder built
+        $mainImage.css('background-image', imageSrc);
       }
       $('.open-article').removeClass('open-article');
       $clickedArticle.addClass('open-article');
@@ -167,5 +180,6 @@
     next();
   };
 
+  //export to window
   module.pageContentController = pageContentController;
 })(window);

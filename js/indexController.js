@@ -1,6 +1,7 @@
 (function(module) {
   var indexController = {};
 
+  //this is the function that runs on home page load 
   indexController.index = function() {
     console.log('BEGINNING TO BUILD INITIAL INDEX PAGE');
     console.log('indexController.index called');
@@ -24,6 +25,7 @@
     $(window).on('resize', indexContent.onWindowResize);
   };
 
+  //I wrapped all those spiral chunks in links, but I need to remove them before going on to the next page
   indexController.onExit = function(ctx, next) {
     console.log('indexContent.onExit called');
     var $internalNavHeader = $('.internal-navheader');
@@ -33,6 +35,6 @@
   };
 
 
-
+  //export to window
   module.indexController = indexController;
 })(window);

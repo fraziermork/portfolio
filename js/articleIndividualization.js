@@ -2,7 +2,7 @@
 //article options types are imageOption, textOption, functionOption, demoOption
 //imageOption: just requires an object with a single url attribute
 //textOption: requires an object with properties articleOptionClass, articleOptionId, optionText
-//functionOption: requires the name of a function attached as a method to individualize, a selector for what to attach it to, and an eventType
+//functionOption: requires the name of a function attached as a method to individualize, a selector for what to attach it to, an eventType, and any other relevant parameters 
 //demoOption: not sure what this requires yet
 
 //currentOption, articleOptionIndex, articleOptionArray, $articleToAppendTo are the three parameters passed to the builder
