@@ -242,3 +242,17 @@ To get started, you will need to create a controller that includes a call to the
  - Use a proxied, authenticated ajax call to GitHub's API to get data from the API.
  - Keep your portfolio responsive as it displays API data.
  - DO NOT publish your GitHub Token to any public repo.
+
+
+
+
+class-14:
+# Portfolio Assignment for Class 14 - Managing State
+
+In our blog, we used middleware to intercept our routes and control the view layer of our application. You will need to do the same with your portfolio, along with any additional refactoring that you deem fit.
+
+## Technical Requirements and Grading Rubric
+ - Ensure your code passes ESLint.
+ - Use middleware to manage state
+ - Use middleware to access resources based on parameters defined in your routes.
+ - Use functional programming to refactor any relevant view specific methods.
