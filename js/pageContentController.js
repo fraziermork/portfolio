@@ -1,4 +1,4 @@
-(function(module){
+(function(module) {
   pageContentController = {};
   pageContentController.sectionTitleInfo = {
     projects: ['P R O J E C T S', 'projects'],
@@ -42,7 +42,7 @@
     //coming from index page
     } else if (! $pageContent.length) {//spiral is built and empty, need to build the articles and open the about section
       console.log('SPIRAL BUILT, WILL BUILD ARTICLES');
-      if (fibonacci.arrayLength === 10){
+      if (fibonacci.arrayLength === 10) {
         mainSpiralChunk = 'spiral-chunk-9';
         $('#spiral-chunk-8').append('<div class="main-image-holder" id="main-image-holder"><div class="main-image" id="main-image"></div></div>');
       }
@@ -52,7 +52,7 @@
       Article.buildFromSessionStorage(currentPageContentSection);
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
       $('#' + currentPageContentSection + '-section').slideToggle();
-      if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length){ //probably should cache this jqobject
+      if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length) { //probably should cache this jqobject
         $('#' + currentPageContentSection + '-section').find('.project-article:first-of-type .article-title').click();
       }
     //coming here from another page content section,
@@ -62,7 +62,7 @@
       $('#spiral-chunk-7').empty();
       pageContent.buildSectionTitle(pageContentController.sectionTitleInfo[currentPageContentSection][0], currentPageContentSection);
       $('#' + currentPageContentSection + '-section').slideToggle();
-      if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length){ //probably should cache this jqobject
+      if (fibonacci.arrayLength === 10 && ! $('#' + currentPageContentSection + '-section').find('.open-article').length) { //probably should cache this jqobject
         $('#' + currentPageContentSection + '-section').find('.project-article:first-of-type .article-title').click();
       }
     } else {
@@ -76,19 +76,20 @@
     //   $('#' + currentPageContentSection + '-section').find('.project-article:first-of-type .article-title').click();
     // }
 
+
     ctx.handled = true;
     next();
   };
 
 
-  pageContentController.ensurePageContent = function(ctx, next){
+  pageContentController.ensurePageContent = function(ctx, next) {
     console.log('pageContentController.ensurePageContent called');
     var currentPageContentSection = ctx.params.currentPageContentSection;
     if (! $('.spiral-chunk').length){
       console.log('Inside pageContentController.ensurePageContent, no spiral chunks');
       console.log('SPIRAL NOT YET BUILT, WILL BUILD, MAKE AJAX CALL, AND BUILD ARTICLES');
       fibonacci.initializeSpiral();
-      indexContent.ensureArticlesInSessionStorage(function(){
+      indexContent.ensureArticlesInSessionStorage(function() {
         var mainSpiralChunk = 'spiral-chunk-8';
         if (fibonacci.arrayLength === 10){
           mainSpiralChunk = 'spiral-chunk-9';
@@ -116,7 +117,7 @@
 
 
 
-  pageContentController.onArticleClick = function(ctx, next){
+  pageContentController.onArticleClick = function(ctx, next) {
     console.log('pageContentController.onArticleClick called');
     var clickedArticleIdString = ctx.params.article;
     console.log('clickedArticleIdString is ' + clickedArticleIdString);
@@ -165,17 +166,6 @@
     ctx.handled = true;
     next();
   };
-
-  // pageContentController.testArticleClick = function(ctx, next){
-  //   console.log('happened ');
-  //   console.log('article is ' + ctx.params.article);
-  //   console.log('currentPageContentSection is ' + ctx.params.currentPageContentSection);
-  //   ctx.handled = true;
-  //   next();
-  // };
-
-
-
 
   module.pageContentController = pageContentController;
 })(window);

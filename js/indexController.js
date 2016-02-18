@@ -1,12 +1,12 @@
-(function(module){
+(function(module) {
   var indexController = {};
 
-  indexController.index = function(){
+  indexController.index = function() {
     console.log('BEGINNING TO BUILD INITIAL INDEX PAGE');
     console.log('indexController.index called');
     var $spiralChunk = $('.spiral-chunk');
-    // indexContent.buildPageUpdatedOn();
-    // indexContent.addGHTitle();
+    indexContent.buildPageUpdatedOn();
+    indexContent.addGHTitle();
     //if content already exists and all we need to do is revert back to the index page
     if ($spiralChunk.length){
       console.log('spiral chunks already exist, just going to empty them');
@@ -24,7 +24,7 @@
     $(window).on('resize', indexContent.onWindowResize);
   };
 
-  indexController.onExit = function(ctx, next){
+  indexController.onExit = function(ctx, next) {
     console.log('indexContent.onExit called');
     var $internalNavHeader = $('.internal-navheader');
     $internalNavHeader.parents('.spiral-chunk').unwrap();
