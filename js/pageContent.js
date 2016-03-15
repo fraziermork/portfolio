@@ -10,6 +10,7 @@
   };
 
   //appends the top navbar to chunk6 for pages after the index page
+  //should I add the thing that draws the link to github in here?
   pageContent.buildTopNavbar = function(){
     var topNavbar = Handlebars.compile($('#navbar-template').html());
     $('#spiral-chunk-6').append(topNavbar);
