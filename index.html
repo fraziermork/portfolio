@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/module/spiral.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="/css/module/navbar.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="/css/module/content.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="/css/module/contact-form.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="/css/state.css" type="text/css" charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
@@ -34,6 +35,7 @@
     <script defer type="text/javascript" src="/js/indexController.js"></script>
     <script defer type="text/javascript" src="/js/pageContentController.js"></script>
     <script defer type="text/javascript" src="/js/routes.js"></script>
+    <script defer type="text/javascript" src="/js/email.js"></script>
 
 
     <script type="text/x-handlebars-template" id="spiral-chunk-template">
@@ -100,6 +102,20 @@
       <div class="spiral-holder" id="spiral-holder">
       </div>
     </div>
-
+    
+    <div class="contact-me">
+      <form class="email-form" id="email-form">
+        <a id="close-contact-form" href="#"><p>X</p></a> 
+        <div class="email-form-top-spacer"></div>
+        <input type="email" name="sender-email" value="" placeholder="Your email">
+        <input type="text" name="sender-name" value="" placeholder="Your name">
+        <input type="text" name="email-subject" value="" placeholder="Email subject">
+        <textarea name="email-body" rows="8" cols="40" placeholder="Enter email body here"></textarea>
+        <input type="submit" value="Email me">
+        <div class="email-fail-alert">Email not sent</div>
+        <div class="email-success-alert">Email sent</div>
+      </form>
+    </div>
+    
   </body>
 </html>

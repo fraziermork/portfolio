@@ -1,0 +1,46 @@
+.contact-me{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(100, 100, 100, .5);
+  z-index: 10;
+  
+}
+.email-form{
+  width: 80%;
+  max-width: 500px;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.email-form input {
+  width: calc(100% - 6px);
+  display: block;
+  margin-bottom: 10px;
+}
+.email-form input:last-of-type {
+  width: 30%;
+  display: block;
+}
+.email-form textarea {
+  width: calc(100% - 6px);
+  margin-bottom: 10px;
+}
+.email-form-top-spacer{
+  min-height: 100px;
+  height: 10%;
+}
+#close-contact-form{
+  top: 5px;
+  right: 10%;
+  color: #FFECA7;
+  font-size: 2em;
+  position: absolute;
+  margin: 0;
+  text-decoration: none;
+}
+#close-contact-form p {
+  margin: 0;
+}
