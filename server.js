@@ -23,22 +23,22 @@ var proxyGitHub = function(request, response) {
 
 app.use(bodyParser.urlencoded());
 app.get('/github/*', proxyGitHub);
-app.post('/email', function(request, response) {//this throws an error but does actually send an email
-  console.log('post made to /email');
-  console.log(request.body);
-  request.body.to = 'fraziermork@gmail.com';
-  
-  mailgun.messages().send(request.body, function(err, body) {
-    if (err){
-      console.log('Error occured', err);
-      response.status(404).end();
-    } else {
-      console.log('success');
-      console.log(body);
-      response.status(200).end();
-    }
-  });
-});
+// app.post('/email', function(request, response) {//this throws an error but does actually send an email
+//   console.log('post made to /email');
+//   console.log(request.body);
+//   request.body.to = 'fraziermork@gmail.com';
+//   
+//   mailgun.messages().send(request.body, function(err, body) {
+//     if (err){
+//       console.log('Error occured', err);
+//       response.status(404).end();
+//     } else {
+//       console.log('success');
+//       console.log(body);
+//       response.status(200).end();
+//     }
+//   });
+// });
 
 app.use(express.static('./'));
 
