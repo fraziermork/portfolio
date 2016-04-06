@@ -121,3 +121,7 @@
   color: #333;
   margin: 0;
 }
+
+.article-text-link{
+  color: inherit;
+}
